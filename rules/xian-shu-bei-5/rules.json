@@ -1,0 +1,172 @@
+{
+  "name": "Arknights Scoreboard",
+  "description": "# arknights scoreboard test schema \n Markdown",
+  "version": "0.0.1",
+  "engineVersion": "0.0.2",
+  "background": "https://cdn.jsdelivr.net/gh/palmcivet/arknights-scoreboard/assets/background.jpg",
+  "url": "https://www.bili.com/",
+  "author": "Palm_Civet",
+  "schedule": "2023.07 Week",
+  "type": "bingo",
+  "scoringItems": [
+    {
+      "type": "group",
+      "label": "临时招募",
+      "description": "对应规则 01",
+      "items": [
+        {
+          "type": "count",
+          "label": "六星",
+          "score": 50
+        },
+        {
+          "type": "count",
+          "label": "五星",
+          "score": 20
+        },
+        {
+          "type": "count",
+          "label": "四星",
+          "score": 10
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": "结局",
+      "description": "对应规则 03",
+      "items": [
+        {
+          "type": "select",
+          "label": "五层关底",
+          "options": [
+            {
+              "label": "深寒造像",
+              "score": 150
+            },
+            {
+              "label": "萨米之熵",
+              "score": 30
+            },
+            {
+              "label": "虚无之偶",
+              "score": 120
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "label": "园丁/哨兵",
+          "options": [
+            {
+              "label": "园丁",
+              "score": 50
+            },
+            {
+              "label": "哨兵",
+              "score": 300
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "label": "时光之沙/迈入永恒",
+          "items": [
+            {
+              "label": "时光之沙",
+              "score": 100
+            },
+            {
+              "label": "迈入永恒",
+              "score": 150
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "label": "结局连打",
+          "description": "对应规则 02 和 04",
+          "items": [
+            {
+              "label": "34 连打且未进过树洞",
+              "score": 150
+            },
+            {
+              "label": "24 连打",
+              "score": 100
+            },
+            {
+              "label": "34 连打",
+              "score": 150
+            }
+          ]
+        }
+      ]
+    },
+
+    // 未整理
+    {
+      "type": "group",
+      "label": "对应规则 05",
+      "description": "紧急关卡和特殊关卡",
+      "items": [
+        {
+          "type": "count",
+          "label": "第三层紧急冰海疑影",
+          "score": 20
+        },
+        {
+          "type": "count",
+          "label": "第四层紧急",
+          "score": 20
+        },
+        {
+          "type": "check",
+          "label": "大地醒转",
+          "score": 50
+        },
+        {
+          "type": "check",
+          "label": "呼吸",
+          "score": 50
+        },
+        {
+          "type": "check",
+          "label": "夺树者",
+          "score": 50
+        },
+        {
+          "type": "check",
+          "label": "豪华车队击杀熊",
+          "score": 40
+        },
+        {
+          "type": "select",
+          "description": "正义使者",
+          "items": [
+            {
+              "label": "仅通关",
+              "score": 70
+            },
+            {
+              "label": "1 隐藏",
+              "score": 100
+            },
+            {
+              "label": "2 隐藏",
+              "score": 130
+            },
+            {
+              "label": "3 隐藏",
+              "score": 160
+            },
+            {
+              "label": "无漏",
+              "score": 200
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

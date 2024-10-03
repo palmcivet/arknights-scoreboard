@@ -1,0 +1,17 @@
+{
+  "rule": "xian-shu-bei-5",
+  "ruleVersion": "1.0.1",
+  "challenger": {
+    "id": "xxx",
+    "avatar": "https://avatars.githubusercontent.com/u/xxx?v=4",
+    "description": "xian-shu-bei-5"
+  },
+  "begin": "2021-07-01T00:00:00Z",
+  "end": "2021-07-31T23:59:59Z",
+  "score": 302,
+  "records": [{}],
+  "initialState": {
+    "custom-data": "any",
+    "myData": "my"
+  }
+}
