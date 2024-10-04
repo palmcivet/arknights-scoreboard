@@ -1,4 +1,4 @@
-import { Version } from '@/types/common';
+import { DateTime, Version } from '@/types/common';
 
 export type Record = {
   /**
@@ -12,11 +12,11 @@ export type Record = {
   /**
    * @description 比赛开始时间
    */
-  begin: string;
+  begin: DateTime;
   /**
    * @description 比赛结束时间
    */
-  end: string;
+  end: DateTime;
   /**
    * @description 得分
    */

@@ -2,10 +2,6 @@ import { SCORING_ITEM_TYPE } from './constant';
 
 type ScoringItemBase = {
   /**
-   * @description 选项分数，可以为负数
-   */
-  score: number;
-  /**
    * @description 选项标签
    */
   label: string;
@@ -15,40 +11,47 @@ type ScoringItemBase = {
   description?: string;
 };
 
-export type ScoringItemGroup = {
+export type ScoringItemSelectOption = ScoringItemBase & {
   /**
-   * @description 计分项类型：GROUP
+   * @description 选项分数，可以为负数
    */
-  type: SCORING_ITEM_TYPE.GROUP;
-  /**
-   * @description 子项
-   */
-  items: ScoringItem[];
-  /**
-   * @description 分组标签
-   */
-  label: string;
-  /**
-   * @description 分组描述
-   */
-  description?: string;
+  score: number;
 };
 
 export type ScoringItemCheck = ScoringItemBase & {
   type: SCORING_ITEM_TYPE.CHECK;
+  /**
+   * @description 选项分数，可以为负数
+   */
+  score: number;
 };
 
 export type ScoringItemCount = ScoringItemBase & {
   type: SCORING_ITEM_TYPE.COUNT;
+  /**
+   * @description 选项分数，可以为负数
+   */
+  score: number;
 };
 
 export type ScoringItemSelect = ScoringItemBase & {
   type: SCORING_ITEM_TYPE.SELECT;
-  options: Array<ScoringItemBase>;
+  /**
+   * @description 选项
+   */
+  options: Array<ScoringItemSelectOption>;
+};
+
+export type ScoringItemGroup = ScoringItemBase & {
+  type: SCORING_ITEM_TYPE.GROUP;
+  /**
+   * @description 子项
+   */
+  items: Array<ScoringItem>;
 };
 
 export type ScoringItem =
-  | ScoringItemGroup
   | ScoringItemCheck
   | ScoringItemCount
-  | ScoringItemSelect;
+  | ScoringItemSelect
+  | ScoringItemGroup;

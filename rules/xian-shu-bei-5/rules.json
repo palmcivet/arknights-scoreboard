@@ -1,13 +1,14 @@
 {
-  "name": "Arknights Scoreboard",
-  "description": "# arknights scoreboard test schema \n Markdown",
-  "version": "0.0.1",
-  "engineVersion": "0.0.2",
-  "background": "https://cdn.jsdelivr.net/gh/palmcivet/arknights-scoreboard/assets/background.jpg",
-  "url": "https://www.bili.com/",
+  "name": "仙术杯#5 探索者的银淞止境",
+  "description": "致力打造一个既精彩又有趣，还能学习打法的集成战略比赛",
+  "url": "https://www.bilibili.com/blackboard/activity-cXBrWYNabu.html",
+  "host": "龙哥哥今天又鸽了",
+  "schedule": "初赛 2024年3月9日-3月17日，决赛 2024年3月19日-3月21日",
   "author": "Palm_Civet",
-  "schedule": "2023.07 Week",
-  "type": "bingo",
+  "engine": "tournment",
+  "version": "0.0.1",
+  "engineVersion": "0.0.1",
+  "background": "https://i0.hdslb.com/bfs/activity-plat/static/1bf089108fef03beeb184eb7afb655f8/W2tcndlVRT_w1920_h1080.png",
   "scoringItems": [
     {
       "type": "group",
@@ -71,7 +72,7 @@
         {
           "type": "select",
           "label": "时光之沙/迈入永恒",
-          "items": [
+          "options": [
             {
               "label": "时光之沙",
               "score": 100
@@ -86,7 +87,7 @@
           "type": "select",
           "label": "结局连打",
           "description": "对应规则 02 和 04",
-          "items": [
+          "options": [
             {
               "label": "34 连打且未进过树洞",
               "score": 150
@@ -103,23 +104,83 @@
         }
       ]
     },
-
-    // 未整理
     {
       "type": "group",
-      "label": "对应规则 05",
-      "description": "紧急关卡和特殊关卡",
+      "label": "紧急关卡",
+      "description": "对应规则 05 紧急",
       "items": [
         {
           "type": "count",
-          "label": "第三层紧急冰海疑影",
+          "label": "冰海疑影",
           "score": 20
         },
         {
           "type": "count",
-          "label": "第四层紧急",
+          "label": "冰海疑影（路网无漏）",
+          "score": 30
+        },
+        {
+          "type": "count",
+          "label": "公司纠葛",
           "score": 20
         },
+        {
+          "type": "count",
+          "label": "公司纠葛（路网无漏）",
+          "score": 30
+        },
+        {
+          "type": "count",
+          "label": "坍缩体的午后",
+          "score": 20
+        },
+        {
+          "type": "count",
+          "label": "人造物狂欢节",
+          "score": 90
+        },
+        {
+          "type": "count",
+          "label": "人造物狂欢节（路网无漏）",
+          "score": 110
+        },
+        {
+          "type": "count",
+          "label": "本能污染",
+          "score": 50
+        },
+        {
+          "type": "count",
+          "label": "亡者行军",
+          "score": 50
+        },
+        {
+          "type": "count",
+          "label": "亡者行军（路网无漏）",
+          "score": 70
+        },
+        {
+          "type": "count",
+          "label": "乐理之灾",
+          "score": 35
+        },
+        {
+          "type": "count",
+          "label": "乐理之灾（路网无漏）",
+          "score": 55
+        },
+        {
+          "type": "count",
+          "label": "生灵的终点",
+          "score": 90
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": "第三层隐藏 Boss",
+      "description": "对应规则 05 隐藏 Boss",
+      "items": [
         {
           "type": "check",
           "label": "大地醒转",
@@ -134,16 +195,23 @@
           "type": "check",
           "label": "夺树者",
           "score": 50
-        },
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": "隐藏关卡",
+      "description": "对应规则 05 隐藏关卡",
+      "items": [
         {
-          "type": "check",
+          "type": "count",
           "label": "豪华车队击杀熊",
           "score": 40
         },
         {
           "type": "select",
           "description": "正义使者",
-          "items": [
+          "options": [
             {
               "label": "仅通关",
               "score": 70
@@ -165,6 +233,79 @@
               "score": 200
             }
           ]
+        },
+        {
+          "type": "select",
+          "description": "英雄无名",
+          "options": [
+            {
+              "label": "仅通关",
+              "score": 30
+            },
+            {
+              "label": "击杀 1 名敌人",
+              "score": 45
+            },
+            {
+              "label": "击杀 2 名敌人",
+              "score": 60
+            },
+            {
+              "label": "击杀 3 名敌人",
+              "score": 75
+            },
+            {
+              "label": "击杀 4 名敌人",
+              "score": 90
+            },
+            {
+              "label": "击杀 5 名敌人",
+              "score": 105
+            },
+            {
+              "label": "无漏",
+              "score": 150
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "鸭/狗/熊",
+      "description": "对应规则 07",
+      "type": "group",
+      "items": [
+        {
+          "type": "count",
+          "label": "鸭",
+          "score": 20
+        },
+        {
+          "type": "count",
+          "label": "狗",
+          "score": 20
+        },
+        {
+          "type": "count",
+          "label": "熊",
+          "score": 20
+        }
+      ]
+    },
+    {
+      "label": "藏品和密文板",
+      "description": "对应规则 08",
+      "type": "group",
+      "items": [
+        {
+          "type": "count",
+          "label": "藏品",
+          "score": 10
+        },
+        {
+          "type": "count",
+          "label": "密文板",
+          "score": 5
         }
       ]
     }

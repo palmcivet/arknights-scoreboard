@@ -1,10 +1,6 @@
 import { Version } from '@/types/common';
-import { ScoringItem } from './scoring-item';
-
-export enum RULE_TYPE {
-  TOURNMENT,
-  BINGO,
-}
+import { RULE_TYPE } from '@/types/rule/constant';
+import { ScoringItem } from '@/types/rule/scoring-item';
 
 export type EventsInfo = {
   /**
@@ -14,26 +10,30 @@ export type EventsInfo = {
   /**
    * @description 比赛描述
    */
-  description: string;
+  description?: string;
   /**
    * @description 比赛的 URL
    */
-  url: string;
+  url?: string;
+  /**
+   * @description 比赛的背景图
+   */
+  background?: string;
   /**
    * @description 主办方
    */
-  host: string;
+  host?: string;
   /**
    * @Description 比赛赛程
    */
-  schedule: string;
+  schedule?: string;
 };
 
 export type Rule = EventsInfo & {
   /**
    * @description 规则的作者
    */
-  author: string;
+  author?: string;
   /**
    * @description 规则类型
    */
@@ -45,7 +45,7 @@ export type Rule = EventsInfo & {
   /**
    * @description 规则的引擎版本
    */
-  engingVersion: Version;
+  engineVersion: Version;
   /**
    * @description 规则的计分项
    */

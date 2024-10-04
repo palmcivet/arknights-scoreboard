@@ -3,19 +3,24 @@
  */
 export enum SCORING_ITEM_TYPE {
   /**
-   * @description 分组
-   */
-  GROUP = 'group',
-  /**
    * @description 勾选
    */
   CHECK = 'check',
+  /**
+   * @description 按次数
+   */
+  COUNT = 'count',
   /**
    * @description N 选一
    */
   SELECT = 'select',
   /**
-   * @description 按次数
+   * @description 分组
    */
-  COUNT = 'count',
+  GROUP = 'group',
+}
+
+export enum RULE_TYPE {
+  TOURNMENT = 'tournment',
+  BINGO = 'bingo',
 }

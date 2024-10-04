@@ -1,4 +1,6 @@
-export type Version = `${number}.${number}.${number}`;
+export type Version = string;
+
+export type DateTime = string;
 
 export enum RULE_SOURCE {
   /**

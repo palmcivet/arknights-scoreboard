@@ -21,6 +21,7 @@ import { Container } from '@/components/widgets';
 import EventsCard from '@/components/events-card';
 import RecordsCard from '@/components/records-card';
 import OperatorCard from '@/components/operator-card';
+import ScoringCards from '@/components/scoring-cards';
 import { cn } from '@/helpers/tailwind-utils';
 
 defineOptions({
