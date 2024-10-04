@@ -1,9 +1,15 @@
 <template>
-  <div class="scoring-count flex items-center flex-row">
+  <div class="scoring-count flex flex-row items-center">
     <div class="flex-auto">{{ scoringItem.label }}</div>
     <div v-if="scoringItem.description">{{ scoringItem.description }}</div>
     <div>{{ scoringItem.score }}</div>
-    <Input class="w-[1/4]" type="number" v-model="count"></Input>
+    <NumberField class="w-1/2" v-model="count">
+      <NumberFieldContent>
+        <NumberFieldDecrement />
+        <NumberFieldInput />
+        <NumberFieldIncrement />
+      </NumberFieldContent>
+    </NumberField>
   </div>
 </template>
 
@@ -11,7 +17,13 @@
 import { ref } from 'vue';
 import type { PropType } from 'vue';
 
-import { Input } from '@/components/ui/input';
+import {
+  NumberField,
+  NumberFieldContent,
+  NumberFieldDecrement,
+  NumberFieldIncrement,
+  NumberFieldInput,
+} from '@/components/ui/number-field';
 import type { ScoringItemCount } from '@/types';
 
 defineOptions({

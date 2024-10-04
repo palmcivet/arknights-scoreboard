@@ -7,13 +7,6 @@ export default {
   prefix: '',
   content: ['./src/**/*.{ts,tsx,vue}'],
   theme: {
-    container: {
-      center: true,
-      padding: '2rem',
-      screens: {
-        '2xl': '1400px',
-      },
-    },
     extend: {
       colors: {
         border: 'hsl(var(--border))',
@@ -50,12 +43,6 @@ export default {
           foreground: 'hsl(var(--card-foreground))',
         },
       },
-      borderRadius: {
-        xl: 'calc(var(--radius) + 4px)',
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
-      },
       keyframes: {
         'accordion-down': {
           from: { height: '0' },
@@ -80,11 +67,46 @@ export default {
         'collapsible-down': 'collapsible-down 0.2s ease-in-out',
         'collapsible-up': 'collapsible-up 0.2s ease-in-out',
       },
+      screens: {
+        sm: '360px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+        '2xl': '1440px',
+      },
+      borderRadius: {
+        sm: 'calc(var(--radius) - 4px)',
+        md: 'calc(var(--radius) - 2px)',
+        lg: 'var(--radius)',
+        xl: 'calc(var(--radius) + 4px)',
+      },
       gap: {
-        sm: '0.5rem',
-        md: '1rem',
-        lg: '1.75rem',
-        xl: '2.5rem',
+        sm: '1rem',
+        md: '2rem',
+        lg: '3rem',
+        xl: '4rem',
+      },
+      padding: {
+        sm: '1rem',
+        md: '2rem',
+        lg: '3rem',
+        xl: '4rem',
+      },
+      margin: {
+        sm: '1rem',
+        md: '2rem',
+        lg: '3rem',
+        xl: '4rem',
+      },
+      minWidth: {
+        sm: '360px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+        '2xl': '1440px',
+      },
+      maxWidth: {
+        '2xl': '1440px',
       },
     },
   },

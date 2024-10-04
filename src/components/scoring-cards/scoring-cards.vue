@@ -1,8 +1,17 @@
 <template>
   <div
-    :class="cn('scoring-cards', $attrs.class ?? '', 'md:columns-2 lg:columns-3 gap-sm')"
+    :class="
+      cn(
+        'scoring-cards',
+        $attrs.class ?? '',
+        'gap-sm md:columns-2 xl:columns-3'
+      )
+    "
   >
-    <ScoringGroup v-for="scoring in scoringItems" :scoring-item="scoring"> </ScoringGroup>
+    <ScoringGroup
+      v-for="scoring in scoringItems"
+      :scoring-item="scoring"
+    ></ScoringGroup>
   </div>
 </template>
 

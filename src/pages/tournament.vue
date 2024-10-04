@@ -1,8 +1,8 @@
 <template>
-  <Container class="aks-tournament flex-row md:gap-md lg:gap-lg h-full">
+  <div class="aks-tournament flex h-full w-full flex-row md:gap-md lg:gap-lg">
     <ResizablePanelGroup direction="horizontal">
       <ResizablePanel
-        class="flex flex-col mr-4 md:gap-sm"
+        class="mr-6 flex flex-col md:gap-sm"
         :default-size="30"
         :min-size="20"
         :max-size="40"
@@ -15,14 +15,14 @@
 
       <ResizableHandle></ResizableHandle>
 
-      <ResizablePanel class="ml-4">
+      <ResizablePanel class="ml-6">
         <!-- 计分板 -->
         <ScrollArea class="h-full">
           <ScoringCards></ScoringCards>
         </ScrollArea>
       </ResizablePanel>
     </ResizablePanelGroup>
-  </Container>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -36,7 +36,6 @@ import EventsCard from '@/components/events-card';
 import RecordsCard from '@/components/records-card';
 import OperatorCard from '@/components/operator-card';
 import ScoringCards from '@/components/scoring-cards';
-import { Container } from '@/components/widgets';
 
 defineOptions({
   name: 'Tournament',
