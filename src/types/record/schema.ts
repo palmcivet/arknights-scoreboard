@@ -1,4 +1,4 @@
-import { DateTime, Version } from '@/types/common';
+import type { DateTime, Version } from '@/types/common';
 
 export type Record = {
   /**

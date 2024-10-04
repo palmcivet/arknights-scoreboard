@@ -1,5 +1,5 @@
 <template>
-  <div :class="cn('rule-loader flex gap-sm', $attrs.class ?? '')">
+  <div :class="cn('rule-loader', $attrs.class ?? '', 'flex gap-sm')">
     <div class="loader-select flex-none">
       <Select :default-value="loaderSelect" v-model="loaderSelect">
         <SelectTrigger>
@@ -66,7 +66,7 @@ import {
 } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/helpers/tailwind-utils';
-import { RULE_SOURCE } from '@/types/common';
+import { RULE_SOURCE } from '@/constants';
 
 defineOptions({
   name: 'RuleLoader',

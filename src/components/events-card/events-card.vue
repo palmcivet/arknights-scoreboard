@@ -1,5 +1,5 @@
 <template>
-  <Card>
+  <Card :class="cn('events-card', $attrs.class ?? '')">
     <CardHeader class="space-y-1">
       <!-- 比赛名称 -->
       <CardTitle>
@@ -23,7 +23,8 @@ import { ref } from 'vue';
 import { Card, CardTitle, CardHeader, CardContent } from '@/components/ui/card';
 import ChallengerInfo from '@/components/challenger-info';
 import RuleLoader from '@/components/rule-loader';
-import { EventsInfo } from '@/types';
+import type { EventsInfo } from '@/types';
+import { cn } from '@/helpers/tailwind-utils';
 
 defineOptions({
   name: 'EventsCard',

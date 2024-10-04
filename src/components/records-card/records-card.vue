@@ -1,5 +1,5 @@
 <template>
-  <Card>
+  <Card :class="cn('records-card', $attrs.class ?? '')">
     <CardHeader class="space-y-1">
       <CardTitle>得分记录</CardTitle>
     </CardHeader>
@@ -16,6 +16,7 @@
 import { ref } from 'vue';
 
 import { Card, CardTitle, CardHeader, CardContent } from '@/components/ui/card';
+import { cn } from '@/helpers/tailwind-utils';
 
 defineOptions({
   name: 'RecordsCard',

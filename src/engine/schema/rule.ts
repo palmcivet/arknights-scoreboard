@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { RULE_TYPE, SCORING_ITEM_TYPE } from '@/types';
+import { RULE_TYPE, SCORING_ITEM_TYPE } from '@/constants';
 import type {
   Rule,
   ScoringItem,

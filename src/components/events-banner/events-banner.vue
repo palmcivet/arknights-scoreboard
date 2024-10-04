@@ -17,7 +17,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 
-import { EventsInfo } from '@/types';
+import type { EventsInfo } from '@/types';
 
 defineOptions({
   name: 'EventsBanner',

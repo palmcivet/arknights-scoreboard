@@ -1,6 +1,6 @@
-import { Version } from '@/types/common';
-import { RULE_TYPE } from '@/types/rule/constant';
-import { ScoringItem } from '@/types/rule/scoring-item';
+import { RULE_TYPE } from '@/constants';
+import type { Version } from '@/types/common';
+import type { ScoringItem } from '@/types/rule/scoring-item';
 
 export type EventsInfo = {
   /**

@@ -1,4 +1,4 @@
-import { SCORING_ITEM_TYPE } from './constant';
+import { SCORING_ITEM_TYPE } from '@/constants';
 
 type ScoringItemBase = {
   /**
