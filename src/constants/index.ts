@@ -1,3 +1,10 @@
+export const CONTAINER_CLASS =
+  'mx-auto sm:w-full sm:min-w-sm md:w-full md:min-w-md lg:w-full lg:min-w-lg xl:w-full xl:min-w-xl 2xl:max-w-2xl';
+
+export const VIEW_PADDING_LEFT_CLASS = 'sm:pl-sm md:pl-md lg:pl-lg xl:pl-xl';
+
+export const VIEW_PADDING_RIGHT_CLASS = 'sm:pr-sm md:pr-md lg:pr-lg xl:pr-xl';
+
 /**
  * @description 计分项类型
  */
