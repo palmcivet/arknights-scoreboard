@@ -1,3 +1,3 @@
-import RuleLoader from './rule-loader.vue';
+import RuleLoader from './component.vue';
 
 export default RuleLoader;

@@ -1,3 +1,3 @@
-import ScoringCards from './scoring-cards.vue';
+import ScoringCards from './component.vue';
 
 export default ScoringCards;

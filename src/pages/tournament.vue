@@ -9,18 +9,20 @@
         :min-size="20"
         :max-size="40"
       >
-        <!-- 赛事信息 -->
+        <!-- 赛事栏 -->
         <EventsCard></EventsCard>
+        <!-- 记录栏 -->
         <RecordsCard></RecordsCard>
-        <OperatorCard></OperatorCard>
       </ResizablePanel>
 
       <ResizableHandle></ResizableHandle>
 
       <ResizablePanel class="ml-6 h-full">
         <!-- 计分板 -->
-        <ScrollArea :class="cn('h-full', VIEW_PADDING_RIGHT_CLASS)">
-          <ScoringCards class="pt-[56px]"></ScoringCards>
+        <ScrollArea class="h-full">
+          <ScoringCards
+            :class="cn('pt-[56px]', VIEW_PADDING_RIGHT_CLASS)"
+          ></ScoringCards>
         </ScrollArea>
       </ResizablePanel>
     </ResizablePanelGroup>
@@ -36,7 +38,6 @@ import {
 } from '@/components/ui/resizable';
 import EventsCard from '@/components/events-card';
 import RecordsCard from '@/components/records-card';
-import OperatorCard from '@/components/operator-card';
 import ScoringCards from '@/components/scoring-cards';
 import { cn } from '@/helpers/tailwind-utils';
 import { VIEW_PADDING_RIGHT_CLASS } from '@/constants';

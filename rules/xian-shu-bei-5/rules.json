@@ -9,12 +9,12 @@
   "version": "0.0.1",
   "engineVersion": "0.0.1",
   "background": "https://i0.hdslb.com/bfs/activity-plat/static/1bf089108fef03beeb184eb7afb655f8/W2tcndlVRT_w1920_h1080.png",
-  "scoringItems": [
+  "items": [
     {
       "type": "group",
       "label": "临时招募",
       "description": "对应规则 01",
-      "items": [
+      "children": [
         {
           "type": "count",
           "label": "六星",
@@ -36,7 +36,7 @@
       "type": "group",
       "label": "结局",
       "description": "对应规则 03",
-      "items": [
+      "children": [
         {
           "type": "select",
           "label": "五层关底",
@@ -108,7 +108,7 @@
       "type": "group",
       "label": "紧急关卡",
       "description": "对应规则 05 紧急",
-      "items": [
+      "children": [
         {
           "type": "count",
           "label": "冰海疑影",
@@ -180,7 +180,7 @@
       "type": "group",
       "label": "第三层隐藏 Boss",
       "description": "对应规则 05 隐藏 Boss",
-      "items": [
+      "children": [
         {
           "type": "check",
           "label": "大地醒转",
@@ -202,7 +202,7 @@
       "type": "group",
       "label": "隐藏关卡",
       "description": "对应规则 05 隐藏关卡",
-      "items": [
+      "children": [
         {
           "type": "count",
           "label": "豪华车队击杀熊",
@@ -274,7 +274,7 @@
       "label": "鸭/狗/熊",
       "description": "对应规则 07",
       "type": "group",
-      "items": [
+      "children": [
         {
           "type": "count",
           "label": "鸭",
@@ -296,7 +296,7 @@
       "label": "藏品和密文板",
       "description": "对应规则 08",
       "type": "group",
-      "items": [
+      "children": [
         {
           "type": "count",
           "label": "藏品",

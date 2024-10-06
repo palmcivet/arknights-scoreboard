@@ -1,6 +1,13 @@
-import ScoringCheck from './scoring-check.vue';
-import ScoringCount from './scoring-count.vue';
-import ScoringSelect from './scoring-select.vue';
-import ScoringGroup from './scoring-group.vue';
+import ScoringItemCheck from './item-check.vue';
+import ScoringItemCount from './item-count.vue';
+import ScoringItemSelect from './item-select.vue';
+import ScoringItemGroup from './item-group.vue';
+import ScoringItem from './scoring-item.vue';
 
-export { ScoringCheck, ScoringCount, ScoringSelect, ScoringGroup };
+export {
+  ScoringItemCheck,
+  ScoringItemCount,
+  ScoringItemSelect,
+  ScoringItemGroup,
+  ScoringItem,
+};

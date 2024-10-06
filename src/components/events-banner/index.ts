@@ -1,3 +1,3 @@
-import EventsBanner from './events-banner.vue';
+import EventsBanner from './component.vue';
 
 export default EventsBanner;

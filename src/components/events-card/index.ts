@@ -1,3 +1,3 @@
-import EventsCard from './events-card.vue';
+import EventsCard from './component.vue';
 
 export default EventsCard;
