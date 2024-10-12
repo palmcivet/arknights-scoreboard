@@ -1,7 +1,7 @@
 <template>
   <Card class="scoring-item-group">
     <CardHeader class="space-y-1">
-      <CardTitle>{{ scoringItem.label }}</CardTitle>
+      <CardTitle class="text-xl">{{ scoringItem.label }}</CardTitle>
       <CardDescription v-if="scoringItem.description">
         {{ scoringItem.description }}
       </CardDescription>

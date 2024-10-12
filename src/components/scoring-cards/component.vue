@@ -6,22 +6,20 @@
   >
     <ScoringItem
       class="break-inside-avoid-column [&+&]:mt-4"
-      v-for="scoring in items"
+      v-for="scoring in eventsStore.parsedRules"
       :scoring-item="scoring"
     ></ScoringItem>
   </div>
 </template>
 
 <script lang="ts" setup>
-import xianshubei5 from '@rules/xian-shu-bei-5/rules.json';
 import { ScoringItem } from '@/components/scoring-items';
 import { cn } from '@/helpers/tailwind-utils';
-import { Ruleset } from '@/engine';
+import { useEventsStore } from '@/engine/store';
 
 defineOptions({
   name: 'ScoringCards',
 });
 
-const ruleset = new Ruleset(xianshubei5 as any);
-const { items } = ruleset.getRules();
+const eventsStore = useEventsStore();
 </script>

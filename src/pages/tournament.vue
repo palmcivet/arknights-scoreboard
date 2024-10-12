@@ -2,12 +2,10 @@
   <div
     class="aks-tournament flex h-full w-full flex-row pt-6 md:gap-md lg:gap-lg"
   >
-    <ResizablePanelGroup direction="horizontal">
+    <ResizablePanelGroup :direction="isMobile ? 'vertical' : 'horizontal'">
       <ResizablePanel
-        class="mr-6 flex h-full flex-col pt-[56px] md:gap-sm"
+        class="mr-6 flex h-full min-w-[256px] max-w-[378px] flex-col pt-[56px] md:gap-sm"
         :default-size="30"
-        :min-size="20"
-        :max-size="40"
       >
         <!-- 赛事栏 -->
         <EventsCard></EventsCard>
@@ -15,7 +13,7 @@
         <RecordsCard></RecordsCard>
       </ResizablePanel>
 
-      <ResizableHandle></ResizableHandle>
+      <ResizableHandle with-handle></ResizableHandle>
 
       <ResizablePanel class="ml-6 h-full">
         <!-- 计分板 -->
@@ -30,6 +28,7 @@
 </template>
 
 <script lang="ts" setup>
+import { useMediaQuery } from '@vueuse/core';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import {
   ResizableHandle,
@@ -40,9 +39,11 @@ import EventsCard from '@/components/events-card';
 import RecordsCard from '@/components/records-card';
 import ScoringCards from '@/components/scoring-cards';
 import { cn } from '@/helpers/tailwind-utils';
-import { VIEW_PADDING_RIGHT_CLASS } from '@/constants';
+import { MOBILE_BREAKPOINT, VIEW_PADDING_RIGHT_CLASS } from '@/constants';
 
 defineOptions({
   name: 'Tournament',
 });
+
+const isMobile = useMediaQuery(MOBILE_BREAKPOINT);
 </script>

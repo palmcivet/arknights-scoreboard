@@ -87,7 +87,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { Icon } from '@iconify/vue';
 
 import { Badge } from '@/components/ui/badge';
@@ -114,6 +114,7 @@ import { cn } from '@/helpers/tailwind-utils';
 import { RULE_SOURCE } from '@/constants';
 import { useEventsStore } from '@/engine/store';
 import { FormItemSlot } from '@/components/widget';
+import xianshubei5 from '@rules/xian-shu-bei-5/rules.json';
 
 defineOptions({
   name: 'RuleLoader',
@@ -161,7 +162,13 @@ const onToggleExpand = () => {
   isExpanded.value = !isExpanded.value;
 };
 
-function dispatchLoadRule() {}
+onMounted(() => {
+  dispatchLoadRule();
+});
+
+function dispatchLoadRule() {
+  eventsStore.loadRules(xianshubei5 as any);
+}
 
 async function onLoadLocalRule(event: InputEvent) {
   const { files } = event.target as HTMLInputElement;

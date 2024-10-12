@@ -1,3 +1,3 @@
-import RecordsCard from './records-card.vue';
+import RecordsCard from './component.vue';
 
 export default RecordsCard;

@@ -5,6 +5,8 @@ export const VIEW_PADDING_LEFT_CLASS = 'sm:pl-sm md:pl-md lg:pl-lg xl:pl-xl';
 
 export const VIEW_PADDING_RIGHT_CLASS = 'sm:pr-sm md:pr-md lg:pr-lg xl:pr-xl';
 
+export const MOBILE_BREAKPOINT = '(max-width: 768px)';
+
 export enum RULE_SOURCE {
   /**
    * @description 从预设规则中获取
