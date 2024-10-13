@@ -1,10 +1,11 @@
 <template>
   <div
-    class="aks-tournament flex h-full w-full flex-row pt-6 md:gap-md lg:gap-lg"
+    class="aks-tournament flex h-full w-full flex-row pt-sm md:gap-md lg:gap-lg"
   >
     <ResizablePanelGroup :direction="isMobile ? 'vertical' : 'horizontal'">
       <ResizablePanel
-        class="mr-6 flex h-full min-w-[256px] max-w-[378px] flex-col pt-[56px] md:gap-sm"
+        v-if="!isMobile"
+        class="flex h-full min-w-[256px] max-w-[378px] flex-col pt-[56px] md:gap-sm"
         :default-size="30"
       >
         <!-- 赛事栏 -->
@@ -13,17 +14,26 @@
         <RecordsCard></RecordsCard>
       </ResizablePanel>
 
-      <ResizableHandle with-handle></ResizableHandle>
+      <ResizableHandle
+        v-if="!isMobile"
+        with-handle
+        class="md:mx-sm"
+      ></ResizableHandle>
 
-      <ResizablePanel class="ml-6 h-full">
+      <ResizablePanel class="h-full">
         <!-- 计分板 -->
         <ScrollArea class="h-full">
           <ScoringCards
-            :class="cn('pt-[56px]', VIEW_PADDING_RIGHT_CLASS)"
+            :class="cn('pb-sm pt-[56px]', VIEW_PADDING_RIGHT_CLASS)"
           ></ScoringCards>
         </ScrollArea>
       </ResizablePanel>
     </ResizablePanelGroup>
+
+    <div class="hidden md:hidden">
+      <EventsCard></EventsCard>
+      <RecordsCard></RecordsCard>
+    </div>
   </div>
 </template>
 

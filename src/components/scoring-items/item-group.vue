@@ -1,13 +1,13 @@
 <template>
   <Card class="scoring-item-group">
-    <CardHeader class="space-y-1">
+    <CardHeader class="p-3 md:p-4">
       <CardTitle class="text-xl">{{ scoringItem.label }}</CardTitle>
       <CardDescription v-if="scoringItem.description">
         {{ scoringItem.description }}
       </CardDescription>
     </CardHeader>
 
-    <CardContent class="grid gap-4">
+    <CardContent class="flex flex-col gap-4 p-3 pt-0 md:p-4 md:pt-0">
       <ScoringItem
         v-for="item in scoringItem.children"
         :scoring-item="item"
@@ -27,7 +27,7 @@ import {
   CardHeader,
   CardContent,
 } from '@/components/ui/card';
-import ScoringItem from './scoring-item.vue';
+import ScoringItem from './component.vue';
 
 defineOptions({
   name: 'ScoringItemGroup',

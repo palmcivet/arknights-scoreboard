@@ -47,42 +47,42 @@
 
       <CollapsibleContent class="flex flex-col gap-1">
         <template v-if="isEditing">
-          <FormItemSlot text="名称">
+          <FormItemSlot label="名称">
             <Input type="text" placeholder="输入选手名称"></Input>
           </FormItemSlot>
 
-          <FormItemSlot text="描述">
+          <FormItemSlot label="描述">
             <Textarea placeholder="输入选手描述"></Textarea>
           </FormItemSlot>
 
-          <FormItemSlot text="分队">
+          <FormItemSlot label="分队">
             <Input type="text" placeholder="输入开局分队"></Input>
           </FormItemSlot>
 
-          <FormItemSlot text="干员">
+          <FormItemSlot label="干员">
             <TagsInput v-model="pickup">
               <TagsInputItem v-for="item in pickup" :key="item" :value="item">
-                <TagsInputItemText />
-                <TagsInputItemDelete />
+                <TagsInputItemText></TagsInputItemText>
+                <TagsInputItemDelete></TagsInputItemDelete>
               </TagsInputItem>
-              <TagsInputInput placeholder="输入开局干员" />
+              <TagsInputInput placeholder="输入开局干员"></TagsInputInput>
             </TagsInput>
           </FormItemSlot>
         </template>
 
         <template v-else>
           <!-- 选手描述 -->
-          <FormItemSlot v-if="challenger.description" text="描述">
+          <FormItemSlot v-if="challenger.description" label="描述">
             <div class="text-sm">{{ challenger.description }}</div>
           </FormItemSlot>
 
           <!-- 开局分队 -->
-          <FormItemSlot text="分队">
+          <FormItemSlot label="分队">
             <div class="text-sm">{{ challenger.squad }}</div>
           </FormItemSlot>
 
           <!-- 开局干员 -->
-          <FormItemSlot text="干员">
+          <FormItemSlot label="干员">
             <div class="flex gap-1 overflow-x-auto text-sm">
               <Badge
                 v-for="operator in challenger.pickup"

@@ -1,10 +1,8 @@
 <template>
-  <div class="scoring-item-select">
-    <div>{{ scoringItem.label }}</div>
-    <div v-if="scoringItem.description">{{ scoringItem.description }}</div>
+  <ScoringItemSlot :scoring-item="scoringItem">
     <Select v-model="selected" @update:model-value="onChange">
-      <SelectTrigger>
-        <SelectValue :placeholder="scoringItem.label" />
+      <SelectTrigger class="flex-1 truncate">
+        <SelectValue :placeholder="scoringItem.label"></SelectValue>
       </SelectTrigger>
       <SelectContent>
         <SelectItem
@@ -12,11 +10,11 @@
           :value="`${index}`"
         >
           {{ option.label }}
-          {{ option.score }}
+          （{{ option.score }}）
         </SelectItem>
       </SelectContent>
     </Select>
-  </div>
+  </ScoringItemSlot>
 </template>
 
 <script lang="ts" setup>
@@ -31,6 +29,7 @@ import {
 } from '@/components/ui/select';
 import type { ScoringItemSelect } from '@/engine/entity';
 import { useEventsStore } from '@/engine/store';
+import ScoringItemSlot from './item-slot.vue';
 
 defineOptions({
   name: 'ScoringItemSelect',

@@ -1,13 +1,13 @@
 <template>
   <Card :class="cn('events-card', $attrs.class ?? '')">
-    <CardHeader class="space-y-1">
+    <CardHeader class="p-4 md:p-5">
       <!-- 比赛名称 -->
       <CardTitle class="text-center">
         <span class="events-name text-2xl">{{ eventsInfo.name }}</span>
       </CardTitle>
     </CardHeader>
 
-    <CardContent class="flex flex-col gap-4">
+    <CardContent class="flex flex-col gap-4 p-4 pt-0 md:p-5 md:pt-0">
       <!-- 加载栏 -->
       <RuleLoader></RuleLoader>
 

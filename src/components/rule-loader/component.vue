@@ -27,10 +27,10 @@
       </CollapsibleTrigger>
 
       <CollapsibleContent class="flex flex-col gap-1">
-        <FormItemSlot text="加载方式">
+        <FormItemSlot label="加载方式">
           <Select :default-value="loaderSelect" v-model="loaderSelect">
             <SelectTrigger>
-              <SelectValue placeholder="加载规则" />
+              <SelectValue placeholder="加载规则"></SelectValue>
             </SelectTrigger>
             <SelectContent>
               <SelectItem
@@ -43,7 +43,7 @@
           </Select>
         </FormItemSlot>
 
-        <FormItemSlot class="flex-auto truncate" text="选择">
+        <FormItemSlot class="flex-auto truncate" label="选择">
           <!-- 预设 -->
           <div v-if="loaderSelect === RULE_SOURCE.PRESET">
             <Select
@@ -52,7 +52,10 @@
               @update:model-value="onLoadRemoteRule"
             >
               <SelectTrigger>
-                <SelectValue class="truncate" placeholder="选择预设规则" />
+                <SelectValue
+                  class="truncate"
+                  placeholder="选择预设规则"
+                ></SelectValue>
               </SelectTrigger>
               <SelectContent>
                 <SelectItem v-for="rule in PRESET_RULES" :value="rule.url">
@@ -68,7 +71,7 @@
               accept=".json"
               placeholder="点击上传规则文件"
               @change="onLoadLocalRule"
-            />
+            ></Input>
           </div>
           <!-- 远程 -->
           <div v-else>
@@ -78,7 +81,7 @@
               v-model="remoteUrlInput"
               @blur="onLoadRemoteRule"
               @keydown.enter="onLoadRemoteRule"
-            />
+            ></Input>
           </div>
         </FormItemSlot>
       </CollapsibleContent>

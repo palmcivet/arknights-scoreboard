@@ -1,10 +1,10 @@
 <template>
   <Card :class="cn('records-card', $attrs.class ?? '')">
-    <CardHeader class="space-y-1">
+    <CardHeader class="p-4 md:p-5">
       <CardTitle>得分记录</CardTitle>
     </CardHeader>
 
-    <CardContent>
+    <CardContent class="p-4 pt-0 md:p-5 md:pt-0">
       <div>
         <span>总分 {{ eventsStore.score }}</span>
       </div>

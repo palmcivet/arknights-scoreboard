@@ -1,6 +1,6 @@
 <template>
   <div :class="cn($attrs.class ?? '')">
-    <Label class="text-xs">{{ text }}</Label>
+    <Label class="text-sm">{{ label }}</Label>
     <slot></slot>
   </div>
 </template>
@@ -14,7 +14,7 @@ defineOptions({
 });
 
 defineProps({
-  text: {
+  label: {
     type: String,
   },
 });

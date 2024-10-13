@@ -1,7 +1,7 @@
 <template>
   <div
     :class="
-      cn('scoring-cards', $attrs.class ?? '', 'md:columns-2 xl:columns-3')
+      cn('scoring-cards', $attrs.class ?? '', 'md:columns-3 xl:columns-4')
     "
   >
     <ScoringItem
