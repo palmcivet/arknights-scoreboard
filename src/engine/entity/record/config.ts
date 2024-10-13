@@ -10,7 +10,7 @@ export type RecordId = string;
 export type RecordItemType = { id: RecordId; score: number } & (
   | { [SCORING_ITEM_TYPE.CHECK]: boolean }
   | { [SCORING_ITEM_TYPE.COUNT]: number }
-  | { [SCORING_ITEM_TYPE.SELECT]: number }
+  | { [SCORING_ITEM_TYPE.SELECT]: string }
 );
 
 export type RecordsType = {

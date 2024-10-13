@@ -1,6 +1,6 @@
 <template>
   <div :class="cn($attrs.class ?? '', 'flex flex-col justify-between')">
-    <div class="mb-1 flex items-center justify-between">
+    <div class="mb-2 flex items-center justify-between">
       <div class="flex w-full flex-1 items-center truncate">
         <Label class="truncate text-sm">{{ scoringItem.label }}</Label>
 

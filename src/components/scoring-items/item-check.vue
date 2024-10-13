@@ -1,20 +1,17 @@
 <template>
-  <ScoringItemSlot
-    :scoring-item="scoringItem"
-    :score="isChecked ? scoringItem.score : 0"
-  >
+  <ScoringItemSlot :scoring-item="scoringItem" :score="record.score">
     <div class="flex items-center justify-between">
-      <div class="flex items-center">
+      <div class="flex items-center text-sm">
         <span class="w-6 text-right">{{ scoringItem.score }}</span>
         <span class="ml-2">分</span>
       </div>
-      <Switch v-model="isChecked" @update:checked="onCheck"></Switch>
+      <Switch :checked="isChecked" @update:checked="onCheck"></Switch>
     </div>
   </ScoringItemSlot>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { computed } from 'vue';
 import type { PropType } from 'vue';
 
 import { Switch } from '@/components/ui/switch';
@@ -35,8 +32,11 @@ const { scoringItem } = defineProps({
 
 const eventsStore = useEventsStore();
 
-// TODO 数据来自 store
-const isChecked = ref(false);
+const record = computed(
+  () => eventsStore.scoring[scoringItem.id] ?? { score: 0, check: false }
+);
+
+const isChecked = computed(() => (record.value as any).check);
 
 const onCheck = (checked: boolean) => {
   eventsStore.triggerRecord({

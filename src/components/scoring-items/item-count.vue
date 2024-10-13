@@ -1,14 +1,15 @@
 <template>
-  <ScoringItemSlot
-    :scoring-item="scoringItem"
-    :score="count * scoringItem.score"
-  >
+  <ScoringItemSlot :scoring-item="scoringItem" :score="record.score">
     <div class="flex items-center justify-between gap-sm">
-      <div class="flex items-center">
+      <div class="flex items-center text-sm">
         <span class="w-6 text-right">{{ scoringItem.score }}</span>
         <span class="ml-1">分</span>
       </div>
-      <NumberField class="flex-1" v-model="count" @update:model-value="onCount">
+      <NumberField
+        class="flex-1"
+        :model-value="count"
+        @update:model-value="onCount"
+      >
         <NumberFieldContent>
           <NumberFieldDecrement></NumberFieldDecrement>
           <NumberFieldInput></NumberFieldInput>
@@ -20,7 +21,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { computed } from 'vue';
 import type { PropType } from 'vue';
 
 import {
@@ -47,8 +48,10 @@ const { scoringItem } = defineProps({
 
 const eventsStore = useEventsStore();
 
-// TODO 数据来自 store
-const count = ref(0);
+const record = computed(
+  () => eventsStore.scoring[scoringItem.id] ?? { score: 0, count: 0 }
+);
+const count = computed(() => (record.value as any).count);
 
 const onCount = (value: number) => {
   eventsStore.triggerRecord({

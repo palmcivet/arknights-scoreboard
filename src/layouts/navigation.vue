@@ -18,7 +18,7 @@
         <Sheet>
           <SheetTrigger as-child>
             <Button
-              variant="outline"
+              variant="ghost"
               size="icon"
               class="mr-sm shrink-0 md:hidden"
             >
@@ -44,13 +44,17 @@
         <Button variant="ghost" size="icon">
           <Icon class="h-5 w-5" icon="mdi:github"></Icon>
         </Button>
-        <Button variant="ghost" size="icon" @click="isDark = !isDark">
+        <Button variant="ghost" size="icon" @click="onToggleColorMode">
           <Icon
-            v-if="isDark"
+            v-if="colorMode === 'light'"
             class="h-5 w-5"
             icon="mdi:white-balance-sunny"
           ></Icon>
-          <Icon v-else class="h-5 w-5" icon="mdi:weather-night"></Icon>
+          <Icon
+            v-else-if="colorMode === 'dark'"
+            class="h-5 w-5"
+            icon="mdi:weather-night"
+          ></Icon>
         </Button>
       </div>
     </div>
@@ -68,7 +72,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import { Icon } from '@iconify/vue';
-import { usePreferredDark } from '@vueuse/core';
+import { BasicColorMode, useColorMode } from '@vueuse/core';
 
 import { cn } from '@/helpers/tailwind-utils';
 import { Button } from '@/components/ui/button';
@@ -87,5 +91,14 @@ const LOGO_ROUTE = {
 };
 
 const isColumn = ref(false);
-const isDark = usePreferredDark();
+
+const colorMode = useColorMode<BasicColorMode>();
+
+const onToggleColorMode = () => {
+  if (colorMode.value === 'light') {
+    colorMode.value = 'dark';
+  } else {
+    colorMode.value = 'light';
+  }
+};
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <ScoringItemSlot :scoring-item="scoringItem">
+  <ScoringItemSlot :scoring-item="scoringItem" :score="record.score">
     <Select v-model="selected" @update:model-value="onChange">
       <SelectTrigger class="flex-1 truncate">
         <SelectValue :placeholder="scoringItem.label"></SelectValue>
@@ -18,7 +18,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, type PropType } from 'vue';
+import { computed } from 'vue';
+import type { PropType } from 'vue';
 
 import {
   Select,
@@ -44,8 +45,10 @@ const { scoringItem } = defineProps({
 
 const eventsStore = useEventsStore();
 
-// TODO 数据来自 store
-const selected = ref('0');
+const record = computed(
+  () => eventsStore.scoring[scoringItem.id] ?? { score: 0, select: '0' }
+);
+const selected = computed(() => (record.value as any).select);
 
 const onChange = (option: string) => {
   const value = Number.parseInt(option);
@@ -53,7 +56,7 @@ const onChange = (option: string) => {
   const score = scoringItem.options[select].score;
   eventsStore.triggerRecord({
     id: scoringItem.id,
-    select,
+    select: option,
     score,
   });
 };
