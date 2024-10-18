@@ -1,24 +1,22 @@
 <template>
-  <div :class="cn('challenger', $attrs.class ?? '')">
+  <div :class="cn('starting-build', $attrs.class ?? '')">
     <Collapsible v-model:open="isExpanded">
       <CollapsibleTrigger class="flex w-full items-center">
         <div class="flex-1 truncate text-left">
-          <span class="text-xl font-semibold">
-            {{ isEditing ? '选手信息' : challenger.id }}
-          </span>
+          <span class="text-xl font-semibold">初始构建</span>
         </div>
 
         <Tooltip>
           <TooltipTrigger>
-            <Button variant="ghost" size="icon" @click.stop="onToggleEdit">
+            <Button size="xs" variant="ghost" @click.stop="onToggleEdit">
               <Icon
                 v-if="isEditing"
-                class="h-5 w-5"
+                class="h-4 w-4"
                 icon="mdi:account-check-outline"
               ></Icon>
               <Icon
                 v-else
-                class="h-5 w-5"
+                class="h-4 w-4"
                 icon="mdi:account-edit-outline"
               ></Icon>
             </Button>
@@ -27,34 +25,10 @@
             <p>{{ isEditing ? '更新' : '编辑' }}</p>
           </TooltipContent>
         </Tooltip>
-
-        <Tooltip>
-          <TooltipTrigger>
-            <Button variant="ghost" size="icon" @click.stop="onToggleExpand">
-              <Icon
-                v-if="isExpanded"
-                class="h-5 w-5"
-                icon="mdi:chevron-down-up"
-              ></Icon>
-              <Icon v-else class="h-5 w-5" icon="mdi:chevron-up-down"></Icon>
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>{{ isExpanded ? '收起' : '展开' }}</p>
-          </TooltipContent>
-        </Tooltip>
       </CollapsibleTrigger>
 
       <CollapsibleContent class="flex flex-col gap-1">
         <template v-if="isEditing">
-          <FormItemSlot label="名称">
-            <Input type="text" placeholder="输入选手名称"></Input>
-          </FormItemSlot>
-
-          <FormItemSlot label="描述">
-            <Textarea placeholder="输入选手描述"></Textarea>
-          </FormItemSlot>
-
           <FormItemSlot label="分队">
             <Input type="text" placeholder="输入开局分队"></Input>
           </FormItemSlot>
@@ -71,11 +45,6 @@
         </template>
 
         <template v-else>
-          <!-- 选手描述 -->
-          <FormItemSlot v-if="challenger.description" label="描述">
-            <div class="text-sm">{{ challenger.description }}</div>
-          </FormItemSlot>
-
           <!-- 开局分队 -->
           <FormItemSlot label="分队">
             <div class="text-sm">{{ challenger.squad }}</div>
@@ -107,7 +76,6 @@ import { Icon } from '@iconify/vue';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
 import {
   Collapsible,
   CollapsibleContent,
@@ -131,23 +99,23 @@ import { useEventsStore } from '@/engine/store';
 import { FormItemSlot } from '@/components/widget';
 
 defineOptions({
-  name: 'Challenger',
+  name: 'StartingBuild',
 });
 
 const eventsStore = useEventsStore();
 
 const challenger = ref<Challenger>({
-  id: 'challenger-1-wesfsfwerfdsf',
+  id: '选手 ID',
   avatar: 'https://github.com/radix-vue.png',
   description:
-    '这是一个选手-这是一个选手-这是一个选手-这是一个选手-这是一个选手-这是一个选手-这是一个选手-这是一个选手-这是一个选手-这是一个选手',
+    '这是一个选手-这是一个选手-这是一个选手-这是一个选手-这是一个选手-这是一个选手-这是一个选手-这是一个选手',
   squad: '异想天开分队',
   pickup: ['cross', 'angelina', 'eyjafjalla'],
 });
 
 const isEditing = ref(false);
 
-const isExpanded = ref(true);
+const isExpanded = ref(false);
 
 const pickup = ref([]);
 
@@ -166,9 +134,5 @@ const onToggleEdit = () => {
   } else {
     onEdit();
   }
-};
-
-const onToggleExpand = () => {
-  isExpanded.value = !isExpanded.value;
 };
 </script>

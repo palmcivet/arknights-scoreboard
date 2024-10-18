@@ -85,7 +85,7 @@ defineOptions({
 });
 
 const LOGO_ROUTE = {
-  label: '计分板',
+  label: '计分板 LOGO',
   icon: 'mdi:score',
   href: '/',
 };

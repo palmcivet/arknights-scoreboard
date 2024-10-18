@@ -21,7 +21,7 @@
 import { ref } from 'vue';
 
 import type { EventsInfo } from '@/engine/entity';
-import Challenger from '@/components/challenger';
+import Challenger from '@/components/starting-build';
 
 defineOptions({
   name: 'EventsBanner',

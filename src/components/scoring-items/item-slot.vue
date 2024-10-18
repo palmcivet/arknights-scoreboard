@@ -22,7 +22,7 @@
           cn('text-xs', score > 0 ? 'text-foreground' : 'text-muted-foreground')
         "
       >
-        {{ score }}
+        {{ score }} 分
       </span>
     </div>
 

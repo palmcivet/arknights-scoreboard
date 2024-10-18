@@ -7,7 +7,7 @@
       </CardDescription>
     </CardHeader>
 
-    <CardContent class="flex flex-col gap-4 p-3 pt-0 md:p-4 md:pt-0">
+    <CardContent class="flex flex-col gap-sm p-3 pt-0 md:p-4 md:pt-0">
       <ScoringItem
         v-for="item in scoringItem.children"
         :scoring-item="item"

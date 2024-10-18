@@ -6,8 +6,9 @@
         <span class="ml-1">分</span>
       </div>
       <NumberField
-        class="flex-1"
+        class="max-w-[160px] flex-1"
         :model-value="count"
+        :min="0"
         @update:model-value="onCount"
       >
         <NumberFieldContent>

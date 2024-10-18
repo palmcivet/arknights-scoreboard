@@ -1,6 +1,11 @@
 import { defineStore } from 'pinia';
 
-import type { Challenger, RecordId, RecordItemType } from '@/engine/entity';
+import type {
+  Challenger,
+  EventsInfo,
+  RecordId,
+  RecordItemType,
+} from '@/engine/entity';
 import type { RulesType } from '@/engine/schema';
 import { Ruleset } from '@/engine/core';
 
@@ -20,6 +25,7 @@ type EventsState = {
 
   /* UI 数据 */
   challenger: Challenger;
+  events: EventsInfo;
 };
 
 type RecordItem = {
@@ -41,6 +47,13 @@ export const useEventsStore = defineStore('events', {
     isPlaying: false,
 
     challenger: {} as Challenger,
+    events: {
+      name: '仙术杯#5',
+      description: '致力打造一个既精彩又有趣，还能学习打法的集成战略比赛。',
+      url: 'https://xxx.com',
+      host: '主办方',
+      schedule: '赛程',
+    },
   }),
   getters: {
     parsedRules(state) {

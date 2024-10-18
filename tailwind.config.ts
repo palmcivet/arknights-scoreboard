@@ -81,18 +81,21 @@ export default {
         xl: 'calc(var(--radius) + 4px)',
       },
       gap: {
+        xs: '0.75rem',
         sm: '1rem',
         md: '2rem',
         lg: '3rem',
         xl: '4rem',
       },
       padding: {
+        xs: '0.75rem',
         sm: '1rem',
         md: '2rem',
         lg: '3rem',
         xl: '4rem',
       },
       margin: {
+        xs: '0.75rem',
         sm: '1rem',
         md: '2rem',
         lg: '3rem',
