@@ -1,4 +1,4 @@
-export type EventsInfo = {
+export type Events = {
   /**
    * @description 赛事名称
    */

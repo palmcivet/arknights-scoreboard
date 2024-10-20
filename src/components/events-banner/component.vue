@@ -20,14 +20,14 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 
-import type { EventsInfo } from '@/engine/entity';
+import type { Events } from '@/engine/entity';
 import Challenger from '@/components/starting-build';
 
 defineOptions({
   name: 'EventsBanner',
 });
 
-const eventsInfo = ref<EventsInfo>({
+const eventsInfo = ref<Events>({
   name: '游戏名称',
   description: '游戏附加说明',
   url: 'https://xxx.com',

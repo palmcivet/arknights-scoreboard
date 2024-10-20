@@ -11,18 +11,18 @@
         <ScrollArea class="h-full">
           <Card :class="cn('events-card', $attrs.class ?? '')">
             <CardContent class="flex flex-col gap-2 p-3 md:p-4">
-              <!-- 规则栏 -->
+              <!-- 规则 -->
               <RuleLoader></RuleLoader>
 
               <Separator></Separator>
 
-              <!-- 选手栏 -->
-              <Challenger></Challenger>
+              <!-- 初始构建 -->
+              <StartingBuild></StartingBuild>
 
               <Separator></Separator>
 
-              <!-- 记录栏 -->
-              <Records></Records>
+              <!-- 计分板 -->
+              <ScoreRecorder></ScoreRecorder>
             </CardContent>
           </Card>
         </ScrollArea>
@@ -47,7 +47,7 @@
           >
             <ScoringItem
               class="break-inside-avoid-column [&+&]:mt-4"
-              v-for="scoring in eventsStore.parsedRules"
+              v-for="scoring in recordsStore.indexedRules"
               :scoring-item="scoring"
             ></ScoringItem>
           </div>
@@ -71,18 +71,18 @@ import { Card, CardContent } from '@/components/ui/card';
 import { ScoringItem } from '@/components/scoring-items';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
-import Challenger from '@/components/starting-build';
 import RuleLoader from '@/components/rule-loader';
-import Records from '@/components/recorder';
+import StartingBuild from '@/components/starting-build';
+import ScoreRecorder from '@/components/score-recorder';
 import { MOBILE_BREAKPOINT, VIEW_PADDING_RIGHT_CLASS } from '@/constants';
-import { useEventsStore } from '@/engine/store';
+import { useRecordsStore } from '@/engine/store';
 import { cn } from '@/helpers/tailwind-utils';
 
 defineOptions({
   name: 'Tournament',
 });
 
-const eventsStore = useEventsStore();
+const recordsStore = useRecordsStore();
 
 const isMobile = useMediaQuery(MOBILE_BREAKPOINT);
 </script>

@@ -2,7 +2,7 @@ import { SCORING_ITEM_TYPE } from '@/engine/entity';
 import type { ScoringItem } from '@/engine/entity';
 import type { RulesType, ScoringItemType } from '@/engine/schema';
 
-type IndexedRules = Record<string, ScoringItem>;
+export type IndexedRules = Record<string, ScoringItem>;
 
 function hasId(item: any): item is { id: string } {
   return !!item.id;
@@ -30,7 +30,7 @@ function parseScoringItems(
   }
 }
 
-function parseAndIndexRules(rules: RulesType) {
+export function parseAndIndexRules(rules: RulesType) {
   const parsedRules = rules;
   const indexedRules = {} as IndexedRules;
 

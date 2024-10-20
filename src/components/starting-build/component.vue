@@ -95,14 +95,14 @@ import {
 } from '@/components/ui/tooltip';
 import type { Challenger } from '@/engine/entity';
 import { cn } from '@/helpers/tailwind-utils';
-import { useEventsStore } from '@/engine/store';
+import { useGameStore } from '@/engine/store';
 import { FormItemSlot } from '@/components/widget';
 
 defineOptions({
   name: 'StartingBuild',
 });
 
-const eventsStore = useEventsStore();
+const gameStore = useGameStore();
 
 const challenger = ref<Challenger>({
   id: '选手 ID',
@@ -124,7 +124,7 @@ const onEdit = () => {
 };
 
 const onUpdate = () => {
-  eventsStore.updateChallenger(challenger.value);
+  gameStore.updateChallenger(challenger.value);
   isEditing.value = false;
 };
 

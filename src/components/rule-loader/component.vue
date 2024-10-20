@@ -133,7 +133,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { cn } from '@/helpers/tailwind-utils';
 import { RULE_SOURCE } from '@/constants';
-import { useEventsStore } from '@/engine/store';
+import { useEventsStore, useRecordsStore } from '@/engine/store';
 import { FormItemSlot } from '@/components/widget';
 import xianshubei5 from '@rules/xian-shu-bei-5/rules.json';
 
@@ -142,6 +142,7 @@ defineOptions({
 });
 
 const eventsStore = useEventsStore();
+const recordsStore = useRecordsStore();
 
 const LOADER_OPTIONS = [
   {
@@ -181,16 +182,12 @@ const isEditing = ref(false);
 
 const isExpanded = ref(true);
 
-const onToggleExpand = () => {
-  isExpanded.value = !isExpanded.value;
-};
-
 onMounted(() => {
   dispatchLoadRule();
 });
 
 function dispatchLoadRule() {
-  eventsStore.loadRules(xianshubei5 as any);
+  recordsStore.loadRules(xianshubei5 as any);
 }
 
 async function onLoadLocalRule(event: InputEvent) {

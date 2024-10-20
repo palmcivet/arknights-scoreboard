@@ -33,7 +33,7 @@ import {
   NumberFieldInput,
 } from '@/components/ui/number-field';
 import type { ScoringItemCount } from '@/engine/entity';
-import { useEventsStore } from '@/engine/store';
+import { useRecordsStore } from '@/engine/store';
 import ScoringItemSlot from './item-slot.vue';
 
 defineOptions({
@@ -47,15 +47,15 @@ const { scoringItem } = defineProps({
   },
 });
 
-const eventsStore = useEventsStore();
+const recordsStore = useRecordsStore();
 
 const record = computed(
-  () => eventsStore.scoring[scoringItem.id] ?? { score: 0, count: 0 }
+  () => recordsStore.records[scoringItem.id] ?? { score: 0, count: 0 }
 );
 const count = computed(() => (record.value as any).count);
 
 const onCount = (value: number) => {
-  eventsStore.triggerRecord({
+  recordsStore.triggerRecord({
     id: scoringItem.id,
     score: value * scoringItem.score,
     count: value,

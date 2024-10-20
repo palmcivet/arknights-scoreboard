@@ -16,7 +16,7 @@ import type { PropType } from 'vue';
 
 import { Switch } from '@/components/ui/switch';
 import type { ScoringItemCheck } from '@/engine/entity';
-import { useEventsStore } from '@/engine/store';
+import { useRecordsStore } from '@/engine/store';
 import ScoringItemSlot from './item-slot.vue';
 
 defineOptions({
@@ -30,16 +30,16 @@ const { scoringItem } = defineProps({
   },
 });
 
-const eventsStore = useEventsStore();
+const recordsStore = useRecordsStore();
 
 const record = computed(
-  () => eventsStore.scoring[scoringItem.id] ?? { score: 0, check: false }
+  () => recordsStore.records[scoringItem.id] ?? { score: 0, check: false }
 );
 
 const isChecked = computed(() => (record.value as any).check);
 
 const onCheck = (checked: boolean) => {
-  eventsStore.triggerRecord({
+  recordsStore.triggerRecord({
     id: scoringItem.id,
     score: checked ? scoringItem.score : 0,
     check: checked,

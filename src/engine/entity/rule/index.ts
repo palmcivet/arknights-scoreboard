@@ -1,2 +1,2 @@
-export * from './events-info';
+export * from './events';
 export * from './scoring-item';

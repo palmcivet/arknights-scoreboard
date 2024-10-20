@@ -1,7 +1,7 @@
 import { RULE_TYPE } from '@/engine/entity';
 import type {
   Version,
-  EventsInfo,
+  Events,
   ScoringItemCheck,
   ScoringItemCount,
   ScoringItemGroup,
@@ -26,7 +26,7 @@ export type ScoringItemType =
   | ScoringItemSelectType
   | ScoringItemGroupType;
 
-export type RulesType = EventsInfo & {
+export type RulesType = Events & {
   /**
    * @description 规则的作者
    */
