@@ -11,7 +11,6 @@ describe('Rule Schema', () => {
       console.error(result.error.errors);
     }
 
-    // expect(result.success).toBe(true);
-    expect(result.success).toBe(false);
+    expect(result.success).toBe(true);
   });
 });

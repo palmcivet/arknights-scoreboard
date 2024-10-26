@@ -1,11 +1,11 @@
-import type { RecordItemType } from '@/engine/entity';
+import type { RecordItem } from '@/engine/entity';
 
 /**
  * @description
  * - 只用来记录操作
  * - 撤销、重做
  */
-export class ScoreIndicator<T = RecordItemType> {
+export class ScoreIndicator<T = RecordItem> {
   private undoStack: Array<T>;
 
   private redoStack: Array<T>;

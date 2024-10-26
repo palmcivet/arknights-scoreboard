@@ -47,7 +47,7 @@
           >
             <ScoringItem
               class="break-inside-avoid-column [&+&]:mt-4"
-              v-for="scoring in recordsStore.indexedRules"
+              v-for="scoring in recordsStore.rulesForm"
               :scoring-item="scoring"
             ></ScoringItem>
           </div>

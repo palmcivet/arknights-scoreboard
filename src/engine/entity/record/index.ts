@@ -1,2 +1,2 @@
 export * from './challenger';
-export * from './config';
+export * from './record-item';
