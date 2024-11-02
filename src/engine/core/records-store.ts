@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 
-import type { RulesType } from '@/engine/schema';
+import type { RulesType, ScoringItemType } from '@/engine/schema';
 import type { RecordId, RecordItem, ScoringItem } from '@/engine/entity';
 import { SCORING_ITEM_TYPE } from '@/engine/entity';
 
@@ -33,11 +33,11 @@ function parseScoringItems(
   }
 }
 
-export function parseRules(rules: RulesType): {
+export function parseRules(items: Array<ScoringItemType>): {
   rulesForm: RulesForm;
   rulesSet: RulesSet;
 } {
-  const rulesForm = rules.items as RulesForm;
+  const rulesForm = items as RulesForm;
   const rulesSet = {} as RulesSet;
 
   parseScoringItems(rulesForm, '', rulesSet);
@@ -58,10 +58,6 @@ type RecordsState = {
    * @description 得分项
    */
   records: Record<RecordId, RecordItem>;
-  /**
-   * @description 是否正在加载规则
-   */
-  isLoadingRules: boolean;
 };
 
 export const useRecordsStore = defineStore('records', {
@@ -69,7 +65,6 @@ export const useRecordsStore = defineStore('records', {
     rulesForm: {} as RulesForm,
     rulesSet: {} as RulesSet,
     records: {},
-    isLoadingRules: false,
   }),
   getters: {
     score(state) {
@@ -90,17 +85,13 @@ export const useRecordsStore = defineStore('records', {
     },
   },
   actions: {
-    loadRules(rules: RulesType) {
-      this.resetRecord();
-      const { rulesForm, rulesSet } = parseRules(rules);
+    updateRules(items: Array<ScoringItemType>) {
+      const { rulesForm, rulesSet } = parseRules(items);
       this.rulesForm = rulesForm;
       this.rulesSet = rulesSet;
     },
     triggerRecord(record: RecordItem) {
       this.records[record.id] = record;
-    },
-    resetRecord() {
-      this.records = {};
     },
   },
 });

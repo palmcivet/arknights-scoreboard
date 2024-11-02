@@ -1,7 +1,6 @@
-import { RULE_TYPE } from '@/engine/entity';
 import type {
-  Version,
   Events,
+  EventsMeta,
   ScoringItemCheck,
   ScoringItemCount,
   ScoringItemGroup,
@@ -26,25 +25,10 @@ export type ScoringItemType =
   | ScoringItemSelectType
   | ScoringItemGroupType;
 
-export type RulesType = Events & {
-  /**
-   * @description 规则的作者
-   */
-  author?: string;
-  /**
-   * @description 规则类型
-   */
-  engine: RULE_TYPE;
-  /**
-   * @description 规则的版本
-   */
-  version: Version;
-  /**
-   * @description 规则的引擎版本
-   */
-  engineVersion: Version;
-  /**
-   * @description 规则的计分项
-   */
-  items: Array<ScoringItemType>;
-};
+export type RulesType = Events &
+  EventsMeta & {
+    /**
+     * @description 规则的计分项
+     */
+    items: Array<ScoringItemType>;
+  };

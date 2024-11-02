@@ -1,12 +1,16 @@
 import { defineStore } from 'pinia';
 
-import type { Events, Challenger } from '@/engine/entity';
+import type { Events, Challenger, EventsMeta } from '@/engine/entity';
 
 type EventsState = {
   /**
    * @description 赛事信息。默认会选取一项赛事
    */
   events: Events;
+  /**
+   * @description 赛事元信息
+   */
+  meta: EventsMeta | null;
   /**
    * @description 选手信息。可以为空
    */
@@ -30,6 +34,7 @@ export const useEventsStore = defineStore('events', {
     events: {
       name: '',
     },
+    meta: null,
     challenger: null,
     begin: Date.now(),
     end: Date.now(),
@@ -39,6 +44,9 @@ export const useEventsStore = defineStore('events', {
   actions: {
     updateEvents(events: Events) {
       this.events = events;
+    },
+    updateMeta(meta: EventsMeta) {
+      this.meta = meta;
     },
     updateChallenger(challenger: Challenger) {
       this.challenger = challenger;

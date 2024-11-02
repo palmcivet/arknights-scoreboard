@@ -33,8 +33,8 @@
         <template v-if="isEditing">
           <FormItemSlot label="加载方式">
             <Select
-              :default-value="editingLoaderOption"
               v-model="editingLoaderOption"
+              :default-value="editingLoaderOption"
             >
               <SelectTrigger>
                 <SelectValue placeholder="加载规则"></SelectValue>
@@ -94,15 +94,49 @@
         </template>
 
         <template v-else>
-          <div class="text-sm">
-            <span>{{ eventsStore.events.description }}</span>
-          </div>
+          <blockquote
+            v-if="eventsStore.events.description"
+            class="mt-2 border-l-2 pl-xs text-sm italic"
+          >
+            {{ eventsStore.events.description }}
+          </blockquote>
 
-          <div>
-            <Badge variant="outline">
-              <Icon class="mr-2 h-4 w-4" icon="mdi:web-check"></Icon>
-              <span>专题页</span>
-            </Badge>
+          <div
+            class="flex flex-row-reverse items-center justify-between gap-sm"
+          >
+            <template v-if="eventsStore.meta">
+              <HoverCard>
+                <HoverCardTrigger>
+                  <div
+                    class="text-xs hover:cursor-pointer hover:underline hover:underline-offset-4"
+                  >
+                    <code>版本 v{{ eventsStore.meta.version }}</code>
+                  </div>
+                </HoverCardTrigger>
+                <HoverCardContent class="w-auto">
+                  <div v-if="eventsStore.meta.author" class="text-sm">
+                    规则作者：{{ eventsStore.meta.author }}
+                  </div>
+                  <div class="text-sm">
+                    引擎版本：<code>{{ eventsStore.meta.engineVersion }}</code>
+                  </div>
+                  <div v-if="eventsStore.meta.changelog" class="text-sm">
+                    更新日志：{{ eventsStore.meta.changelog }}
+                  </div>
+                </HoverCardContent>
+              </HoverCard>
+            </template>
+
+            <a
+              v-if="eventsStore.events.url"
+              target="_blank"
+              :href="eventsStore.events.url"
+            >
+              <Badge variant="outline">
+                <Icon class="mr-2 h-4 w-4" icon="mdi:web-check"></Icon>
+                <span>专题页</span>
+              </Badge>
+            </a>
           </div>
         </template>
       </CollapsibleContent>
@@ -127,6 +161,11 @@ import {
 } from '@/components/ui/tooltip';
 import { Button } from '@/components/ui/button';
 import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from '@/components/ui/hover-card';
+import {
   Select,
   SelectContent,
   SelectItem,
@@ -135,11 +174,12 @@ import {
 } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
 import { ToastAction } from '@/components/ui/toast';
+import { FormItemSlot, logger } from '@/components/widget';
 import { useToast } from '@/components/ui/toast/use-toast';
 import { cn } from '@/helpers/tailwind-utils';
 import { LOADER_OPTIONS, PRESET_RULES, RULE_SOURCE } from '@/constants';
-import { RulesType, useEventsStore, useRecordsStore } from '@/engine';
-import { FormItemSlot, logger } from '@/components/widget';
+import { useApiStore, useEventsStore } from '@/engine';
+import type { RulesType } from '@/engine';
 
 defineOptions({
   name: 'RuleLoader',
@@ -148,7 +188,7 @@ defineOptions({
 const { toast } = useToast();
 
 const eventsStore = useEventsStore();
-const recordsStore = useRecordsStore();
+const apiStore = useApiStore();
 
 const editingLoaderOption = ref<RULE_SOURCE>(LOADER_OPTIONS[0].value);
 const editingPresetRule = ref<string>(PRESET_RULES[0].url);
@@ -158,8 +198,7 @@ const isExpanded = ref(true);
 const isEditing = ref(false);
 
 function dispatchLoadRule(validRules: RulesType) {
-  eventsStore.updateEvents(validRules);
-  recordsStore.loadRules(validRules);
+  apiStore.triggerLoadRule(validRules);
 }
 
 async function onLoadLocalRule(event: InputEvent) {
