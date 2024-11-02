@@ -1,3 +1,5 @@
+export type Operator = string;
+
 export type Challenger = {
   /**
    * @description 选手 ID
@@ -18,5 +20,5 @@ export type Challenger = {
   /**
    * @description 开局干员
    */
-  pickup: Array<string>;
+  pickup: Array<Operator>;
 };

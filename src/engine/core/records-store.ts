@@ -5,14 +5,14 @@ import type { RecordId, RecordItem, ScoringItem } from '@/engine/entity';
 import { SCORING_ITEM_TYPE } from '@/engine/entity';
 
 type RulesSet = Record<string, ScoringItem>;
-type RulesForm = RulesType['items'];
+type RulesForm = Array<ScoringItem>;
 
 function hasId(item: any): item is { id: string } {
   return !!item.id;
 }
 
 function parseScoringItems(
-  items: RulesForm,
+  items: RulesType['items'],
   key: string,
   indexedRules: RulesSet
 ) {
@@ -33,11 +33,14 @@ function parseScoringItems(
   }
 }
 
-export function parseRules(rules: RulesType) {
-  const rulesForm = rules;
+export function parseRules(rules: RulesType): {
+  rulesForm: RulesForm;
+  rulesSet: RulesSet;
+} {
+  const rulesForm = rules.items as RulesForm;
   const rulesSet = {} as RulesSet;
 
-  parseScoringItems(rulesForm.items, '', rulesSet);
+  parseScoringItems(rulesForm, '', rulesSet);
 
   return { rulesForm, rulesSet };
 }
@@ -88,12 +91,16 @@ export const useRecordsStore = defineStore('records', {
   },
   actions: {
     loadRules(rules: RulesType) {
+      this.resetRecord();
       const { rulesForm, rulesSet } = parseRules(rules);
-      this.rulesForm = rulesForm.items;
+      this.rulesForm = rulesForm;
       this.rulesSet = rulesSet;
     },
     triggerRecord(record: RecordItem) {
       this.records[record.id] = record;
+    },
+    resetRecord() {
+      this.records = {};
     },
   },
 });

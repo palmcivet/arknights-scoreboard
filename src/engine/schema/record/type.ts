@@ -1,5 +1,9 @@
-import type { DateTime, Version } from '@/engine/entity/common';
-import type { Challenger, RecordItem } from '@/engine/entity/record';
+import type {
+  DateTime,
+  Version,
+  Challenger,
+  RecordItem,
+} from '@/engine/entity';
 
 export type RecordsType = {
   /**

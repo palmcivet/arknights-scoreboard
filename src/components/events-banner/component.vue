@@ -20,7 +20,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 
-import type { Events } from '@/engine/entity';
+import type { Events } from '@/engine';
 import Challenger from '@/components/starting-build';
 
 defineOptions({

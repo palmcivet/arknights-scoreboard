@@ -28,8 +28,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import type { ScoringItemSelect } from '@/engine/entity';
-import { useRecordsStore } from '@/engine/store';
+import { useRecordsStore } from '@/engine';
+import type { ScoringItemSelect } from '@/engine';
 import ScoringItemSlot from './item-slot.vue';
 
 defineOptions({

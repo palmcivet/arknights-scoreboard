@@ -24,8 +24,8 @@
 <script lang="ts" setup>
 import type { PropType } from 'vue';
 
-import { SCORING_ITEM_TYPE } from '@/engine/entity';
-import type { ScoringItem } from '@/engine/entity';
+import { SCORING_ITEM_TYPE } from '@/engine';
+import type { ScoringItem } from '@/engine';
 import ScoringCheck from './item-check.vue';
 import ScoringCount from './item-count.vue';
 import ScoringSelect from './item-select.vue';

@@ -1,4 +1,4 @@
-import { SCORING_ITEM_TYPE } from '@/engine/entity/constant';
+import { SCORING_ITEM_TYPE } from '@/engine/entity';
 
 type ScoringItemBase = {
   /**

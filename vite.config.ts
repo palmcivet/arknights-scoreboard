@@ -6,12 +6,16 @@ import autoprefixer from 'autoprefixer';
 
 export default defineConfig({
   root: 'src',
+  base: '/arknights-scoreboard/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      '@rules': path.resolve(__dirname, './rules'),
     },
   },
+  /**
+   * @todo 映射为 public/rules
+   */
+  publicDir: path.resolve(__dirname, './'),
   css: {
     postcss: {
       plugins: [tailwind(), autoprefixer()],

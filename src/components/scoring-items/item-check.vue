@@ -15,8 +15,8 @@ import { computed } from 'vue';
 import type { PropType } from 'vue';
 
 import { Switch } from '@/components/ui/switch';
-import type { ScoringItemCheck } from '@/engine/entity';
-import { useRecordsStore } from '@/engine/store';
+import { useRecordsStore } from '@/engine';
+import type { ScoringItemCheck } from '@/engine';
 import ScoringItemSlot from './item-slot.vue';
 
 defineOptions({

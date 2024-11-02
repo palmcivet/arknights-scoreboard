@@ -47,7 +47,7 @@ import { Icon } from '@iconify/vue';
 
 import { Button } from '@/components/ui/button';
 import { cn } from '@/helpers/tailwind-utils';
-import { useRecordsStore } from '@/engine/store';
+import { useRecordsStore } from '@/engine';
 import {
   Tooltip,
   TooltipContent,

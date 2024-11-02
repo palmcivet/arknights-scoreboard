@@ -1,6 +1,6 @@
 import { describe, expect, it } from '@jest/globals';
 
-import { RulesSchema } from '@/engine/schema';
+import { RulesSchema } from '@/engine';
 import xianshubei5 from '@rules/xian-shu-bei-5/rules.json';
 
 describe('Rule Schema', () => {

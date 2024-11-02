@@ -75,7 +75,7 @@ import RuleLoader from '@/components/rule-loader';
 import StartingBuild from '@/components/starting-build';
 import ScoreRecorder from '@/components/score-recorder';
 import { MOBILE_BREAKPOINT, VIEW_PADDING_RIGHT_CLASS } from '@/constants';
-import { useRecordsStore } from '@/engine/store';
+import { useRecordsStore } from '@/engine';
 import { cn } from '@/helpers/tailwind-utils';
 
 defineOptions({

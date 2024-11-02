@@ -32,7 +32,10 @@
       <CollapsibleContent class="flex flex-col gap-2">
         <template v-if="isEditing">
           <FormItemSlot label="加载方式">
-            <Select :default-value="loaderSelect" v-model="loaderSelect">
+            <Select
+              :default-value="editingLoaderOption"
+              v-model="editingLoaderOption"
+            >
               <SelectTrigger>
                 <SelectValue placeholder="加载规则"></SelectValue>
               </SelectTrigger>
@@ -49,11 +52,11 @@
 
           <FormItemSlot class="flex-auto truncate" label="选择">
             <!-- 预设 -->
-            <div v-if="loaderSelect === RULE_SOURCE.PRESET">
+            <div v-if="editingLoaderOption === RULE_SOURCE.PRESET">
               <Select
-                v-model="presetSelect"
-                :default-value="presetSelect"
-                @update:model-value="onLoadRemoteRule"
+                v-model="editingPresetRule"
+                :default-value="editingPresetRule"
+                @update:model-value="onLoadPresetRule"
               >
                 <SelectTrigger>
                   <SelectValue
@@ -69,7 +72,7 @@
               </Select>
             </div>
             <!-- 本地 -->
-            <div v-else-if="loaderSelect === RULE_SOURCE.LOCAL">
+            <div v-else-if="editingLoaderOption === RULE_SOURCE.LOCAL">
               <Input
                 type="file"
                 accept=".json"
@@ -82,7 +85,7 @@
               <Input
                 type="url"
                 placeholder="规则文件的 URL"
-                v-model="remoteUrlInput"
+                v-model="editingRemoteURL"
                 @blur="onLoadRemoteRule"
                 @keydown.enter="onLoadRemoteRule"
               ></Input>
@@ -108,7 +111,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, h } from 'vue';
 import { Icon } from '@iconify/vue';
 
 import { Badge } from '@/components/ui/badge';
@@ -131,63 +134,32 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
+import { ToastAction } from '@/components/ui/toast';
+import { useToast } from '@/components/ui/toast/use-toast';
 import { cn } from '@/helpers/tailwind-utils';
-import { RULE_SOURCE } from '@/constants';
-import { useEventsStore, useRecordsStore } from '@/engine/store';
-import { FormItemSlot } from '@/components/widget';
-import xianshubei5 from '@rules/xian-shu-bei-5/rules.json';
+import { LOADER_OPTIONS, PRESET_RULES, RULE_SOURCE } from '@/constants';
+import { RulesType, useEventsStore, useRecordsStore } from '@/engine';
+import { FormItemSlot, logger } from '@/components/widget';
 
 defineOptions({
   name: 'RuleLoader',
 });
 
+const { toast } = useToast();
+
 const eventsStore = useEventsStore();
 const recordsStore = useRecordsStore();
 
-const LOADER_OPTIONS = [
-  {
-    label: '预设规则',
-    value: RULE_SOURCE.PRESET,
-  },
-  {
-    label: '本地加载',
-    value: RULE_SOURCE.LOCAL,
-  },
-  {
-    label: '远程链接',
-    value: RULE_SOURCE.REMOTE,
-  },
-];
-
-const PRESET_RULES = [
-  {
-    name: '仙术杯#4 探索者的银淞止境',
-    description: '游戏附加说明',
-    url: 'https://palmcivet.github.io/arknights-scoreboard/rules/xian-shu-bei-4/rules.json',
-  },
-  {
-    name: '仙术杯#5 探索者的银淞止境 DLC',
-    description: '游戏附加说明',
-    url: 'https://palmcivet.github.io/arknights-scoreboard/rules/xian-shu-bei-5/rules.json',
-  },
-];
-
-const loaderSelect = ref<RULE_SOURCE>(LOADER_OPTIONS[0].value);
-
-const presetSelect = ref<string>(PRESET_RULES[0].url);
-
-const remoteUrlInput = ref<string>('');
-
-const isEditing = ref(false);
+const editingLoaderOption = ref<RULE_SOURCE>(LOADER_OPTIONS[0].value);
+const editingPresetRule = ref<string>(PRESET_RULES[0].url);
+const editingRemoteURL = ref<string>('');
 
 const isExpanded = ref(true);
+const isEditing = ref(false);
 
-onMounted(() => {
-  dispatchLoadRule();
-});
-
-function dispatchLoadRule() {
-  recordsStore.loadRules(xianshubei5 as any);
+function dispatchLoadRule(validRules: RulesType) {
+  eventsStore.updateEvents(validRules);
+  recordsStore.loadRules(validRules);
 }
 
 async function onLoadLocalRule(event: InputEvent) {
@@ -196,16 +168,50 @@ async function onLoadLocalRule(event: InputEvent) {
     return;
   }
 
+  // @todo 校验
   console.log(files[0]);
-  // 解析为 JSON
-  dispatchLoadRule();
+
+  // @todo 解析
 }
 
-async function onLoadRemoteRule() {
-  // 加载远程文件
-  console.log(remoteUrlInput.value);
+async function onLoadRemoteRule(url: string) {
+  try {
+    const data = await fetch(url);
+    const rules = await data.json();
 
-  // 解析为 JSON
-  dispatchLoadRule();
+    // @todo 校验
+
+    dispatchLoadRule(rules);
+  } catch (error) {
+    logger.error('LOADER', '远程规则加载失败', error);
+  }
 }
+
+async function onLoadPresetRule(url: string) {
+  try {
+    const data = await fetch(url);
+    const rules = await data.json();
+    dispatchLoadRule(rules);
+  } catch (error) {
+    logger.error('LOADER', '预设规则加载失败', error);
+    toast({
+      title: '赛事规则加载失败',
+      description: '请检查网络连接或稍后再试',
+      variant: 'destructive',
+      action: h(
+        ToastAction,
+        {
+          altText: '刷新',
+        },
+        {
+          default: () => '刷新',
+        }
+      ),
+    });
+  }
+}
+
+onMounted(async () => {
+  await onLoadPresetRule(editingPresetRule.value);
+});
 </script>

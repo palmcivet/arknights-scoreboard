@@ -32,8 +32,8 @@ import {
   NumberFieldIncrement,
   NumberFieldInput,
 } from '@/components/ui/number-field';
-import type { ScoringItemCount } from '@/engine/entity';
-import { useRecordsStore } from '@/engine/store';
+import { useRecordsStore } from '@/engine';
+import type { ScoringItemCount } from '@/engine';
 import ScoringItemSlot from './item-slot.vue';
 
 defineOptions({

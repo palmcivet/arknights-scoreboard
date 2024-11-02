@@ -29,13 +29,29 @@
 
       <CollapsibleContent class="flex flex-col gap-1">
         <template v-if="isEditing">
+          <FormItemSlot label="选手">
+            <Input
+              type="text"
+              placeholder="输入选手名称"
+              v-model="editingId"
+            ></Input>
+          </FormItemSlot>
+
           <FormItemSlot label="分队">
-            <Input type="text" placeholder="输入开局分队"></Input>
+            <Input
+              type="text"
+              placeholder="输入开局分队"
+              v-model="editingSquad"
+            ></Input>
           </FormItemSlot>
 
           <FormItemSlot label="干员">
-            <TagsInput v-model="pickup">
-              <TagsInputItem v-for="item in pickup" :key="item" :value="item">
+            <TagsInput v-model="editingPickup">
+              <TagsInputItem
+                v-for="item in editingPickup"
+                :key="item"
+                :value="item"
+              >
                 <TagsInputItemText></TagsInputItemText>
                 <TagsInputItemDelete></TagsInputItemDelete>
               </TagsInputItem>
@@ -44,17 +60,21 @@
           </FormItemSlot>
         </template>
 
+        <template v-else-if="!eventsStore.challenger">
+          <div class="text-sm">暂无数据</div>
+        </template>
+
         <template v-else>
           <!-- 开局分队 -->
           <FormItemSlot label="分队">
-            <div class="text-sm">{{ challenger.squad }}</div>
+            <div class="text-sm">{{ eventsStore.challenger.squad }}</div>
           </FormItemSlot>
 
           <!-- 开局干员 -->
           <FormItemSlot label="干员">
             <div class="flex gap-1 overflow-x-auto text-sm">
               <Badge
-                v-for="operator in challenger.pickup"
+                v-for="operator in eventsStore.challenger.pickup"
                 :key="operator"
                 class="cursor-pointer"
                 variant="outline"
@@ -93,46 +113,40 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import type { Challenger } from '@/engine/entity';
 import { cn } from '@/helpers/tailwind-utils';
-import { useGameStore } from '@/engine/store';
+import { useEventsStore } from '@/engine';
+import type { Operator } from '@/engine';
 import { FormItemSlot } from '@/components/widget';
 
 defineOptions({
   name: 'StartingBuild',
 });
 
-const gameStore = useGameStore();
+const eventsStore = useEventsStore();
 
-const challenger = ref<Challenger>({
-  id: '选手 ID',
-  avatar: 'https://github.com/radix-vue.png',
-  description:
-    '这是一个选手-这是一个选手-这是一个选手-这是一个选手-这是一个选手-这是一个选手-这是一个选手-这是一个选手',
-  squad: '异想天开分队',
-  pickup: ['cross', 'angelina', 'eyjafjalla'],
-});
+const editingId = ref('');
+const editingSquad = ref('');
+const editingPickup = ref<Array<Operator>>([]);
 
+const isExpanded = ref(true);
 const isEditing = ref(false);
-
-const isExpanded = ref(false);
-
-const pickup = ref([]);
-
-const onEdit = () => {
-  isEditing.value = true;
-};
-
-const onUpdate = () => {
-  gameStore.updateChallenger(challenger.value);
-  isEditing.value = false;
-};
 
 const onToggleEdit = () => {
   if (isEditing.value) {
-    onUpdate();
+    eventsStore.updateChallenger({
+      id: editingId.value,
+      squad: editingSquad.value,
+      pickup: editingPickup.value,
+    });
+    isEditing.value = false;
   } else {
-    onEdit();
+    if (eventsStore.challenger) {
+      editingId.value = eventsStore.challenger.id;
+      editingSquad.value = eventsStore.challenger.squad;
+      editingPickup.value = eventsStore.challenger.pickup;
+    }
+
+    isEditing.value = true;
   }
 };
 </script>

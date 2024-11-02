@@ -40,7 +40,7 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { Label } from '@/components/ui/label';
-import { ScoringItem } from '@/engine/entity';
+import type { ScoringItem } from '@/engine';
 import { cn } from '@/helpers/tailwind-utils';
 
 defineOptions({

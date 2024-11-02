@@ -19,7 +19,7 @@
 <script lang="ts" setup>
 import type { PropType } from 'vue';
 
-import type { ScoringItemGroup } from '@/engine/entity';
+import type { ScoringItemGroup } from '@/engine';
 import {
   Card,
   CardTitle,
