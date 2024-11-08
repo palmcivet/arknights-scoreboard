@@ -3,7 +3,8 @@
     :class="
       cn(
         'flex flex-row items-center transition-colors hover:text-primary',
-        isColumn ? cn(buttonVariants({ variant: 'ghost', size: 'icon' })) : ''
+        isColumn ? cn(buttonVariants({ variant: 'ghost', size: 'icon' })) : '',
+        $attrs.class ?? ''
       )
     "
     :href="menu.href"

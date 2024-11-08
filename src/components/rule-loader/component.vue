@@ -1,6 +1,6 @@
 <template>
   <div :class="cn('rule-loader', $attrs.class ?? '')">
-    <Collapsible v-model:open="isExpanded">
+    <Collapsible :open="isExpanded" @update:open="onToggleCollapse">
       <CollapsibleTrigger class="flex w-full items-center">
         <div class="flex-1 truncate text-left">
           <span class="text-xl font-semibold">
@@ -20,7 +20,7 @@
                 class="h-4 w-4"
                 icon="mdi:playlist-check"
               ></Icon>
-              <Icon v-else class="h-4 w-4" icon="mdi:playlist-edit"></Icon>
+              <Icon v-else class="h-4 w-4" icon="mdi:pencil-outline"></Icon>
             </Button>
           </TooltipTrigger>
           <TooltipContent>
@@ -29,116 +29,120 @@
         </Tooltip>
       </CollapsibleTrigger>
 
-      <CollapsibleContent class="flex flex-col gap-2">
-        <template v-if="isEditing">
-          <FormItemSlot label="加载方式">
-            <Select
-              v-model="editingLoaderOption"
-              :default-value="editingLoaderOption"
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="加载规则"></SelectValue>
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem
-                  v-for="option in LOADER_OPTIONS"
-                  :value="option.value"
-                >
-                  {{ option.label }}
-                </SelectItem>
-              </SelectContent>
-            </Select>
-          </FormItemSlot>
-
-          <FormItemSlot class="flex-auto truncate" label="选择">
-            <!-- 预设 -->
-            <div v-if="editingLoaderOption === RULE_SOURCE.PRESET">
+      <CollapsibleContent>
+        <div class="flex flex-col">
+          <template v-if="isEditing">
+            <FormItemSlot label="加载方式">
               <Select
-                v-model="editingPresetRule"
-                :default-value="editingPresetRule"
-                @update:model-value="onLoadPresetRule"
+                v-model="editingLoaderOption"
+                :default-value="editingLoaderOption"
               >
                 <SelectTrigger>
-                  <SelectValue
-                    class="truncate"
-                    placeholder="选择预设规则"
-                  ></SelectValue>
+                  <SelectValue placeholder="加载规则"></SelectValue>
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem v-for="rule in PRESET_RULES" :value="rule.url">
-                    {{ rule.name }}
+                  <SelectItem
+                    v-for="option in LOADER_OPTIONS"
+                    :value="option.value"
+                  >
+                    {{ option.label }}
                   </SelectItem>
                 </SelectContent>
               </Select>
-            </div>
-            <!-- 本地 -->
-            <div v-else-if="editingLoaderOption === RULE_SOURCE.LOCAL">
-              <Input
-                type="file"
-                accept=".json"
-                placeholder="点击上传规则文件"
-                @change="onLoadLocalRule"
-              ></Input>
-            </div>
-            <!-- 远程 -->
-            <div v-else>
-              <Input
-                type="url"
-                placeholder="规则文件的 URL"
-                v-model="editingRemoteURL"
-                @blur="onLoadRemoteRule"
-                @keydown.enter="onLoadRemoteRule"
-              ></Input>
-            </div>
-          </FormItemSlot>
-        </template>
+            </FormItemSlot>
 
-        <template v-else>
-          <blockquote
-            v-if="eventsStore.events.description"
-            class="mt-2 border-l-2 pl-xs text-sm italic"
-          >
-            {{ eventsStore.events.description }}
-          </blockquote>
+            <FormItemSlot class="flex-auto truncate" label="选择">
+              <!-- 预设 -->
+              <div v-if="editingLoaderOption === RULE_SOURCE.PRESET">
+                <Select
+                  v-model="editingPresetRule"
+                  :default-value="editingPresetRule"
+                  @update:model-value="onLoadPresetRule"
+                >
+                  <SelectTrigger>
+                    <SelectValue
+                      class="truncate"
+                      placeholder="选择预设规则"
+                    ></SelectValue>
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem v-for="rule in PRESET_RULES" :value="rule.url">
+                      {{ rule.name }}
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <!-- 本地 -->
+              <div v-else-if="editingLoaderOption === RULE_SOURCE.LOCAL">
+                <Input
+                  type="file"
+                  accept=".json"
+                  placeholder="点击上传规则文件"
+                  @change="onLoadLocalRule"
+                ></Input>
+              </div>
+              <!-- 远程 -->
+              <div v-else>
+                <Input
+                  type="url"
+                  placeholder="规则文件的 URL"
+                  v-model="editingRemoteURL"
+                  @blur="onLoadRemoteRule"
+                  @keydown.enter="onLoadRemoteRule"
+                ></Input>
+              </div>
+            </FormItemSlot>
+          </template>
 
-          <div
-            class="flex flex-row-reverse items-center justify-between gap-sm"
-          >
-            <template v-if="eventsStore.meta">
-              <HoverCard>
-                <HoverCardTrigger>
-                  <div
-                    class="text-xs hover:cursor-pointer hover:underline hover:underline-offset-4"
-                  >
-                    <code>版本 v{{ eventsStore.meta.version }}</code>
-                  </div>
-                </HoverCardTrigger>
-                <HoverCardContent class="w-auto">
-                  <div v-if="eventsStore.meta.author" class="text-sm">
-                    规则作者：{{ eventsStore.meta.author }}
-                  </div>
-                  <div class="text-sm">
-                    引擎版本：<code>{{ eventsStore.meta.engineVersion }}</code>
-                  </div>
-                  <div v-if="eventsStore.meta.changelog" class="text-sm">
-                    更新日志：{{ eventsStore.meta.changelog }}
-                  </div>
-                </HoverCardContent>
-              </HoverCard>
-            </template>
-
-            <a
-              v-if="eventsStore.events.url"
-              target="_blank"
-              :href="eventsStore.events.url"
+          <template v-else>
+            <blockquote
+              v-if="eventsStore.events.description"
+              class="border-l-2 pl-xs my-xs text-sm italic"
             >
-              <Badge variant="outline">
-                <Icon class="mr-2 h-4 w-4" icon="mdi:web-check"></Icon>
-                <span>专题页</span>
-              </Badge>
-            </a>
-          </div>
-        </template>
+              {{ eventsStore.events.description }}
+            </blockquote>
+
+            <div
+              class="flex flex-row-reverse items-center justify-between gap-sm"
+            >
+              <template v-if="eventsStore.meta">
+                <HoverCard>
+                  <HoverCardTrigger>
+                    <div
+                      class="text-xs hover:cursor-pointer hover:underline hover:underline-offset-4"
+                    >
+                      <code>版本 v{{ eventsStore.meta.version }}</code>
+                    </div>
+                  </HoverCardTrigger>
+                  <HoverCardContent class="w-auto">
+                    <div v-if="eventsStore.meta.author" class="text-sm">
+                      规则作者：{{ eventsStore.meta.author }}
+                    </div>
+                    <div class="text-sm">
+                      引擎版本：<code>{{
+                        eventsStore.meta.engineVersion
+                      }}</code>
+                    </div>
+                    <div v-if="eventsStore.meta.changelog" class="text-sm">
+                      更新日志：{{ eventsStore.meta.changelog }}
+                    </div>
+                  </HoverCardContent>
+                </HoverCard>
+              </template>
+
+              <a
+                v-if="eventsStore.events.url"
+                target="_blank"
+                :href="eventsStore.events.url"
+              >
+                <Badge variant="outline">
+                  <Icon class="mr-2 h-4 w-4" icon="mdi:web-check"></Icon>
+                  <span>专题页</span>
+                </Badge>
+              </a>
+            </div>
+          </template>
+        </div>
       </CollapsibleContent>
     </Collapsible>
   </div>
@@ -196,6 +200,12 @@ const editingRemoteURL = ref<string>('');
 
 const isExpanded = ref(true);
 const isEditing = ref(false);
+
+const onToggleCollapse = (event: boolean) => {
+  if (!isEditing.value) {
+    isExpanded.value = event;
+  }
+};
 
 function dispatchLoadRule(validRules: RulesType) {
   apiStore.triggerLoadRule(validRules);

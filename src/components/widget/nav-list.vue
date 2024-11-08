@@ -1,7 +1,7 @@
 <template>
   <nav
     :class="
-      cn($attrs.class ?? '', 'flex gap-md', isColumn ? 'flex-col' : 'flex-row')
+      cn('flex gap-md', isColumn ? 'flex-col' : 'flex-row', $attrs.class ?? '')
     "
   >
     <NavItem v-for="item in ROUTE_LIST" :menu="item"></NavItem>

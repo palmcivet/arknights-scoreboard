@@ -20,6 +20,16 @@ function parseScoringItems(
     const id = key ? `${key}.${i}` : `${i}`;
     const item = items[i];
 
+    if (item.type === SCORING_ITEM_TYPE.SELECT) {
+      // 添加默认空值
+      const hasInitialOption = item.options.some(
+        (option) => option.score === 0
+      );
+      if (!hasInitialOption) {
+        item.options.unshift({ label: '未选择', score: 0 });
+      }
+    }
+
     if (item.type === SCORING_ITEM_TYPE.GROUP) {
       parseScoringItems(item.children, id, indexedRules);
     } else {

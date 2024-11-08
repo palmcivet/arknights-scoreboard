@@ -1,7 +1,7 @@
 <template>
   <div
     :class="
-      cn($attrs.class ?? '', 'flex items-center justify-center [&>div]:w-full')
+      cn('flex items-center justify-center [&>div]:w-full', $attrs.class ?? '')
     "
   >
     <slot></slot>

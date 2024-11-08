@@ -1,5 +1,5 @@
 <template>
-  <div :class="cn($attrs.class ?? '', 'flex flex-col justify-between')">
+  <div :class="cn('flex flex-col justify-between', $attrs.class ?? '')">
     <div class="mb-2 flex items-center justify-between">
       <div class="flex w-full flex-1 items-center truncate">
         <Label class="truncate text-sm">{{ scoringItem.label }}</Label>

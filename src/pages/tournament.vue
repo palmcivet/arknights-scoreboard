@@ -1,31 +1,25 @@
 <template>
-  <div
-    class="aks-tournament flex h-full w-full flex-row pt-sm md:gap-md lg:gap-lg"
-  >
+  <div class="aks-tournament flex h-full w-full flex-row md:gap-md lg:gap-lg">
     <ResizablePanelGroup :direction="isMobile ? 'vertical' : 'horizontal'">
       <ResizablePanel
         v-if="!isMobile"
-        class="flex h-full min-w-[256px] max-w-[378px] flex-col pt-[56px]"
+        class="h-full min-w-[256px] max-w-[378px]"
         :default-size="24"
       >
-        <ScrollArea class="h-full">
-          <Card :class="cn('events-card', $attrs.class ?? '')">
-            <CardContent class="flex flex-col gap-2 p-3 md:p-4">
-              <!-- 规则 -->
-              <RuleLoader></RuleLoader>
+        <div class="flex h-full flex-col gap-xs pb-sm pt-[72px]">
+          <!-- 规则 -->
+          <RuleLoader></RuleLoader>
 
-              <Separator></Separator>
+          <Separator></Separator>
 
-              <!-- 初始构建 -->
-              <StartingBuild></StartingBuild>
+          <!-- 初始构建 -->
+          <StartingBuild></StartingBuild>
 
-              <Separator></Separator>
+          <Separator></Separator>
 
-              <!-- 计分板 -->
-              <ScoreRecorder></ScoreRecorder>
-            </CardContent>
-          </Card>
-        </ScrollArea>
+          <!-- 计分板 -->
+          <ScoreRecorder></ScoreRecorder>
+        </div>
       </ResizablePanel>
 
       <ResizableHandle
@@ -40,7 +34,7 @@
           <div
             :class="
               cn(
-                'pb-sm pt-[56px] md:columns-3 xl:columns-4',
+                'pb-sm pt-[72px] md:columns-3 xl:columns-4',
                 VIEW_PADDING_RIGHT_CLASS
               )
             "
@@ -55,7 +49,7 @@
       </ResizablePanel>
     </ResizablePanelGroup>
 
-    <div class="hidden md:hidden"></div>
+    <div v-if="isMobile"></div>
   </div>
 </template>
 
@@ -67,7 +61,6 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from '@/components/ui/resizable';
-import { Card, CardContent } from '@/components/ui/card';
 import { ScoringItem } from '@/components/scoring-items';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
