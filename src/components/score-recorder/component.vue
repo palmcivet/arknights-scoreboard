@@ -8,8 +8,8 @@
       <div>
         <Tooltip>
           <TooltipTrigger>
-            <Button size="xs" variant="ghost" @click.stop="">
-              <Icon class="h-4 w-4" icon="mdi:restore"></Icon>
+            <Button size="xs" variant="ghost" @click.stop="onResetRecords">
+              <Icon class="h-4 w-4" icon="mdi:notification-clear-all"></Icon>
             </Button>
           </TooltipTrigger>
           <TooltipContent>
@@ -28,13 +28,15 @@
       </div>
 
       <div v-else class="relative flex h-full flex-col">
-        <ScrollArea class="flex-1 py-1 pb-12 pr-sm">
-          <div
-            v-for="record in recordsStore.details"
-            class="flex flex-row items-center justify-between py-1"
-          >
-            <span class="text-sm">{{ record.label }}</span>
-            <span class="text-sm">{{ record.score }}</span>
+        <ScrollArea>
+          <div class="flex-1 py-1 pb-12 pr-sm">
+            <div
+              v-for="record in recordsStore.details"
+              class="flex flex-row items-center justify-between py-1"
+            >
+              <span class="text-sm">{{ record.label }}</span>
+              <span class="text-sm">{{ record.score }}</span>
+            </div>
           </div>
         </ScrollArea>
 
@@ -70,4 +72,8 @@ defineOptions({
 });
 
 const recordsStore = useRecordsStore();
+
+const onResetRecords = () => {
+  recordsStore.resetRecords();
+};
 </script>

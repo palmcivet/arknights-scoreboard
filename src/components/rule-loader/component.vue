@@ -10,15 +10,11 @@
 
         <Tooltip>
           <TooltipTrigger>
-            <Button
-              size="xs"
-              variant="ghost"
-              @click.stop="isEditing = !isEditing"
-            >
+            <Button size="xs" variant="ghost" @click.stop="onToggleEdit">
               <Icon
                 v-if="isEditing"
                 class="h-4 w-4"
-                icon="mdi:playlist-check"
+                icon="mdi:check-all"
               ></Icon>
               <Icon v-else class="h-4 w-4" icon="mdi:pencil-outline"></Icon>
             </Button>
@@ -97,49 +93,63 @@
           <template v-else>
             <blockquote
               v-if="eventsStore.events.description"
-              class="border-l-2 pl-xs my-xs text-sm italic"
+              class="my-xs border-l-2 pl-xs text-sm italic"
             >
               {{ eventsStore.events.description }}
             </blockquote>
 
-            <div
-              class="flex flex-row-reverse items-center justify-between gap-sm"
-            >
-              <template v-if="eventsStore.meta">
-                <HoverCard>
-                  <HoverCardTrigger>
-                    <div
-                      class="text-xs hover:cursor-pointer hover:underline hover:underline-offset-4"
-                    >
-                      <code>版本 v{{ eventsStore.meta.version }}</code>
-                    </div>
-                  </HoverCardTrigger>
-                  <HoverCardContent class="w-auto">
-                    <div v-if="eventsStore.meta.author" class="text-sm">
-                      规则作者：{{ eventsStore.meta.author }}
-                    </div>
-                    <div class="text-sm">
-                      引擎版本：<code>{{
-                        eventsStore.meta.engineVersion
-                      }}</code>
-                    </div>
-                    <div v-if="eventsStore.meta.changelog" class="text-sm">
-                      更新日志：{{ eventsStore.meta.changelog }}
-                    </div>
-                  </HoverCardContent>
-                </HoverCard>
-              </template>
+            <div class="flex items-center justify-between gap-sm">
+              <div>
+                <a
+                  v-if="eventsStore.events.url"
+                  target="_blank"
+                  :href="eventsStore.events.url"
+                >
+                  <Badge
+                    variant="outline"
+                    class="border-blue-400 bg-blue-100 text-blue-800 dark:bg-gray-700 dark:text-blue-400"
+                  >
+                    <Icon class="h-4 w-4" icon="mdi:link-variant"></Icon>
+                    <span class="ml-1">专题页</span>
+                  </Badge>
+                </a>
 
-              <a
-                v-if="eventsStore.events.url"
-                target="_blank"
-                :href="eventsStore.events.url"
-              >
-                <Badge variant="outline">
-                  <Icon class="mr-2 h-4 w-4" icon="mdi:web-check"></Icon>
-                  <span>专题页</span>
-                </Badge>
-              </a>
+                <a
+                  v-if="eventsURL"
+                  class="ml-xs"
+                  target="_blank"
+                  :href="eventsURL"
+                >
+                  <Badge
+                    variant="outline"
+                    class="border-green-400 bg-green-100 text-green-800 dark:bg-gray-700 dark:text-green-400"
+                  >
+                    <Icon class="h-4 w-4" icon="mdi:web-check"></Icon>
+                    <span class="ml-1">比赛页</span>
+                  </Badge>
+                </a>
+              </div>
+
+              <HoverCard v-if="eventsStore.meta">
+                <HoverCardTrigger>
+                  <div
+                    class="text-xs hover:cursor-pointer hover:underline hover:underline-offset-4"
+                  >
+                    <code>版本 v{{ eventsStore.meta.version }}</code>
+                  </div>
+                </HoverCardTrigger>
+                <HoverCardContent class="w-auto">
+                  <div v-if="eventsStore.meta.author" class="text-sm">
+                    规则作者：{{ eventsStore.meta.author }}
+                  </div>
+                  <div class="text-sm">
+                    引擎版本：<code>{{ eventsStore.meta.engineVersion }}</code>
+                  </div>
+                  <div v-if="eventsStore.meta.changelog" class="text-sm">
+                    更新日志：{{ eventsStore.meta.changelog }}
+                  </div>
+                </HoverCardContent>
+              </HoverCard>
             </div>
           </template>
         </div>
@@ -149,7 +159,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref, h } from 'vue';
+import { onMounted, ref, h, computed } from 'vue';
 import { Icon } from '@iconify/vue';
 
 import { Badge } from '@/components/ui/badge';
@@ -207,6 +217,19 @@ const onToggleCollapse = (event: boolean) => {
   }
 };
 
+const onToggleEdit = () => {
+  if (isEditing.value) {
+    isEditing.value = false;
+    // @todo 清理已有内容
+  } else {
+    // 如果未展开，则需要展开
+    if (!isExpanded.value) {
+      isExpanded.value = true;
+    }
+    isEditing.value = true;
+  }
+};
+
 function dispatchLoadRule(validRules: RulesType) {
   apiStore.triggerLoadRule(validRules);
 }
@@ -259,6 +282,8 @@ async function onLoadPresetRule(url: string) {
     });
   }
 }
+
+const eventsURL = computed(() => '');
 
 onMounted(async () => {
   await onLoadPresetRule(editingPresetRule.value);

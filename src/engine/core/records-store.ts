@@ -103,5 +103,8 @@ export const useRecordsStore = defineStore('records', {
     triggerRecord(record: RecordItem) {
       this.records[record.id] = record;
     },
+    resetRecords() {
+      this.records = {};
+    },
   },
 });

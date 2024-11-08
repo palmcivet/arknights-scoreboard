@@ -12,13 +12,9 @@
               <Icon
                 v-if="isEditing"
                 class="h-4 w-4"
-                icon="mdi:account-check-outline"
+                icon="mdi:check-all"
               ></Icon>
-              <Icon
-                v-else
-                class="h-4 w-4"
-                icon="mdi:account-edit-outline"
-              ></Icon>
+              <Icon v-else class="h-4 w-4" icon="mdi:pencil-outline"></Icon>
             </Button>
           </TooltipTrigger>
           <TooltipContent>
@@ -150,6 +146,11 @@ const onToggleEdit = () => {
     });
     isEditing.value = false;
   } else {
+    // 如果未展开，则需要展开
+    if (!isExpanded.value) {
+      isExpanded.value = true;
+    }
+
     if (eventsStore.challenger) {
       editingId.value = eventsStore.challenger.id;
       editingSquad.value = eventsStore.challenger.squad;
