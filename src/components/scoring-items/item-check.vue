@@ -2,8 +2,8 @@
   <ScoringItemSlot :scoring-item="scoringItem" :score="record.score">
     <div class="flex items-center justify-between">
       <div class="flex items-center text-sm">
-        <span class="w-6 text-right">{{ scoringItem.score }}</span>
-        <span class="ml-2">分</span>
+        <span class="w-8 text-right">{{ scoringItem.score }}</span>
+        <span class="ml-1">分</span>
       </div>
       <Switch :checked="isChecked" @update:checked="onCheck"></Switch>
     </div>

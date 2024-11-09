@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts" setup>
-import Navigation from '@/layouts/navigation.vue';
+import Navigation from '@/components/navigation';
 import Tournament from '@/pages/tournament.vue';
 import { Toaster } from '@/components/ui/toast';
 import { TooltipProvider } from '@/components/ui/tooltip';

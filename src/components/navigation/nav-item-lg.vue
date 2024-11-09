@@ -2,27 +2,22 @@
   <a
     :class="
       cn(
-        'flex flex-row items-center transition-colors hover:text-primary',
-        isColumn ? cn(buttonVariants({ variant: 'ghost', size: 'icon' })) : '',
+        NAV_ITEM_STYLE,
+        buttonVariants({ variant: 'ghost', size: 'icon' }),
         $attrs.class ?? ''
       )
     "
     :href="menu.href"
     :title="menu.label"
   >
-    <Tooltip v-if="isColumn" :delay-duration="0">
+    <Tooltip :delay-duration="0">
       <TooltipTrigger as-child>
-        <Icon :icon="menu.icon" class="size-6"></Icon>
+        <Icon :icon="menu.icon" class="size-5"></Icon>
       </TooltipTrigger>
       <TooltipContent side="right">
         {{ menu.label }}
       </TooltipContent>
     </Tooltip>
-
-    <template v-else>
-      <Icon :icon="menu.icon" class="mr-2 size-5"></Icon>
-      <span class="font-medium dark:text-white">{{ menu.label }}</span>
-    </template>
   </a>
 </template>
 
@@ -37,6 +32,7 @@ import {
 } from '@/components/ui/tooltip';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/helpers/tailwind-utils';
+import { NAV_ITEM_STYLE } from './style';
 
 interface NavItemProp {
   label: string;
@@ -45,17 +41,13 @@ interface NavItemProp {
 }
 
 defineOptions({
-  name: 'NavItem',
+  name: 'NavItemLg',
 });
 
 defineProps({
   menu: {
     type: Object as PropType<NavItemProp>,
     required: true,
-  },
-  isColumn: {
-    type: Boolean,
-    default: false,
   },
 });
 </script>
