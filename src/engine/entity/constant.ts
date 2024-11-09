@@ -7,9 +7,13 @@ export const enum SCORING_ITEM_TYPE {
    */
   CHECK = 'check',
   /**
-   * @description 按次数
+   * @description 按次数。自然数
    */
   COUNT = 'count',
+  /**
+   * @description 输入。用户输入的数值
+   */
+  INPUT = 'input',
   /**
    * @description N 选一
    */

@@ -3,6 +3,7 @@ import type {
   EventsMeta,
   ScoringItemCheck,
   ScoringItemCount,
+  ScoringItemInput,
   ScoringItemGroup,
   ScoringItemSelect,
 } from '@/engine/entity';
@@ -14,6 +15,7 @@ type PartialId<T> = Omit<T, 'id'> & { id?: string };
 
 export type ScoringItemCheckType = PartialId<ScoringItemCheck>;
 export type ScoringItemCountType = PartialId<ScoringItemCount>;
+export type ScoringItemInputType = PartialId<ScoringItemInput>;
 export type ScoringItemSelectType = PartialId<ScoringItemSelect>;
 export type ScoringItemGroupType = Omit<ScoringItemGroup, 'children'> & {
   children: Array<ScoringItemType>;

@@ -85,7 +85,7 @@ export const useRecordsStore = defineStore('records', {
     },
     details(state) {
       return Object.values(state.records)
-        .filter((item) => item.score > 0)
+        .filter((item) => item.score !== 0)
         .map((item) => {
           return {
             ...item,

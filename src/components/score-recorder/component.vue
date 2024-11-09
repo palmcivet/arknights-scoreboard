@@ -1,22 +1,27 @@
 <template>
   <div :class="cn('score-recorder flex min-h-0 flex-col', $attrs.class ?? '')">
     <div class="flex flex-row items-center justify-between">
-      <div>
-        <span class="text-left text-xl font-semibold">得分记录</span>
+      <div class="flex-1 text-left">
+        <span class="text-xl font-semibold">得分记录</span>
       </div>
 
-      <div>
-        <Tooltip>
-          <TooltipTrigger>
-            <Button size="xs" variant="ghost" @click.stop="onResetRecords">
-              <Icon class="h-4 w-4" icon="mdi:notification-clear-all"></Icon>
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent>
-            <span>重置分数</span>
-          </TooltipContent>
-        </Tooltip>
-      </div>
+      <Tooltip v-if="recordsStore.details.length">
+        <TooltipTrigger>
+          <Button size="xs" variant="ghost" @click.stop="onExportRecords">
+            <Icon class="h-4 w-4" icon="mdi:export-variant"></Icon>
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent><span>导出</span></TooltipContent>
+      </Tooltip>
+
+      <Tooltip>
+        <TooltipTrigger>
+          <Button size="xs" variant="ghost" @click.stop="onResetRecords">
+            <Icon class="h-4 w-4" icon="mdi:notification-clear-all"></Icon>
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent><span>重置分数</span></TooltipContent>
+      </Tooltip>
     </div>
 
     <div class="min-h-0 flex-1">
@@ -65,15 +70,20 @@ import {
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/helpers/tailwind-utils';
-import { useRecordsStore } from '@/engine';
+import { useApiStore, useRecordsStore } from '@/engine';
 
 defineOptions({
   name: 'ScoreRecorder',
 });
 
 const recordsStore = useRecordsStore();
+const apiStore = useApiStore();
 
 const onResetRecords = () => {
   recordsStore.resetRecords();
+};
+
+const onExportRecords = () => {
+  apiStore.triggerExportRecords();
 };
 </script>

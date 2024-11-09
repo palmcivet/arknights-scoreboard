@@ -37,7 +37,19 @@ export type ScoringItemCount = ScoringItemBase & {
    */
   id: string;
   /**
-   * @description 项目分数，可以为负数
+   * @description 项目系数，可以为负数
+   */
+  score: number;
+};
+
+export type ScoringItemInput = ScoringItemBase & {
+  type: SCORING_ITEM_TYPE.INPUT;
+  /**
+   * @description 项目 ID
+   */
+  id: string;
+  /**
+   * @description 项目系数，可以为负数
    */
   score: number;
 };
@@ -65,5 +77,6 @@ export type ScoringItemGroup = ScoringItemBase & {
 export type ScoringItem =
   | ScoringItemCheck
   | ScoringItemCount
+  | ScoringItemInput
   | ScoringItemSelect
   | ScoringItemGroup;

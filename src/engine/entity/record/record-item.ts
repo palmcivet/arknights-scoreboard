@@ -11,5 +11,6 @@ export type RecordId = string;
 export type RecordItem = { id: RecordId; score: number } & (
   | { [SCORING_ITEM_TYPE.CHECK]: boolean }
   | { [SCORING_ITEM_TYPE.COUNT]: number }
+  | { [SCORING_ITEM_TYPE.INPUT]: number }
   | { [SCORING_ITEM_TYPE.SELECT]: string }
 );

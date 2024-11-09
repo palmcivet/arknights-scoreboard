@@ -7,6 +7,7 @@ import type {
   ScoringItemType,
   ScoringItemCheckType,
   ScoringItemCountType,
+  ScoringItemInputType,
   ScoringItemSelectType,
   ScoringItemGroupType,
 } from './type';
@@ -41,6 +42,15 @@ export const ScoringItemCheckSchema: z.ZodType<ScoringItemCheckType> = z.object(
 export const ScoringItemCountSchema: z.ZodType<ScoringItemCountType> = z.object(
   {
     type: z.literal(SCORING_ITEM_TYPE.COUNT),
+    label: z.string(),
+    description: z.string().optional(),
+    score: z.number(),
+  }
+);
+
+export const ScoringItemInputSchema: z.ZodType<ScoringItemInputType> = z.object(
+  {
+    type: z.literal(SCORING_ITEM_TYPE.INPUT),
     label: z.string(),
     description: z.string().optional(),
     score: z.number(),

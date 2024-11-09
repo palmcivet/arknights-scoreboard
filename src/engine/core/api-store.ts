@@ -28,5 +28,7 @@ export const useApiStore = defineStore('api', () => {
     });
   };
 
-  return { triggerLoadRule };
+  const triggerExportRecords = () => {};
+
+  return { triggerLoadRule, triggerExportRecords };
 });

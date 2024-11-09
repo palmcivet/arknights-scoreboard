@@ -20,7 +20,7 @@
             </Button>
           </TooltipTrigger>
           <TooltipContent>
-            <p>{{ isEditing ? '更新' : '编辑' }}</p>
+            <span>{{ isEditing ? '更新' : '编辑' }}</span>
           </TooltipContent>
         </Tooltip>
       </CollapsibleTrigger>

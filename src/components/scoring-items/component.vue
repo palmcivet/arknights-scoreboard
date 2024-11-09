@@ -9,6 +9,11 @@
     :scoring-item="scoringItem"
   ></ScoringCount>
 
+  <ScoringInput
+    v-else-if="scoringItem.type === SCORING_ITEM_TYPE.INPUT"
+    :scoring-item="scoringItem"
+  ></ScoringInput>
+
   <ScoringSelect
     v-else-if="scoringItem.type === SCORING_ITEM_TYPE.SELECT"
     :scoring-item="scoringItem"
@@ -28,6 +33,7 @@ import { SCORING_ITEM_TYPE } from '@/engine';
 import type { ScoringItem } from '@/engine';
 import ScoringCheck from './item-check.vue';
 import ScoringCount from './item-count.vue';
+import ScoringInput from './item-input.vue';
 import ScoringSelect from './item-select.vue';
 import ScoringGroup from './item-group.vue';
 
