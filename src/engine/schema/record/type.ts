@@ -27,7 +27,7 @@ export type RecordsType = {
    */
   end: DateTime;
   /**
-   * @description 选手得分
+   * @description 选手得分。是一个缓存值，可以基于规则和记录重新计算
    */
   score: number;
   /**

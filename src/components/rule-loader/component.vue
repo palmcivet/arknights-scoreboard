@@ -188,8 +188,8 @@ import {
 } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
 import { ToastAction } from '@/components/ui/toast';
-import { FormItemSlot, logger } from '@/components/widget';
 import { useToast } from '@/components/ui/toast/use-toast';
+import { FormItemSlot, logger } from '@/components/widget';
 import { cn } from '@/helpers/tailwind-utils';
 import { LOADER_OPTIONS, PRESET_RULES, RULE_SOURCE } from '@/constants';
 import { useApiStore, useEventsStore } from '@/engine';

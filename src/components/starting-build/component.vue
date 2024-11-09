@@ -125,6 +125,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { useToast } from '@/components/ui/toast/use-toast';
 import { cn } from '@/helpers/tailwind-utils';
 import { useEventsStore } from '@/engine';
 import type { Operator } from '@/engine';
@@ -134,9 +135,11 @@ defineOptions({
   name: 'StartingBuild',
 });
 
+const { toast } = useToast();
+
 const eventsStore = useEventsStore();
 
-const editingId = ref('');
+const editingId = ref('玩家');
 const editingSquad = ref('');
 const editingPickup = ref<Array<Operator>>([]);
 
@@ -151,6 +154,14 @@ const onToggleCollapse = (event: boolean) => {
 
 const onToggleEdit = () => {
   if (isEditing.value) {
+    if (!editingSquad.value || editingPickup.value.length === 0) {
+      toast({
+        title: '分队和干员不能为空',
+        variant: 'destructive',
+      });
+      return;
+    }
+
     eventsStore.updateChallenger({
       id: editingId.value,
       squad: editingSquad.value,

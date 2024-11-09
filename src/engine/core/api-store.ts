@@ -1,14 +1,14 @@
 import { defineStore } from 'pinia';
 
+import { RecordsType, RulesType } from '@/engine/schema';
 import { useEventsStore } from './events-store';
 import { useRecordsStore } from './records-store';
-import { RulesType } from '../schema';
 
 export const useApiStore = defineStore('api', () => {
   const eventsStore = useEventsStore();
   const recordsStore = useRecordsStore();
 
-  const triggerLoadRule = (rule: RulesType) => {
+  const triggerLoadRule = (rule: RulesType): void => {
     recordsStore.$reset();
     recordsStore.updateRules(rule.items);
     eventsStore.updateMeta({

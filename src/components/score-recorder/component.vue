@@ -34,7 +34,7 @@
 
       <div v-else class="relative flex h-full flex-col">
         <ScrollArea>
-          <div class="flex-1 py-1 pb-12 pr-sm">
+          <div class="flex-1 py-1 pb-[54px] pr-sm">
             <div
               v-for="record in recordsStore.details"
               class="flex flex-row items-center justify-between py-1"

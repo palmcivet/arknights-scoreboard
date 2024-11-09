@@ -24,6 +24,7 @@ export type ScoringItemGroupType = Omit<ScoringItemGroup, 'children'> & {
 export type ScoringItemType =
   | ScoringItemCheckType
   | ScoringItemCountType
+  | ScoringItemInputType
   | ScoringItemSelectType
   | ScoringItemGroupType;
 

@@ -21,6 +21,7 @@
 - 仙术杯#4 萨米
 - Zc 好肉鸽
 - [仙术杯#5 萨米](https://www.bilibili.com/blackboard/activity-cXBrWYNabu.html)
+- [仙术杯#6 萨卡兹](https://live.bilibili.com/blackboard/era/M8mMwutyI06WCb0R.html)
 - [通天联赛#0 附加赛](https://www.bilibili.com/opus/890759402660823080)
 - [通天国际联赛#1](https://www.bilibili.com/opus/931631629763346471)
 - [通天高校联赛#1 西部大区赛](https://www.bilibili.com/opus/979881446993821712)
