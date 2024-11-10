@@ -4,7 +4,7 @@
 
     <TooltipProvider :delay-duration="0">
       <Navigation>
-        <Tournament></Tournament>
+        <RouterView></RouterView>
       </Navigation>
     </TooltipProvider>
   </div>
@@ -12,7 +12,6 @@
 
 <script lang="ts" setup>
 import Navigation from '@/components/navigation';
-import Tournament from '@/pages/tournament.vue';
 import { Toaster } from '@/components/ui/toast';
 import { TooltipProvider } from '@/components/ui/tooltip';
 </script>
