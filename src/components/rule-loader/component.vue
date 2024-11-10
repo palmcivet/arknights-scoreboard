@@ -11,12 +11,8 @@
         <Tooltip>
           <TooltipTrigger>
             <Button size="xs" variant="ghost" @click.stop="onToggleEdit">
-              <Icon
-                v-if="isEditing"
-                class="h-4 w-4"
-                icon="mdi:check-all"
-              ></Icon>
-              <Icon v-else class="h-4 w-4" icon="mdi:pencil-outline"></Icon>
+              <Icon v-if="isEditing" class="size-4" icon="mdi:check-all"></Icon>
+              <Icon v-else class="size-4" icon="mdi:pencil-outline"></Icon>
             </Button>
           </TooltipTrigger>
           <TooltipContent>
@@ -47,7 +43,7 @@
               </Select>
             </FormItemSlot>
 
-            <FormItemSlot class="flex-auto truncate" label="选择">
+            <FormItemSlot class="flex-auto truncate" label="选择规则">
               <!-- 预设 -->
               <div v-if="editingLoaderOption === RULE_SOURCE.PRESET">
                 <Select
@@ -92,10 +88,10 @@
 
           <template v-else>
             <blockquote
-              v-if="eventsStore.events.description"
+              v-if="eventsStore.events.brief"
               class="my-xs border-l-2 pl-xs text-sm italic"
             >
-              {{ eventsStore.events.description }}
+              {{ eventsStore.events.brief }}
             </blockquote>
 
             <div class="flex items-center justify-between gap-sm">
@@ -109,7 +105,7 @@
                     variant="outline"
                     class="border-blue-400 bg-blue-100 text-blue-800 dark:bg-gray-700 dark:text-blue-400"
                   >
-                    <Icon class="h-4 w-4" icon="mdi:link-variant"></Icon>
+                    <Icon class="size-4" icon="mdi:link-variant"></Icon>
                     <span class="ml-1">专题页</span>
                   </Badge>
                 </a>
@@ -124,7 +120,7 @@
                     variant="outline"
                     class="border-green-400 bg-green-100 text-green-800 dark:bg-gray-700 dark:text-green-400"
                   >
-                    <Icon class="h-4 w-4" icon="mdi:web-check"></Icon>
+                    <Icon class="size-4" icon="mdi:web-check"></Icon>
                     <span class="ml-1">比赛页</span>
                   </Badge>
                 </a>

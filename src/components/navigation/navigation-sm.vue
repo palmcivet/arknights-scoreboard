@@ -5,17 +5,17 @@
     <Sheet>
       <SheetTrigger as-child>
         <Button variant="ghost" size="icon">
-          <Icon class="h-5 w-5" icon="mdi:menu"></Icon>
+          <Icon class="size-5" icon="mdi:menu"></Icon>
         </Button>
       </SheetTrigger>
-      <SheetContent side="top">
-        <nav>
-          <NavItemSm v-for="menu in ROUTE_LIST" :menu="menu"></NavItemSm>
+      <SheetContent side="left" class="w-1/2">
+        <nav class="mt-sm flex flex-col gap-2">
+          <NavItemSm v-for="menu in MENU_LIST" :menu="menu"></NavItemSm>
         </nav>
       </SheetContent>
     </Sheet>
 
-    <div class="flex flex-row">
+    <div class="flex flex-row gap-1">
       <NavButtons></NavButtons>
     </div>
   </div>
@@ -30,7 +30,7 @@ import { Icon } from '@iconify/vue';
 
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { ROUTE_LIST } from '@/constants';
+import { MENU_LIST } from '@/constants';
 import NavItemSm from './nav-item-sm.vue';
 import NavButtons from './nav-buttons.vue';
 

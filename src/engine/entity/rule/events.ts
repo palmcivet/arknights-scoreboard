@@ -4,7 +4,11 @@ export type Events = {
    */
   name: string;
   /**
-   * @description 赛事描述
+   * @description 赛事简介
+   */
+  brief?: string;
+  /**
+   * @description 赛事描述。支持 Markdown 格式文本
    */
   description?: string;
   /**

@@ -5,10 +5,19 @@
         <span class="text-xl font-semibold">得分记录</span>
       </div>
 
+      <Tooltip>
+        <TooltipTrigger>
+          <Button size="xs" variant="ghost" @click.stop="">
+            <Icon class="size-4" icon="mdi:timer-outline"></Icon>
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent><span>启用计时</span></TooltipContent>
+      </Tooltip>
+
       <Tooltip v-if="recordsStore.details.length">
         <TooltipTrigger>
           <Button size="xs" variant="ghost" @click.stop="onExportRecords">
-            <Icon class="h-4 w-4" icon="mdi:export-variant"></Icon>
+            <Icon class="size-4" icon="mdi:export-variant"></Icon>
           </Button>
         </TooltipTrigger>
         <TooltipContent><span>导出</span></TooltipContent>
@@ -17,7 +26,7 @@
       <Tooltip>
         <TooltipTrigger>
           <Button size="xs" variant="ghost" @click.stop="onResetRecords">
-            <Icon class="h-4 w-4" icon="mdi:notification-clear-all"></Icon>
+            <Icon class="size-4" icon="mdi:notification-clear-all"></Icon>
           </Button>
         </TooltipTrigger>
         <TooltipContent><span>重置分数</span></TooltipContent>
@@ -49,7 +58,7 @@
           class="absolute bottom-0 left-0 right-0 flex h-12 flex-row items-center justify-between border-t-2 bg-background/80 pr-sm backdrop-blur-lg"
         >
           <div class="flex flex-row items-center">
-            <Icon class="h-5 w-5" icon="mdi:summation"></Icon>
+            <Icon class="size-5" icon="mdi:summation"></Icon>
             <span class="ml-1">总分</span>
           </div>
           <span class="font-bold">{{ recordsStore.score }}</span>
@@ -83,7 +92,5 @@ const onResetRecords = () => {
   recordsStore.resetRecords();
 };
 
-const onExportRecords = () => {
-  apiStore.triggerExportRecords();
-};
+const onExportRecords = () => {};
 </script>

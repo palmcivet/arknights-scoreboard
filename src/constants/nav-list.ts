@@ -1,27 +1,34 @@
-export const ROUTE_LIST = [
+export const NAV_LIST = {
+  TOURNAMENT: '/tournament',
+  BINGO: '/bingo',
+  SAVING: '/saving',
+  EDITOR: '/editor',
+};
+
+export const MENU_LIST = [
   {
     label: '积分赛',
     icon: 'mdi:tournament',
-    href: '/tournament',
+    route: NAV_LIST.TOURNAMENT,
   },
   {
     label: 'Bingo',
     icon: 'mdi:grid-off',
-    href: '/bingo',
+    route: NAV_LIST.BINGO,
   },
   {
     label: '编辑器',
     icon: 'mdi:calendar-edit-outline',
-    href: '/editor',
+    route: NAV_LIST.EDITOR,
   },
   {
     label: '记录',
     icon: 'mdi:clipboard-list-outline',
-    href: '/saving',
+    route: NAV_LIST.SAVING,
   },
   {
     label: '帮助',
     icon: 'mdi:information-slab-circle-outline',
-    href: '/docs',
+    route: '/docs',
   },
 ];

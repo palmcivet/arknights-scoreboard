@@ -1,12 +1,18 @@
 <template>
-  <a
-    :class="cn(NAV_ITEM_STYLE, $attrs.class ?? '')"
-    :href="menu.href"
-    :title="menu.label"
+  <RouterLink
+    :class="
+      cn(
+        NAV_ITEM_STYLE,
+        'flex items-center gap-xs py-1 pl-sm',
+        $attrs.class ?? ''
+      )
+    "
+    :to="menu.route"
+    active-class="text-primary bg-muted rounded-lg "
   >
-    <Icon :icon="menu.icon" class="mr-2 size-5"></Icon>
-    <span class="font-medium dark:text-white">{{ menu.label }}</span>
-  </a>
+    <Icon :icon="menu.icon" class="size-5"></Icon>
+    <span class="text-md font-normal">{{ menu.label }}</span>
+  </RouterLink>
 </template>
 
 <script lang="ts" setup>
@@ -19,7 +25,7 @@ import { NAV_ITEM_STYLE } from './style';
 interface NavItemProp {
   label: string;
   icon: string;
-  href: string;
+  route: string;
 }
 
 defineOptions({

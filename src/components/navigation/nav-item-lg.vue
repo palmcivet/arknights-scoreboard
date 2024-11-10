@@ -1,14 +1,14 @@
 <template>
-  <a
+  <RouterLink
+    :to="menu.route"
     :class="
       cn(
         NAV_ITEM_STYLE,
-        buttonVariants({ variant: 'ghost', size: 'icon' }),
+        buttonVariants({ variant: 'ghost', class: 'size-9 p-0' }),
         $attrs.class ?? ''
       )
     "
-    :href="menu.href"
-    :title="menu.label"
+    active-class="bg-muted text-foreground"
   >
     <Tooltip :delay-duration="0">
       <TooltipTrigger as-child>
@@ -18,7 +18,7 @@
         {{ menu.label }}
       </TooltipContent>
     </Tooltip>
-  </a>
+  </RouterLink>
 </template>
 
 <script lang="ts" setup>
@@ -37,7 +37,7 @@ import { NAV_ITEM_STYLE } from './style';
 interface NavItemProp {
   label: string;
   icon: string;
-  href: string;
+  route: string;
 }
 
 defineOptions({

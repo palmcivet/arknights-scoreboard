@@ -2,7 +2,7 @@
   <div
     :class="
       cn(
-        'flex h-full w-full',
+        'flex size-full',
         isSmall ? 'flex-col' : 'flex-row',
         $attrs.class ?? ''
       )

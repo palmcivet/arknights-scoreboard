@@ -9,7 +9,7 @@
         <Tooltip v-if="isEditing">
           <TooltipTrigger>
             <Button size="xs" variant="ghost" @click.stop="isEditing = false">
-              <Icon class="h-4 w-4" icon="mdi:close"></Icon>
+              <Icon class="size-4" icon="mdi:close"></Icon>
             </Button>
           </TooltipTrigger>
           <TooltipContent><span>取消</span></TooltipContent>
@@ -18,12 +18,8 @@
         <Tooltip>
           <TooltipTrigger>
             <Button size="xs" variant="ghost" @click.stop="onToggleEdit">
-              <Icon
-                v-if="isEditing"
-                class="h-4 w-4"
-                icon="mdi:check-all"
-              ></Icon>
-              <Icon v-else class="h-4 w-4" icon="mdi:pencil-outline"></Icon>
+              <Icon v-if="isEditing" class="size-4" icon="mdi:check-all"></Icon>
+              <Icon v-else class="size-4" icon="mdi:pencil-outline"></Icon>
             </Button>
           </TooltipTrigger>
           <TooltipContent>
@@ -69,7 +65,7 @@
           <template v-else-if="!eventsStore.challenger">
             <div class="flex flex-col items-center">
               <Button variant="ghost" size="sm" @click="onToggleEdit">
-                <Icon class="h-4 w-4" icon="mdi:fountain-pen-tip"></Icon>
+                <Icon class="size-4" icon="mdi:fountain-pen-tip"></Icon>
                 <span class="ml-1">填写</span>
               </Button>
             </div>

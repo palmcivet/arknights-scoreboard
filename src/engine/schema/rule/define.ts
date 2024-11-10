@@ -76,6 +76,7 @@ export const ScoringItemGroupSchema: z.ZodType<ScoringItemGroupType> = z.object(
 
 export const RulesSchema: z.ZodType<RulesType> = z.object({
   name: z.string(),
+  brief: z.string().optional(),
   description: z.string().optional(),
   url: z.string().optional(),
   background: z.string().optional(),

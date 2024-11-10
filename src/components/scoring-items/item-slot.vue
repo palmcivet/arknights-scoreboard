@@ -7,7 +7,7 @@
         <Tooltip v-if="scoringItem.description">
           <TooltipTrigger>
             <Icon
-              class="mx-1 h-4 w-4"
+              class="mx-1 size-4"
               icon="mdi:information-slab-circle-outline"
             ></Icon>
           </TooltipTrigger>

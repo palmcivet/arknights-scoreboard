@@ -1,21 +1,21 @@
 <template>
-  <Button variant="ghost" size="icon">
-    <Icon class="h-5 w-5" icon="mdi:github"></Icon>
+  <Button variant="ghost" class="size-8 p-0">
+    <Icon class="size-5" icon="mdi:github"></Icon>
   </Button>
-  <Button variant="ghost" size="icon" @click="onToggleColorMode">
+  <Button variant="ghost" class="size-8 p-0" @click="onToggleColorMode">
     <Icon
       v-if="colorMode === 'light'"
-      class="h-5 w-5"
+      class="size-5"
       icon="mdi:white-balance-sunny"
     ></Icon>
     <Icon
       v-else-if="colorMode === 'dark'"
-      class="h-5 w-5"
+      class="size-5"
       icon="mdi:weather-night"
     ></Icon>
   </Button>
-  <Button variant="ghost" size="icon" @click="">
-    <Icon class="h-5 w-5" icon="mdi:settings-outline"></Icon>
+  <Button variant="ghost" class="size-8 p-0" @click="">
+    <Icon class="size-5" icon="mdi:settings-outline"></Icon>
   </Button>
 </template>
 
