@@ -11,7 +11,7 @@
     </div>
   </div>
 
-  <div class="flex min-w-0 flex-1 pl-md">
+  <div class="flex min-w-0 flex-1">
     <slot></slot>
   </div>
 </template>

@@ -3,7 +3,7 @@
     <ResizablePanelGroup :direction="isSmall ? 'vertical' : 'horizontal'">
       <ResizablePanel
         v-if="!isSmall"
-        class="h-full min-w-[256px] max-w-[378px]"
+        class="h-full min-w-[256px] max-w-[378px] pl-md"
         :default-size="24"
       >
         <div class="flex h-full flex-col gap-xs pt-md">

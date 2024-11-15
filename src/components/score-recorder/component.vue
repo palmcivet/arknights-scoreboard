@@ -1,6 +1,6 @@
 <template>
   <div :class="cn('score-recorder flex min-h-0 flex-col', $attrs.class ?? '')">
-    <div class="flex flex-row items-center justify-between">
+    <div class="mb-xs flex flex-row items-center justify-between">
       <div class="flex-1 text-left">
         <span class="text-xl font-semibold">得分记录</span>
       </div>
@@ -43,7 +43,7 @@
 
       <div v-else class="relative flex h-full flex-col">
         <ScrollArea>
-          <div class="flex-1 py-1 pb-[54px] pr-sm">
+          <div class="flex-1 pb-[54px] pr-sm">
             <div
               v-for="record in recordsStore.details"
               class="flex flex-row items-center justify-between py-1"

@@ -1,7 +1,7 @@
 <template>
   <div :class="cn('starting-build', $attrs.class ?? '')">
     <Collapsible :open="isExpanded" @update:open="onToggleCollapse">
-      <CollapsibleTrigger class="flex w-full items-center">
+      <CollapsibleTrigger class="mb-xs flex w-full items-center">
         <div class="flex-1 truncate text-left">
           <span class="text-xl font-semibold">初始构建</span>
         </div>
@@ -29,7 +29,7 @@
       </CollapsibleTrigger>
 
       <CollapsibleContent>
-        <div class="flex flex-col pt-xs">
+        <div class="flex flex-col">
           <template v-if="isEditing">
             <FormItemSlot label="选手">
               <Input

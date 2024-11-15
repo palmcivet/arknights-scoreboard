@@ -1,7 +1,7 @@
 <template>
   <div :class="cn('rule-loader', $attrs.class ?? '')">
     <Collapsible :open="isExpanded" @update:open="onToggleCollapse">
-      <CollapsibleTrigger class="flex w-full items-center">
+      <CollapsibleTrigger class="mb-xs flex w-full items-center">
         <div class="flex-1 truncate text-left">
           <span class="text-xl font-semibold">
             {{ isEditing ? '切换赛事规则' : eventsStore.events.name }}
