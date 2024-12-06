@@ -1,7 +1,7 @@
 <template>
   <div :class="cn('starting-build', $attrs.class ?? '')">
     <Collapsible :open="isExpanded" @update:open="onToggleCollapse">
-      <CollapsibleTrigger class="mb-xs flex w-full items-center">
+      <CollapsibleTrigger class="flex w-full items-center">
         <div class="flex-1 truncate text-left">
           <span class="text-xl font-semibold">初始构建</span>
         </div>
@@ -29,7 +29,12 @@
       </CollapsibleTrigger>
 
       <CollapsibleContent>
-        <div class="flex flex-col">
+        <div
+          :class="[
+            'mt-xs flex flex-col',
+            'duration-500 animate-in fade-in slide-in-from-bottom-4 fill-mode-forwards',
+          ]"
+        >
           <template v-if="isEditing">
             <FormItemSlot label="选手">
               <Input
@@ -73,17 +78,19 @@
 
           <template v-else>
             <!-- 开局分队 -->
-            <FormItemSlot label="分队">
-              <div class="text-sm">{{ eventsStore.challenger.squad }}</div>
+            <FormItemSlot class="flex-row" label="分队">
+              <div class="ml-xs text-sm">
+                {{ eventsStore.challenger.squad }}
+              </div>
             </FormItemSlot>
 
             <!-- 开局干员 -->
-            <FormItemSlot label="干员">
-              <div class="flex gap-1 overflow-x-auto text-sm">
+            <FormItemSlot class="flex-row items-center" label="干员">
+              <div class="ml-xs flex flex-1 flex-row overflow-x-auto pb-2">
                 <Badge
                   v-for="operator in eventsStore.challenger.pickup"
                   :key="operator"
-                  class="cursor-pointer"
+                  class="cursor-pointer [&+&]:ml-1"
                   variant="outline"
                 >
                   {{ operator }}

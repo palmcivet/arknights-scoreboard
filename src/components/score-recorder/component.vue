@@ -1,6 +1,6 @@
 <template>
   <div :class="cn('score-recorder flex min-h-0 flex-col', $attrs.class ?? '')">
-    <div class="mb-xs flex flex-row items-center justify-between">
+    <div class="flex flex-row items-center justify-between">
       <div class="flex-1 text-left">
         <span class="text-xl font-semibold">得分记录</span>
       </div>
@@ -38,7 +38,7 @@
         v-if="!recordsStore.details.length"
         class="flex h-full flex-col items-center justify-center"
       >
-        <span class="my-xs text-sm">暂无记录</span>
+        <span class="my-sm text-sm">暂无记录</span>
       </div>
 
       <div v-else class="relative flex h-full flex-col">
@@ -46,7 +46,10 @@
           <div class="flex-1 pb-[54px] pr-sm">
             <div
               v-for="record in recordsStore.details"
-              class="flex flex-row items-center justify-between py-1"
+              :class="[
+                'flex flex-row items-center justify-between py-1',
+                'duration-500 animate-in fade-in slide-in-from-bottom-4 fill-mode-forwards',
+              ]"
             >
               <span class="text-sm">{{ record.label }}</span>
               <span class="text-sm">{{ record.score }}</span>
@@ -55,7 +58,7 @@
         </ScrollArea>
 
         <div
-          class="absolute bottom-0 left-0 right-0 flex h-12 flex-row items-center justify-between border-t-2 bg-background/80 pr-sm backdrop-blur-lg"
+          class="absolute bottom-0 left-0 right-0 flex h-12 flex-row items-center justify-between border-t bg-background/60 pr-sm backdrop-blur-lg"
         >
           <div class="flex flex-row items-center">
             <Icon class="size-5" icon="mdi:summation"></Icon>

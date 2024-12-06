@@ -1,20 +1,17 @@
 <template>
-  <div class="aks-app s-screen flex h-screen flex-col">
+  <div class="aks-app flex h-screen w-full flex-col">
     <Toaster></Toaster>
 
     <TooltipProvider :delay-duration="0">
-      <nav class="absolute top-0 z-40 w-full">
-        <Navigation></Navigation>
-      </nav>
-      <main class="size-full">
+      <Navigation>
         <RouterView></RouterView>
-      </main>
+      </Navigation>
     </TooltipProvider>
   </div>
 </template>
 
 <script lang="ts" setup>
+import Navigation from '@/components/navigation';
 import { Toaster } from '@/components/ui/toast';
 import { TooltipProvider } from '@/components/ui/tooltip';
-import Navigation from '@/components/navigation';
 </script>

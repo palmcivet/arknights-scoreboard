@@ -5,7 +5,6 @@ import App from './app.vue';
 import { router } from './router';
 
 import './styles/base.css';
-import './styles/animation.css';
 
 const pinia = createPinia();
 const app = createApp(App);

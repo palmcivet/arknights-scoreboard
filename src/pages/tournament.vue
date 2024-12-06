@@ -6,7 +6,7 @@
         class="min-w-[256px] max-w-[378px]"
         :default-size="24"
       >
-        <div class="flex h-full flex-col before:mt-14 md:pt-xs lg:pt-sm">
+        <div class="flex h-full flex-col before:mt-14 md:pt-sm lg:pt-md">
           <RuleLoader>
             <!-- 规则 -->
           </RuleLoader>
@@ -33,15 +33,17 @@
           <div
             :class="
               cn(
-                'mt-14 md:columns-3 md:py-xs lg:py-sm xl:columns-4',
+                'mt-14 py-xs md:columns-3 md:py-sm lg:py-md xl:columns-4',
                 'pr-xs sm:pr-sm md:pr-md lg:pr-lg xl:pr-xl'
               )
             "
           >
             <RuleLoader v-if="isSmall"></RuleLoader>
             <ScoringItem
-              class="break-inside-avoid-column [&+&]:mt-4"
-              v-for="scoring in recordsStore.rulesForm"
+              v-for="(scoring, index) in recordsStore.rulesForm"
+              :key="scoring.label + index"
+              :style="`animation-delay: ${index * 80}ms`"
+              class="break-inside-avoid-column opacity-0 transition-all motion-safe:animate-[fade-in-up_300ms_ease-out_forwards] [&+&]:mt-4"
               :scoring-item="scoring"
             ></ScoringItem>
           </div>

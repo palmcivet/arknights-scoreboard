@@ -1,7 +1,7 @@
 <template>
   <div :class="cn('rule-loader', $attrs.class ?? '')">
     <Collapsible :open="isExpanded" @update:open="onToggleCollapse">
-      <CollapsibleTrigger class="mb-xs flex w-full items-center">
+      <CollapsibleTrigger class="flex w-full items-center">
         <div class="flex-1 truncate text-left">
           <span class="text-xl font-semibold">
             {{ isEditing ? '切换赛事规则' : eventsStore.events.name }}
@@ -22,30 +22,26 @@
       </CollapsibleTrigger>
 
       <CollapsibleContent>
-        <div class="flex flex-col">
-          <template v-if="isEditing">
-            <FormItemSlot label="加载方式">
-              <Select
-                v-model="editingLoaderOption"
-                :default-value="editingLoaderOption"
+        <div class="mt-xs flex flex-col">
+          <Tabs
+            v-if="isEditing"
+            class="p-1"
+            v-model="editingLoaderOption"
+            :default-value="editingLoaderOption"
+          >
+            <TabsList class="w-full">
+              <TabsTrigger
+                class="w-1/3"
+                v-for="option in LOADER_OPTIONS"
+                :value="option.value"
               >
-                <SelectTrigger>
-                  <SelectValue placeholder="加载规则"></SelectValue>
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem
-                    v-for="option in LOADER_OPTIONS"
-                    :value="option.value"
-                  >
-                    {{ option.label }}
-                  </SelectItem>
-                </SelectContent>
-              </Select>
-            </FormItemSlot>
+                {{ option.label }}
+              </TabsTrigger>
+            </TabsList>
 
-            <FormItemSlot class="flex-auto truncate" label="选择规则">
+            <div>
               <!-- 预设 -->
-              <div v-if="editingLoaderOption === RULE_SOURCE.PRESET">
+              <TabsContent :value="RULE_SOURCE.PRESET">
                 <Select
                   v-model="editingPresetRule"
                   :default-value="editingPresetRule"
@@ -63,18 +59,18 @@
                     </SelectItem>
                   </SelectContent>
                 </Select>
-              </div>
+              </TabsContent>
               <!-- 本地 -->
-              <div v-else-if="editingLoaderOption === RULE_SOURCE.LOCAL">
+              <TabsContent :value="RULE_SOURCE.LOCAL">
                 <Input
                   type="file"
                   accept=".json"
                   placeholder="点击上传规则文件"
                   @change="onLoadLocalRule"
                 ></Input>
-              </div>
+              </TabsContent>
               <!-- 远程 -->
-              <div v-else>
+              <TabsContent :value="RULE_SOURCE.REMOTE">
                 <Input
                   type="url"
                   placeholder="规则文件的 URL"
@@ -82,14 +78,17 @@
                   @blur="onLoadRemoteRule"
                   @keydown.enter="onLoadRemoteRule"
                 ></Input>
-              </div>
-            </FormItemSlot>
-          </template>
+              </TabsContent>
+            </div>
+          </Tabs>
 
-          <template v-else>
+          <div
+            v-else
+            class="duration-500 animate-in fade-in slide-in-from-bottom-4 fill-mode-forwards"
+          >
             <blockquote
               v-if="eventsStore.events.brief"
-              class="my-xs border-l-2 pl-xs text-sm italic"
+              class="mb-xs border-l-2 pl-xs text-sm italic"
             >
               {{ eventsStore.events.brief }}
             </blockquote>
@@ -147,7 +146,7 @@
                 </HoverCardContent>
               </HoverCard>
             </div>
-          </template>
+          </div>
         </div>
       </CollapsibleContent>
     </Collapsible>
@@ -182,13 +181,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import { ToastAction } from '@/components/ui/toast';
 import { useToast } from '@/components/ui/toast/use-toast';
-import { FormItemSlot, logger } from '@/components/widget';
+import { logger } from '@/components/widget';
 import { cn } from '@/helpers/tailwind-utils';
 import { LOADER_OPTIONS, PRESET_RULES, RULE_SOURCE } from '@/constants';
-import { useApiStore, useEventsStore } from '@/engine';
+import { api, useEventsStore } from '@/engine';
 import type { RulesType } from '@/engine';
 
 defineOptions({
@@ -198,7 +198,6 @@ defineOptions({
 const { toast } = useToast();
 
 const eventsStore = useEventsStore();
-const apiStore = useApiStore();
 
 const editingLoaderOption = ref<RULE_SOURCE>(LOADER_OPTIONS[0].value);
 const editingPresetRule = ref<string>(PRESET_RULES[0].url);
@@ -227,7 +226,7 @@ const onToggleEdit = () => {
 };
 
 function dispatchLoadRule(validRules: RulesType) {
-  apiStore.triggerLoadRule(validRules);
+  api.loadRule(validRules);
 }
 
 async function onLoadLocalRule(event: InputEvent) {

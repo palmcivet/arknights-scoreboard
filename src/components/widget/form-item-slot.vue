@@ -1,7 +1,6 @@
 <template>
   <div :class="cn('flex flex-col p-1', $attrs.class ?? '')">
     <Label class="mb-2 text-sm">{{ label }}</Label>
-
     <slot></slot>
   </div>
 </template>
