@@ -1,24 +1,23 @@
 <template>
-  <div class="aks-tournament flex h-full w-full flex-row md:gap-md lg:gap-lg">
+  <div :class="cn(MAIN_CONTAINER_STYLE, 'aks-tournament h-full w-full')">
     <ResizablePanelGroup :direction="isSmall ? 'vertical' : 'horizontal'">
       <ResizablePanel
         v-if="!isSmall"
-        class="h-full min-w-[256px] max-w-[378px] pl-md"
+        class="min-w-[256px] max-w-[378px]"
         :default-size="24"
       >
-        <div class="flex h-full flex-col gap-xs pt-md">
-          <!-- 规则 -->
-          <RuleLoader></RuleLoader>
-
-          <Separator></Separator>
-
-          <!-- 初始构建 -->
-          <StartingBuild></StartingBuild>
-
-          <Separator></Separator>
-
-          <!-- 计分板 -->
-          <ScoreRecorder></ScoreRecorder>
+        <div class="flex h-full flex-col before:mt-14 md:pt-xs lg:pt-sm">
+          <RuleLoader>
+            <!-- 规则 -->
+          </RuleLoader>
+          <Separator class="my-xs"></Separator>
+          <StartingBuild>
+            <!-- 初始构建 -->
+          </StartingBuild>
+          <Separator class="my-xs"></Separator>
+          <ScoreRecorder>
+            <!-- 计分板 -->
+          </ScoreRecorder>
         </div>
       </ResizablePanel>
 
@@ -28,16 +27,14 @@
         class="md:mx-sm"
       ></ResizableHandle>
 
-      <ResizablePanel class="h-full">
+      <ResizablePanel>
         <!-- 计分板 -->
         <ScrollArea class="h-full">
           <div
             :class="
               cn(
-                'py-md md:columns-3 xl:columns-4',
-                isSmall
-                  ? 'sm:px-sm md:px-md lg:px-lg xl:px-xl'
-                  : 'sm:pr-sm md:pr-md lg:pr-lg xl:pr-xl'
+                'mt-14 md:columns-3 md:py-xs lg:py-sm xl:columns-4',
+                'pr-xs sm:pr-sm md:pr-md lg:pr-lg xl:pr-xl'
               )
             "
           >
@@ -68,7 +65,7 @@ import { Separator } from '@/components/ui/separator';
 import RuleLoader from '@/components/rule-loader';
 import StartingBuild from '@/components/starting-build';
 import ScoreRecorder from '@/components/score-recorder';
-import { MOBILE_BREAKPOINT } from '@/constants';
+import { MAIN_CONTAINER_STYLE, MOBILE_BREAKPOINT } from '@/constants';
 import { useRecordsStore } from '@/engine';
 import { cn } from '@/helpers/tailwind-utils';
 

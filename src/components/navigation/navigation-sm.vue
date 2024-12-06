@@ -1,6 +1,12 @@
 <template>
   <div
-    class="flex w-screen flex-row items-center justify-between border-r bg-background/60 p-2 backdrop-blur-lg"
+    :class="
+      cn(
+        CONTAINER_STYLE,
+        'flex h-14 flex-row items-center justify-between',
+        $attrs.class ?? ''
+      )
+    "
   >
     <Sheet>
       <SheetTrigger as-child>
@@ -9,19 +15,23 @@
         </Button>
       </SheetTrigger>
       <SheetContent side="left" class="w-1/2">
-        <nav class="mt-sm flex flex-col gap-2">
-          <NavItemSm v-for="menu in MENU_LIST" :menu="menu"></NavItemSm>
-        </nav>
+        <div class="mt-sm flex flex-col gap-2">
+          <RouterLink
+            v-for="menu in MENU_LIST"
+            :class="cn(NAV_ITEM_STYLE, 'gap-xs py-1 pl-sm', $attrs.class ?? '')"
+            :to="menu.route"
+            active-class="text-primary bg-muted rounded-lg"
+          >
+            <Icon :icon="menu.icon" class="size-5"></Icon>
+            <span class="text-md font-normal">{{ menu.label }}</span>
+          </RouterLink>
+        </div>
       </SheetContent>
     </Sheet>
 
     <div class="flex flex-row gap-1">
       <NavButtons></NavButtons>
     </div>
-  </div>
-
-  <div class="flex h-screen min-h-0 w-screen flex-1">
-    <slot></slot>
   </div>
 </template>
 
@@ -30,8 +40,9 @@ import { Icon } from '@iconify/vue';
 
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { MENU_LIST } from '@/constants';
-import NavItemSm from './nav-item-sm.vue';
+import { cn } from '@/helpers/tailwind-utils';
+import { CONTAINER_STYLE, MENU_LIST } from '@/constants';
+import { NAV_ITEM_STYLE } from './style';
 import NavButtons from './nav-buttons.vue';
 
 defineOptions({

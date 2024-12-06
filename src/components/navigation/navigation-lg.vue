@@ -1,36 +1,46 @@
 <template>
   <div
-    class="flex h-screen flex-col items-center border-r bg-background/60 p-2 text-muted-foreground backdrop-blur-lg"
+    :class="
+      cn(CONTAINER_STYLE, 'flex h-14 flex-row items-center', $attrs.class ?? '')
+    "
   >
-    <nav class="flex flex-1 flex-col gap-2">
-      <NavItemLg v-for="menu in MENU_LIST" :menu="menu"></NavItemLg>
-    </nav>
+    <div class="flex flex-1 flex-row items-center justify-between">
+      <RouterLink to="/">LOGO</RouterLink>
 
-    <div class="flex flex-col gap-1">
+      <div class="flex flex-row gap-xs">
+        <RouterLink
+          v-for="menu in MENU_LIST"
+          :class="
+            cn(
+              NAV_ITEM_STYLE,
+              'rounded-lg px-2 py-1 font-normal hover:text-primary',
+              $attrs.class ?? ''
+            )
+          "
+          :to="menu.route"
+          active-class="text-primary font-bold"
+        >
+          <Icon :icon="menu.icon" class="size-5"></Icon>
+          <span class="text-md ml-1">{{ menu.label }}</span>
+        </RouterLink>
+      </div>
+    </div>
+
+    <div class="ml-sm flex flex-row">
       <NavButtons></NavButtons>
     </div>
-  </div>
-
-  <div class="flex min-w-0 flex-1">
-    <slot></slot>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { Icon } from '@iconify/vue';
 
-import { MENU_LIST } from '@/constants';
-import NavItemLg from './nav-item-lg.vue';
+import { cn } from '@/helpers/tailwind-utils';
+import { CONTAINER_STYLE, MENU_LIST } from '@/constants';
 import NavButtons from './nav-buttons.vue';
+import { NAV_ITEM_STYLE } from './style';
 
 defineOptions({
   name: 'NavigationLg',
 });
-
-const isFixed = ref(false);
-
-const showNav = ref(false);
-
-const route = useRoute();
 </script>

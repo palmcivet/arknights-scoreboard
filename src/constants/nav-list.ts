@@ -1,7 +1,6 @@
 export const NAV_LIST = {
   TOURNAMENT: '/tournament',
   BINGO: '/bingo',
-  SAVING: '/saving',
   EDITOR: '/editor',
 };
 
@@ -22,12 +21,7 @@ export const MENU_LIST = [
     route: NAV_LIST.EDITOR,
   },
   {
-    label: '记录',
-    icon: 'mdi:clipboard-list-outline',
-    route: NAV_LIST.SAVING,
-  },
-  {
-    label: '帮助',
+    label: '文档',
     icon: 'mdi:information-slab-circle-outline',
     route: '/docs',
   },

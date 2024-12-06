@@ -1,23 +1,20 @@
 <template>
   <div
+    v-if="showNavigation"
     :class="
       cn(
-        'flex size-full',
-        isSmall ? 'flex-col' : 'flex-row',
+        'border-b border-border bg-background/60 backdrop-blur-lg',
         $attrs.class ?? ''
       )
     "
   >
-    <NavigationSm v-if="isSmall">
-      <slot></slot>
-    </NavigationSm>
-    <NavigationLg v-else>
-      <slot></slot>
-    </NavigationLg>
+    <NavigationSm v-if="isSmall"></NavigationSm>
+    <NavigationLg v-else></NavigationLg>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { ref } from 'vue';
 import { useMediaQuery } from '@vueuse/core';
 
 import { cn } from '@/helpers/tailwind-utils';
@@ -29,5 +26,6 @@ defineOptions({
   name: 'Navigation',
 });
 
+const showNavigation = ref(true);
 const isSmall = useMediaQuery(MOBILE_BREAKPOINT);
 </script>

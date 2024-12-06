@@ -79,14 +79,13 @@ import {
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/helpers/tailwind-utils';
-import { useApiStore, useRecordsStore } from '@/engine';
+import { useRecordsStore } from '@/engine';
 
 defineOptions({
   name: 'ScoreRecorder',
 });
 
 const recordsStore = useRecordsStore();
-const apiStore = useApiStore();
 
 const onResetRecords = () => {
   recordsStore.resetRecords();
