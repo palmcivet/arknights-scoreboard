@@ -1,0 +1,291 @@
+{
+  "name": "仙术杯#6 萨卡兹的无终奇语",
+  "brief": "致力打造一个既精彩又有趣，还能学习打法的集成战略比赛。",
+  "description": "## 比赛形式与晋级规则\n\n1. 本次比赛仍采用战队赛的形式，比赛难度统一设定为 **直面魂灵 15 级**\n2. 比赛共划分成留置队伍，每支队伍包含 4 名选手，其中 3 名选手为「讲述者」，1 名选手为「创想家」。\n",
+  "url": "https://live.bilibili.com/blackboard/era/M8mMwutyI06WCb0R.html",
+  "host": "龙哥哥今天又鸽了",
+  "schedule": "初赛 2024年12月14日-12月22日，决赛 2024年12月27日-12月29日",
+  "author": "Palm_Civet",
+  "engine": "tournment",
+  "version": "0.0.1",
+  "engineVersion": "0.0.1",
+  "background": "https://i0.hdslb.com/bfs/activity-plat/static/a1f377c543c4479b3713b196bd616cab/cP3GZmtjJ0.png",
+  "items": [
+    {
+      "type": "group",
+      "label": "第三层关底",
+      "description": "对应规则 03",
+      "children": [
+        {
+          "type": "select",
+          "label": "第三层关底",
+          "options": [
+            {
+              "label": "离歌的庭院",
+              "score": 40
+            },
+            {
+              "label": "赴敌者",
+              "score": 40
+            },
+            {
+              "label": "王冠之下",
+              "score": 40
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": "紧急关卡",
+      "description": "对应规则 03。首次通关时可获得积分",
+      "children": [
+        {
+          "type": "select",
+          "label": "紧急神出鬼没",
+          "options": [
+            {
+              "label": "仅通关",
+              "score": 30
+            },
+            {
+              "label": "无漏通关",
+              "score": 50
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "label": "紧急建制",
+          "options": [
+            {
+              "label": "仅通关",
+              "score": 50
+            },
+            {
+              "label": "无漏通关",
+              "score": 70
+            }
+          ]
+        },
+        {
+          "type": "check",
+          "label": "紧急混沌",
+          "score": 30
+        },
+        {
+          "type": "check",
+          "label": "紧急神圣的渴求",
+          "score": 40
+        },
+        {
+          "type": "check",
+          "label": "紧急谋求共识",
+          "score": 50
+        },
+        {
+          "type": "check",
+          "label": "紧急外道",
+          "score": 70
+        },
+        {
+          "type": "check",
+          "label": "紧急洞天福地",
+          "score": 90
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": "第五层关底",
+      "description": "对应规则 02。",
+      "children": [
+        {
+          "type": "select",
+          "label": "第五层关底",
+          "options": [
+            {
+              "label": "朝谒",
+              "score": 100
+            },
+            {
+              "label": "朝谒（思维混乱）",
+              "score": 110
+            },
+            {
+              "label": "魂灵朝谒",
+              "score": 200
+            },
+            {
+              "label": "魂灵朝谒（思维混乱）",
+              "score": 220
+            },
+            {
+              "label": "思维矫正",
+              "score": 170
+            },
+            {
+              "label": "思维矫正（思维混乱）",
+              "score": 180
+            },
+            {
+              "label": "紧急授课",
+              "score": 40
+            },
+            {
+              "label": "紧急授课（思维混乱）",
+              "score": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": "第六层关底",
+      "description": "对应规则 02。",
+      "children": [
+        {
+          "type": "select",
+          "label": "授法",
+          "options": [
+            {
+              "label": "通关授法",
+              "score": 100
+            },
+            {
+              "label": "通关授法（思维混乱）",
+              "score": 130
+            },
+            {
+              "label": "通关授法（携带「滚动先祖」）",
+              "score": 140
+            },
+            {
+              "label": "通关授法（携带「滚动先祖」且思维混乱）",
+              "score": 160
+            },
+            {
+              "label": "击杀奎隆（思维混乱）",
+              "score": 700
+            },
+            {
+              "label": "击杀奎隆（携带「滚动先祖」）",
+              "score": 800
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "label": "储备分",
+          "options": [
+            {
+              "label": "失效",
+              "score": 0
+            },
+            {
+              "label": "未携带滚动先祖",
+              "score": 100
+            },
+            {
+              "label": "携带滚动先祖",
+              "score": 120
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "鸭/狗/熊/鼠",
+      "description": "对应规则 04。每击杀一只 +20 分。",
+      "type": "group",
+      "children": [
+        {
+          "type": "count",
+          "label": "鸭",
+          "score": 20
+        },
+        {
+          "type": "count",
+          "label": "狗",
+          "score": 20
+        },
+        {
+          "type": "count",
+          "label": "熊",
+          "score": 20
+        },
+        {
+          "type": "count",
+          "label": "鼠",
+          "score": 20
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": "临时招募",
+      "description": "对应规则 01。",
+      "children": [
+        {
+          "type": "count",
+          "label": "六星干员",
+          "score": 50
+        },
+        {
+          "type": "count",
+          "label": "五星干员",
+          "score": 20
+        },
+        {
+          "type": "count",
+          "label": "四星干员",
+          "score": 10
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": "结算",
+      "children": [
+        {
+          "type": "input",
+          "label": "基础得分",
+          "score": 1
+        },
+        {
+          "type": "count",
+          "description": "对应规则 05。结算时每个藏品 +5 分",
+          "label": "藏品",
+          "score": 5
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": "额外",
+      "description": "分数奖励和惩罚",
+      "children": [
+        {
+          "type": "check",
+          "label": "「无主的回忆」补偿分",
+          "description": "禁止选择「无助的回忆」藏品，并在结算分数时补偿 13 分。",
+          "score": 13
+        },
+        {
+          "type": "check",
+          "label": "完赛奖励",
+          "description": "对应规则 06。当全队 4 名选手均完成比赛，并且分别战胜奎隆、特雷西斯、弗莱蒙特时，可获得 300 分。",
+          "score": 300
+        },
+        {
+          "type": "count",
+          "label": "商店超支扣分",
+          "description": "能支取总源石锭余额数中的 200 点。若超出 200 点，每超出 1 点便扣除战队总分 50 分。",
+          "score": -50
+        }
+      ]
+    }
+  ]
+}

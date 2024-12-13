@@ -1,106 +1,34 @@
 {
   "name": "仙术杯#5 探索者的银淞止境",
-  "description": "致力打造一个既精彩又有趣，还能学习打法的集成战略比赛。",
+  "brief": "致力打造一个既精彩又有趣，还能学习打法的集成战略比赛。",
   "url": "https://www.bilibili.com/blackboard/activity-cXBrWYNabu.html",
   "host": "龙哥哥今天又鸽了",
   "schedule": "初赛 2024年3月9日-3月17日，决赛 2024年3月19日-3月21日",
   "author": "Palm_Civet",
   "engine": "tournment",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engineVersion": "0.0.1",
   "background": "https://i0.hdslb.com/bfs/activity-plat/static/1bf089108fef03beeb184eb7afb655f8/W2tcndlVRT_w1920_h1080.png",
   "items": [
     {
       "type": "group",
-      "label": "临时招募",
-      "description": "对应规则 01。使用“愤怒”宣言版获得的临时招募干员不再计算得分。",
+      "label": "第三层隐藏 Boss",
+      "description": "对应规则 05 隐藏 Boss。",
       "children": [
         {
-          "type": "count",
-          "label": "六星干员",
+          "type": "check",
+          "label": "大地醒转",
           "score": 50
         },
         {
-          "type": "count",
-          "label": "五星干员",
-          "score": 20
+          "type": "check",
+          "label": "呼吸",
+          "score": 50
         },
         {
-          "type": "count",
-          "label": "四星干员",
-          "score": 10
-        }
-      ]
-    },
-    {
-      "type": "group",
-      "label": "结局",
-      "description": "对应规则 03。",
-      "children": [
-        {
-          "type": "select",
-          "label": "五层关底",
-          "options": [
-            {
-              "label": "深寒造像",
-              "score": 150
-            },
-            {
-              "label": "萨米之熵",
-              "score": 30
-            },
-            {
-              "label": "虚无之偶",
-              "score": 120
-            }
-          ]
-        },
-        {
-          "type": "select",
-          "label": "园丁/哨兵",
-          "options": [
-            {
-              "label": "园丁",
-              "score": 50
-            },
-            {
-              "label": "哨兵",
-              "score": 300
-            }
-          ]
-        },
-        {
-          "type": "select",
-          "label": "时光之沙/迈入永恒",
-          "options": [
-            {
-              "label": "时光之沙",
-              "score": 100
-            },
-            {
-              "label": "迈入永恒",
-              "score": 150
-            }
-          ]
-        },
-        {
-          "type": "select",
-          "label": "结局连打",
-          "description": "对应规则 02 和 04。仅在最终完成结局“终始” + “最深处的一瞥”，并且全程未进入过一次树篱之途时获得：150 分；\n在“终始”结局基础上，完成“直至冬夜降临”结局时，额外获得 100 分；\n在“终始”结局基础上，完成“越过群山”结局，且关卡为<深寒造像>时，额外获得 100 分。",
-          "options": [
-            {
-              "label": "34 连打且未进过树洞",
-              "score": 150
-            },
-            {
-              "label": "24 连打",
-              "score": 100
-            },
-            {
-              "label": "34 连打",
-              "score": 150
-            }
-          ]
+          "type": "check",
+          "label": "夺树者",
+          "score": 50
         }
       ]
     },
@@ -199,28 +127,6 @@
     },
     {
       "type": "group",
-      "label": "第三层隐藏 Boss",
-      "description": "对应规则 05 隐藏 Boss。",
-      "children": [
-        {
-          "type": "check",
-          "label": "大地醒转",
-          "score": 50
-        },
-        {
-          "type": "check",
-          "label": "呼吸",
-          "score": 50
-        },
-        {
-          "type": "check",
-          "label": "夺树者",
-          "score": 50
-        }
-      ]
-    },
-    {
-      "type": "group",
       "label": "隐藏关卡",
       "description": "对应规则 05 隐藏关卡。",
       "children": [
@@ -295,9 +201,81 @@
       ]
     },
     {
+      "type": "group",
+      "label": "结局",
+      "description": "对应规则 03。",
+      "children": [
+        {
+          "type": "select",
+          "label": "第五层关底",
+          "options": [
+            {
+              "label": "深寒造像",
+              "score": 150
+            },
+            {
+              "label": "萨米之熵",
+              "score": 30
+            },
+            {
+              "label": "虚无之偶",
+              "score": 120
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "label": "园丁/哨兵",
+          "options": [
+            {
+              "label": "园丁",
+              "score": 50
+            },
+            {
+              "label": "哨兵",
+              "score": 300
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "label": "时光之沙/迈入永恒",
+          "options": [
+            {
+              "label": "时光之沙",
+              "score": 100
+            },
+            {
+              "label": "迈入永恒",
+              "score": 150
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "label": "结局连打",
+          "description": "对应规则 02 和 04。仅在最终完成结局“终始” + “最深处的一瞥”，并且全程未进入过一次树篱之途时获得：150 分；\n在“终始”结局基础上，完成“直至冬夜降临”结局时，额外获得 100 分；\n在“终始”结局基础上，完成“越过群山”结局，且关卡为<深寒造像>时，额外获得 100 分。",
+          "options": [
+            {
+              "label": "34 连打且未进过树洞",
+              "score": 150
+            },
+            {
+              "label": "24 连打",
+              "score": 100
+            },
+            {
+              "label": "34 连打",
+              "score": 150
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "group",
       "label": "鸭/狗/熊",
       "description": "对应规则 07。每击杀一只 +20 分，仅在<豪华车队>与<正义使者>两张图击杀的狗/熊/鸭不再独立计算分数。",
-      "type": "group",
       "children": [
         {
           "type": "count",
@@ -317,10 +295,15 @@
       ]
     },
     {
-      "label": "藏品和密文板",
-      "description": "对应规则 08。结算时每个藏品 +20 分，每个宣言版 +5 分。",
       "type": "group",
+      "label": "结算",
+      "description": "对应规则 08。结算时每个藏品 +20 分，每个宣言版 +5 分。",
       "children": [
+        {
+          "type": "input",
+          "label": "基础得分",
+          "score": 1
+        },
         {
           "type": "count",
           "label": "藏品",
@@ -330,6 +313,28 @@
           "type": "count",
           "label": "密文板",
           "score": 5
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": "临时招募",
+      "description": "对应规则 01。使用“愤怒”宣言版获得的临时招募干员不再计算得分。",
+      "children": [
+        {
+          "type": "count",
+          "label": "六星干员",
+          "score": 50
+        },
+        {
+          "type": "count",
+          "label": "五星干员",
+          "score": 20
+        },
+        {
+          "type": "count",
+          "label": "四星干员",
+          "score": 10
         }
       ]
     }
