@@ -18,11 +18,10 @@
         <div class="mt-sm flex flex-col gap-2">
           <RouterLink
             v-for="menu in MENU_LIST"
-            :class="cn(NAV_ITEM_STYLE, 'gap-xs py-1 pl-sm', $attrs.class ?? '')"
+            :class="cn(NAV_ITEM_STYLE, 'gap-xs py-1 pl-sm')"
             :to="menu.route"
             active-class="text-primary bg-muted rounded-lg"
           >
-            <Icon :icon="menu.icon" class="size-5"></Icon>
             <span class="text-md font-normal">{{ menu.label }}</span>
           </RouterLink>
         </div>

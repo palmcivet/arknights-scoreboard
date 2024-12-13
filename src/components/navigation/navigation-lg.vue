@@ -7,34 +7,31 @@
     <div class="flex flex-1 flex-row items-center justify-between">
       <RouterLink to="/">LOGO</RouterLink>
 
-      <div class="flex flex-row gap-xs">
+      <div class="flex flex-row sm:gap-sm md:gap-md">
         <RouterLink
           v-for="menu in MENU_LIST"
-          :class="
-            cn(
-              NAV_ITEM_STYLE,
-              'rounded-lg px-2 py-1 font-normal hover:text-primary',
-              $attrs.class ?? ''
-            )
-          "
+          :class="cn(NAV_ITEM_STYLE, 'relative text-sm font-normal')"
           :to="menu.route"
-          active-class="text-primary font-bold"
+          active-class="after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-primary"
+          exact
         >
-          <Icon :icon="menu.icon" class="size-5"></Icon>
-          <span class="text-md ml-1">{{ menu.label }}</span>
+          <span>{{ menu.label }}</span>
         </RouterLink>
       </div>
     </div>
 
-    <div class="ml-sm flex flex-row">
+    <div class="mx-xs">
+      <Separator class="ml-2 py-xs" orientation="vertical"></Separator>
+    </div>
+
+    <div class="flex flex-row gap-2">
       <NavButtons></NavButtons>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { Icon } from '@iconify/vue';
-
+import { Separator } from '@/components/ui/separator';
 import { cn } from '@/helpers/tailwind-utils';
 import { CONTAINER_STYLE, MENU_LIST } from '@/constants';
 import NavButtons from './nav-buttons.vue';

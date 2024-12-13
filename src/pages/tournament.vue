@@ -1,5 +1,5 @@
 <template>
-  <div :class="cn(MAIN_CONTAINER_STYLE, 'aks-tournament h-full w-full')">
+  <div :class="cn(MAIN_CONTAINER_STYLE, 'aks-tournament size-full')">
     <ResizablePanelGroup :direction="isSmall ? 'vertical' : 'horizontal'">
       <ResizablePanel
         v-if="!isSmall"
@@ -24,7 +24,7 @@
       <ResizableHandle
         v-if="!isSmall"
         with-handle
-        class="md:mx-sm"
+        class="md:mx-sm lg:mx-md"
       ></ResizableHandle>
 
       <ResizablePanel>
@@ -42,8 +42,11 @@
             <ScoringItem
               v-for="(scoring, index) in recordsStore.rulesForm"
               :key="scoring.label + index"
-              :style="`animation-delay: ${index * 80}ms`"
-              class="break-inside-avoid-column opacity-0 transition-all motion-safe:animate-[fade-in-up_300ms_ease-out_forwards] [&+&]:mt-4"
+              :style="`animation-delay: ${index * 60}ms`"
+              :class="[
+                'break-inside-avoid-column',
+                'opacity-0 transition-all motion-safe:animate-[fade-in-up_300ms_ease-out_forwards] [&+&]:mt-4',
+              ]"
               :scoring-item="scoring"
             ></ScoringItem>
           </div>
