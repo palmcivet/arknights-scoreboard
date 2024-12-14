@@ -1,5 +1,9 @@
 <template>
-  <ScoringItemSlot :scoring-item="scoringItem" :score="record.score">
+  <ScoringItemSlot
+    :class="cn('scoring-item-check', $attrs.class ?? '')"
+    :scoring-item="scoringItem"
+    :score="record.score"
+  >
     <div class="flex items-center justify-between">
       <div class="flex items-center text-sm">
         <span class="w-8 text-right">{{ scoringItem.score }}</span>
@@ -17,6 +21,7 @@ import type { PropType } from 'vue';
 import { Switch } from '@/components/ui/switch';
 import { useRecordsStore } from '@/engine';
 import type { ScoringItemCheck } from '@/engine';
+import { cn } from '@/helpers/tailwind-utils';
 import ScoringItemSlot from './item-slot.vue';
 
 defineOptions({

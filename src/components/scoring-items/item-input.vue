@@ -1,5 +1,9 @@
 <template>
-  <ScoringItemSlot :scoring-item="scoringItem" :score="record.score">
+  <ScoringItemSlot
+    :class="cn('scoring-item-group', $attrs.class ?? '')"
+    :scoring-item="scoringItem"
+    :score="record.score"
+  >
     <div class="flex items-center justify-between gap-xs">
       <div class="flex items-center text-sm">
         <span class="w-8 text-right">{{ inputValue }}</span>
@@ -29,6 +33,7 @@ import {
 } from '@/components/ui/number-field';
 import { useRecordsStore } from '@/engine';
 import type { ScoringItemInput } from '@/engine';
+import { cn } from '@/helpers/tailwind-utils';
 import ScoringItemSlot from './item-slot.vue';
 
 defineOptions({

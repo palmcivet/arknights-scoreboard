@@ -1,5 +1,9 @@
 <template>
-  <ScoringItemSlot :scoring-item="scoringItem" :score="record.score">
+  <ScoringItemSlot
+    :class="cn('scoring-item-count', $attrs.class ?? '')"
+    :scoring-item="scoringItem"
+    :score="record.score"
+  >
     <div class="flex items-center justify-between gap-xs">
       <div class="flex items-center text-sm">
         <span class="w-8 text-right">{{ scoringItem.score }}</span>
@@ -35,6 +39,7 @@ import {
 import { useRecordsStore } from '@/engine';
 import type { ScoringItemCount } from '@/engine';
 import ScoringItemSlot from './item-slot.vue';
+import { cn } from '@/helpers/tailwind-utils';
 
 defineOptions({
   name: 'ScoringItemCount',

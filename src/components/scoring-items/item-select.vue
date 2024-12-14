@@ -1,5 +1,9 @@
 <template>
-  <ScoringItemSlot :scoring-item="scoringItem" :score="record.score">
+  <ScoringItemSlot
+    :class="cn('scoring-item-group', $attrs.class ?? '')"
+    :scoring-item="scoringItem"
+    :score="record.score"
+  >
     <Select v-model="selected" @update:model-value="onChange">
       <SelectTrigger class="flex-1 truncate">
         <SelectValue :placeholder="scoringItem.label"></SelectValue>
@@ -31,6 +35,7 @@ import {
 import { useRecordsStore } from '@/engine';
 import type { ScoringItemSelect } from '@/engine';
 import ScoringItemSlot from './item-slot.vue';
+import { cn } from '@/helpers/tailwind-utils';
 
 defineOptions({
   name: 'ScoringItemSelect',

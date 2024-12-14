@@ -1,13 +1,15 @@
 import { createWebHistory, createRouter } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
 
-import { NAV_LIST } from '@/constants';
-import Tournament from '@/pages/tournament.vue';
+import Points from '@/pages/points.vue';
+import PointsEvents from '@/pages/points-events.vue';
 import Editor from '@/pages/editor.vue';
 
 const routes: Array<RouteRecordRaw> = [
-  { path: NAV_LIST.TOURNAMENT, component: Tournament },
-  { path: NAV_LIST.EDITOR, component: Editor },
+  { path: '/points', component: Points },
+  { path: '/points/events', component: PointsEvents },
+  { path: '/points/:eventId', component: PointsEvents },
+  { path: '/editor', component: Editor },
 ];
 
 export const router = createRouter({
