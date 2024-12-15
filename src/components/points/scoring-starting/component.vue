@@ -56,9 +56,9 @@
             v-else-if="!eventsStore.starting"
             class="flex flex-col items-center"
           >
-            <Button variant="ghost" size="sm" @click="onToggleEdit">
+            <Button variant="secondary" size="sm" @click="onToggleEdit">
               <Icon class="size-4" icon="mdi:fountain-pen-tip"></Icon>
-              <span class="ml-1">填写</span>
+              <span class="mx-2">填写</span>
             </Button>
           </div>
 

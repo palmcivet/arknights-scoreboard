@@ -23,130 +23,13 @@
 
       <CollapsibleContent>
         <div class="mt-xs flex flex-col">
-          <Tabs
-            v-if="isEditing"
-            class="p-1"
-            v-model="editingLoaderOption"
-            :default-value="editingLoaderOption"
-          >
-            <TabsList class="w-full">
-              <TabsTrigger
-                class="w-1/3"
-                v-for="option in LOADER_OPTIONS"
-                :value="option.value"
-              >
-                {{ option.label }}
-              </TabsTrigger>
-            </TabsList>
-
-            <div>
-              <!-- 预设 -->
-              <TabsContent :value="RULE_SOURCE.PRESET">
-                <Select
-                  v-model="editingPresetRule"
-                  :default-value="editingPresetRule"
-                  @update:model-value="onLoadPresetRule"
-                >
-                  <SelectTrigger>
-                    <SelectValue
-                      class="truncate"
-                      placeholder="选择预设规则"
-                    ></SelectValue>
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem v-for="rule in PRESET_RULES" :value="rule.url">
-                      {{ rule.name }}
-                    </SelectItem>
-                  </SelectContent>
-                </Select>
-              </TabsContent>
-              <!-- 本地 -->
-              <TabsContent :value="RULE_SOURCE.LOCAL">
-                <Input
-                  type="file"
-                  accept=".json"
-                  placeholder="点击上传规则文件"
-                  @change="onLoadLocalRule"
-                ></Input>
-              </TabsContent>
-              <!-- 远程 -->
-              <TabsContent :value="RULE_SOURCE.REMOTE">
-                <Input
-                  type="url"
-                  placeholder="规则文件的 URL"
-                  v-model="editingRemoteURL"
-                  @blur="onLoadRemoteRule"
-                  @keydown.enter="onLoadRemoteRule"
-                ></Input>
-              </TabsContent>
-            </div>
-          </Tabs>
-
-          <div
+          <RulesLoader v-if="isEditing" @update="onUpdateRules"></RulesLoader>
+          <RulesInfo
             v-else
             class="duration-500 animate-in fade-in slide-in-from-bottom-4 fill-mode-forwards"
-          >
-            <blockquote
-              v-if="originalRules.brief"
-              class="mb-xs border-l-2 pl-xs text-sm italic"
-            >
-              {{ originalRules.brief }}
-            </blockquote>
-
-            <div class="flex items-center justify-between gap-xs">
-              <div>
-                <a
-                  v-if="originalRules.url"
-                  target="_blank"
-                  :href="originalRules.url"
-                >
-                  <Badge
-                    variant="outline"
-                    class="border-blue-400 bg-blue-100 text-blue-800 dark:bg-gray-700 dark:text-blue-400"
-                  >
-                    <Icon class="size-4" icon="mdi:link-variant"></Icon>
-                    <span class="ml-1">专题页</span>
-                  </Badge>
-                </a>
-
-                <a
-                  v-if="eventsURL"
-                  class="ml-xs"
-                  target="_blank"
-                  :href="eventsURL"
-                >
-                  <Badge
-                    variant="outline"
-                    class="border-green-400 bg-green-100 text-green-800 dark:bg-gray-700 dark:text-green-400"
-                  >
-                    <Icon class="size-4" icon="mdi:web-check"></Icon>
-                    <span class="ml-1">比赛页</span>
-                  </Badge>
-                </a>
-              </div>
-
-              <HoverCard>
-                <HoverCardTrigger>
-                  <div
-                    class="text-xs hover:cursor-pointer hover:underline hover:underline-offset-4"
-                  >
-                    <code>版本 v{{ originalRules.version }}</code>
-                  </div>
-                </HoverCardTrigger>
-                <HoverCardContent class="w-auto">
-                  <span v-if="originalRules.author" class="text-sm">
-                    规则作者：{{ originalRules.author }}
-                  </span>
-                  <span class="text-sm">
-                    引擎版本：<code>{{ originalRules.engineVersion }}</code>
-                  </span>
-                  <span v-if="originalRules.changelog" class="text-sm">
-                    更新日志：{{ originalRules.changelog }}
-                  </span>
-                </HoverCardContent>
-              </HoverCard>
-            </div>
-          </div>
+            :rules="originalRules"
+            :events-url="eventsURL"
+          ></RulesInfo>
         </div>
       </CollapsibleContent>
     </Collapsible>
@@ -154,15 +37,11 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref, h, computed } from 'vue';
+import { onMounted, ref, computed } from 'vue';
 import { storeToRefs } from 'pinia';
 import { Icon } from '@iconify/vue';
 
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { ToastAction } from '@/components/ui/toast';
-import { useToast } from '@/components/ui/toast/use-toast';
 import {
   Collapsible,
   CollapsibleContent,
@@ -173,38 +52,16 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from '@/components/ui/hover-card';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { logger } from '@/components/widget';
 import { cn } from '@/helpers/tailwind-utils';
-import { LOADER_OPTIONS, PRESET_RULES, RULE_SOURCE } from '@/constants';
 import { api, useEventsStore } from '@/engine/core';
-import type { RulesType } from '@/engine/schema';
+import { RulesType } from '@/engine/schema';
+import DEFAULT_RULES from '@rules/default';
+import RulesInfo from './rules-info.vue';
+import RulesLoader from './rules-loader.vue';
 
 defineOptions({
   name: 'ScoringRules',
 });
-
-const { toast } = useToast();
-
-const eventsStore = useEventsStore();
-
-const { originalRules } = storeToRefs(eventsStore);
-
-const editingLoaderOption = ref<RULE_SOURCE>(LOADER_OPTIONS[0].value);
-const editingPresetRule = ref<string>(PRESET_RULES[0].url);
-const editingRemoteURL = ref<string>('');
 
 const isExpanded = ref(true);
 const isEditing = ref(false);
@@ -215,10 +72,16 @@ const onToggleCollapse = (event: boolean) => {
   }
 };
 
+const editingRules = ref<RulesType | null>(null);
+
 const onToggleEdit = () => {
   if (isEditing.value) {
     isEditing.value = false;
-    // @todo 清理已有内容
+
+    if (editingRules.value) {
+      api.changeRules(editingRules.value);
+      editingRules.value = null;
+    }
   } else {
     // 如果未展开，则需要展开
     if (!isExpanded.value) {
@@ -228,62 +91,28 @@ const onToggleEdit = () => {
   }
 };
 
-function dispatchLoadRule(validRules: RulesType) {
-  api.changeRules(validRules);
-}
+const onUpdateRules = (rules: RulesType) => {
+  editingRules.value = rules;
+};
 
-async function onLoadLocalRule(event: InputEvent) {
-  const { files } = event.target as HTMLInputElement;
-  if (!files || files.length === 0) {
-    return;
+const eventsStore = useEventsStore();
+const { originalRules } = storeToRefs(eventsStore);
+const eventsURL = computed(() => {
+  if (!eventsStore.rulesUrl) {
+    return '';
   }
 
-  // @todo 校验
-  console.log(files[0]);
+  const params = new URLSearchParams({
+    url: eventsStore.rulesUrl,
+  });
 
-  // @todo 解析
-}
+  return `/points/events?${params.toString()}`;
+});
 
-async function onLoadRemoteRule(url: string) {
-  try {
-    const data = await fetch(url);
-    const rules = await data.json();
+onMounted(() => {
+  // @todo 加载缓存
 
-    // @todo 校验
-
-    dispatchLoadRule(rules);
-  } catch (error) {
-    logger.error('LOADER', '远程规则加载失败', error);
-  }
-}
-
-async function onLoadPresetRule(url: string) {
-  try {
-    const data = await fetch(url);
-    const rules = await data.json();
-    dispatchLoadRule(rules);
-  } catch (error) {
-    logger.error('LOADER', '预设规则加载失败', error);
-    toast({
-      title: '赛事规则加载失败',
-      description: '请检查网络连接或稍后再试',
-      variant: 'destructive',
-      action: h(
-        ToastAction,
-        {
-          altText: '刷新',
-        },
-        {
-          default: () => '刷新',
-        }
-      ),
-    });
-  }
-}
-
-const eventsURL = computed(() => '');
-
-onMounted(async () => {
-  await onLoadPresetRule(editingPresetRule.value);
+  // 预加载文件，便于 SEO
+  api.changeRules(DEFAULT_RULES as any);
 });
 </script>

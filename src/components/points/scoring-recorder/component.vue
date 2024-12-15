@@ -47,9 +47,13 @@
     <div class="min-h-0 flex-1">
       <div
         v-if="!recordsStore.details.length"
-        class="flex h-full flex-col items-center justify-center"
+        class="my-sm flex flex-row items-center justify-center"
       >
-        <span class="my-sm text-sm">暂无记录</span>
+        <Icon
+          class="size-5 text-gray-500"
+          icon="mdi:clipboard-text-play-outline"
+        ></Icon>
+        <span class="ml-2 text-sm text-gray-500">暂无记录</span>
       </div>
 
       <div v-else class="relative flex h-full flex-col">
@@ -93,7 +97,7 @@ import {
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/helpers/tailwind-utils';
-import { useRecordsStore } from '@/engine/core';
+import { api, useRecordsStore } from '@/engine/core';
 
 defineOptions({
   name: 'ScoringRecorder',
@@ -101,7 +105,9 @@ defineOptions({
 
 const recordsStore = useRecordsStore();
 
-const onResetRecords = () => {};
+const onResetRecords = () => {
+  api.clearRecords();
+};
 
 const onExportRecords = () => {};
 </script>

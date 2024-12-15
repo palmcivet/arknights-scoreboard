@@ -9,6 +9,10 @@ type EventsState = {
    */
   originalRules: RulesType;
   /**
+   * @description 赛事规则的 URL
+   */
+  rulesUrl: string | null;
+  /**
    * @description 选手信息。可以为空
    */
   challenger: Challenger | null;
@@ -36,6 +40,7 @@ type EventsState = {
 
 export const useEventsStore = defineStore('events', {
   state: (): EventsState => ({
+    rulesUrl: null,
     originalRules: {} as RulesType,
     challenger: null,
     starting: null,

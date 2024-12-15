@@ -3,7 +3,7 @@
     <ResizablePanelGroup :direction="isSmall ? 'vertical' : 'horizontal'">
       <ResizablePanel>
         <ScrollArea class="h-full">
-          <ScoringCards :class="['mt-14', 'pr-xs md:pr-sm lg:pr-md xl:pr-lg']">
+          <ScoringCards class="mt-14 pr-xs md:pr-sm lg:pr-md xl:pr-lg">
             <!-- 计分板 -->
           </ScoringCards>
         </ScrollArea>

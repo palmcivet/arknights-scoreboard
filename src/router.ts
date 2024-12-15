@@ -8,7 +8,6 @@ import Editor from '@/pages/editor.vue';
 const routes: Array<RouteRecordRaw> = [
   { path: '/points', component: Points },
   { path: '/points/events', component: PointsEvents },
-  { path: '/points/:eventId', component: PointsEvents },
   { path: '/editor', component: Editor },
 ];
 

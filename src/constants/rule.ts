@@ -40,15 +40,18 @@ function buildAssertsUrl(path: string) {
  * @description 预设规则
  * @todo 使用脚本，读取目录，在编译时生成
  */
-export const PRESET_RULES = [
-  {
+export const PRESET_RULES = {
+  'xian-shu-bei-5': {
     name: '仙术杯#6 萨卡兹的无终奇语',
-    description: '致力打造一个既精彩又有趣，还能学习打法的集成战略比赛。',
     url: buildAssertsUrl('/rules/xian-shu-bei-6/rules.json'),
   },
-  {
+  'xian-shu-bei-6': {
     name: '仙术杯#5 探索者的银淞止境 DLC',
-    description: '致力打造一个既精彩又有趣，还能学习打法的集成战略比赛。',
     url: buildAssertsUrl('/rules/xian-shu-bei-5/rules.json'),
   },
-];
+};
+
+export const DEFAULT_RULES =
+  PRESET_RULES[
+    import.meta.env.VITE_DEFAULT_RULES_SLUG as keyof typeof PRESET_RULES
+  ];

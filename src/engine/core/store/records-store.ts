@@ -26,7 +26,7 @@ type RecordsState = {
 
 export const useRecordsStore = defineStore('records', {
   state: (): RecordsState => ({
-    rulesForm: {} as NestedScoringItems,
+    rulesForm: [] as NestedScoringItems,
     rulesSet: {} as IndexedScoringItems,
     records: {},
   }),
