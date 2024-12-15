@@ -4,7 +4,7 @@
       <CollapsibleTrigger class="flex w-full items-center">
         <div class="flex-1 truncate text-left">
           <span class="text-xl font-semibold">
-            {{ isEditing ? '切换赛事规则' : originalRules.name }}
+            {{ isEditing ? '切换赛事规则' : rulesJSON.name }}
           </span>
         </div>
 
@@ -23,13 +23,15 @@
 
       <CollapsibleContent>
         <div class="mt-xs flex flex-col">
-          <RulesLoader v-if="isEditing" @update="onUpdateRules"></RulesLoader>
-          <RulesInfo
-            v-else
-            class="duration-500 animate-in fade-in slide-in-from-bottom-4 fill-mode-forwards"
-            :rules="originalRules"
-            :events-url="eventsURL"
-          ></RulesInfo>
+          <KeepAlive>
+            <RulesLoader v-if="isEditing" @update="onUpdateRules"></RulesLoader>
+            <RulesInfo
+              v-else
+              class="duration-500 animate-in fade-in slide-in-from-bottom-4 fill-mode-forwards"
+              :rules="rulesJSON"
+              :events-url="eventsURL"
+            ></RulesInfo>
+          </KeepAlive>
         </div>
       </CollapsibleContent>
     </Collapsible>
@@ -37,7 +39,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref, computed } from 'vue';
+import { onMounted, ref, computed, h } from 'vue';
 import { storeToRefs } from 'pinia';
 import { Icon } from '@iconify/vue';
 
@@ -52,10 +54,11 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { cn } from '@/helpers/tailwind-utils';
+import { toast, ToastAction } from '@/components/ui/toast';
 import { api, useEventsStore } from '@/engine/core';
 import { RulesType } from '@/engine/schema';
-import DEFAULT_RULES from '@rules/default';
+import { DEFAULT_PRESET_RULES } from '@/constants';
+import { cn } from '@/helpers/tailwind-utils';
 import RulesInfo from './rules-info.vue';
 import RulesLoader from './rules-loader.vue';
 
@@ -78,16 +81,19 @@ const onToggleEdit = () => {
   if (isEditing.value) {
     isEditing.value = false;
 
+    console.log(editingRules.value);
+
     if (editingRules.value) {
       api.changeRules(editingRules.value);
       editingRules.value = null;
     }
   } else {
+    isEditing.value = true;
+
     // 如果未展开，则需要展开
     if (!isExpanded.value) {
       isExpanded.value = true;
     }
-    isEditing.value = true;
   }
 };
 
@@ -96,23 +102,43 @@ const onUpdateRules = (rules: RulesType) => {
 };
 
 const eventsStore = useEventsStore();
-const { originalRules } = storeToRefs(eventsStore);
+const { rulesJSON } = storeToRefs(eventsStore);
 const eventsURL = computed(() => {
-  if (!eventsStore.rulesUrl) {
+  if (!eventsStore.rulesURL) {
     return '';
   }
 
   const params = new URLSearchParams({
-    url: eventsStore.rulesUrl,
+    url: eventsStore.rulesURL,
   });
 
   return `/points/events?${params.toString()}`;
 });
 
-onMounted(() => {
-  // @todo 加载缓存
+onMounted(async () => {
+  const defaultRuleURL = import.meta.env.DEV
+    ? DEFAULT_PRESET_RULES.url
+    : new URL(DEFAULT_PRESET_RULES.url, window.location.href).toString();
 
-  // 预加载文件，便于 SEO
-  api.changeRules(DEFAULT_RULES as any);
+  try {
+    const data = await fetch(defaultRuleURL);
+    const rules = await data.json();
+    api.changeRules(rules);
+    eventsStore.rulesURL = defaultRuleURL;
+  } catch (error) {
+    toast({
+      title: '默认规则加载失败',
+      description: '请检查网络连接或稍后再试',
+      variant: 'destructive',
+      action: h(
+        ToastAction,
+        {
+          altText: '刷新页面',
+          onClick: () => window.location.reload(),
+        },
+        { default: () => '刷新页面' }
+      ),
+    });
+  }
 });
 </script>

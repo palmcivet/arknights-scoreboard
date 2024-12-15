@@ -1,10 +1,10 @@
 <template>
   <div
     v-if="!recordsStore.rulesForm.length"
-    class="flex h-[80vh] w-full items-center justify-center"
+    class="flex h-[80vh] w-full items-center justify-center text-gray-500"
   >
-    <Icon class="size-5 text-gray-500" icon="mdi:card-bulleted-outline"></Icon>
-    <span class="ml-2 text-sm text-gray-500">未加载赛事规则</span>
+    <Icon class="size-5" icon="mdi:card-bulleted-outline"></Icon>
+    <span class="ml-2 text-sm">未加载赛事规则</span>
   </div>
   <div
     v-else

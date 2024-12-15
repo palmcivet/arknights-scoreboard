@@ -13,7 +13,7 @@ import { useRecordsStore } from './store/records-store';
  */
 export function changeRules(rules: RulesType): void {
   const eventsStore = useEventsStore();
-  eventsStore.originalRules = rules;
+  eventsStore.rulesJSON = rules;
 
   const recordsStore = useRecordsStore();
   recordsStore.$reset(); // 重置解析数据和得分记录
@@ -73,8 +73,8 @@ export function saveRecords(): RecordsType {
   }
 
   return {
-    rules: eventsStore.originalRules.name,
-    rulesVersion: eventsStore.originalRules.version,
+    rules: eventsStore.rulesJSON.name,
+    rulesVersion: eventsStore.rulesJSON.version,
     challenger: eventsStore.challenger ?? INITIAL_CHALLENGER,
     starting: eventsStore.starting ?? INITIAL_STARTING,
     begin: eventsStore.begin,

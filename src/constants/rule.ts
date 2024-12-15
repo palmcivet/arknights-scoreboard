@@ -1,3 +1,6 @@
+import xianshubei5 from '@rules/xian-shu-bei-5/rules.json?url';
+import xianshubei6 from '@rules/xian-shu-bei-6/rules.json?url';
+
 export enum RULE_SOURCE {
   /**
    * @description 从预设规则中获取
@@ -32,26 +35,25 @@ export const LOADER_OPTIONS = [
   },
 ];
 
-function buildAssertsUrl(path: string) {
-  return `${import.meta.env.BASE_URL}${path}`.replace(/\/\//g, '/');
-}
-
 /**
  * @description 预设规则
  * @todo 使用脚本，读取目录，在编译时生成
  */
-export const PRESET_RULES = {
-  'xian-shu-bei-5': {
+export const PRESET_RULES = [
+  {
+    id: 'xian-shu-bei-6',
+    group: '仙术杯',
     name: '仙术杯#6 萨卡兹的无终奇语',
-    url: buildAssertsUrl('/rules/xian-shu-bei-6/rules.json'),
+    url: xianshubei6,
   },
-  'xian-shu-bei-6': {
+  {
+    id: 'xian-shu-bei-5',
+    group: '仙术杯',
     name: '仙术杯#5 探索者的银淞止境 DLC',
-    url: buildAssertsUrl('/rules/xian-shu-bei-5/rules.json'),
+    url: xianshubei5,
   },
-};
+];
 
-export const DEFAULT_RULES =
-  PRESET_RULES[
-    import.meta.env.VITE_DEFAULT_RULES_SLUG as keyof typeof PRESET_RULES
-  ];
+export const DEFAULT_PRESET_RULES = PRESET_RULES.find(
+  (rule) => rule.id === import.meta.env.VITE_DEFAULT_RULES_SLUG
+)!;

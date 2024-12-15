@@ -18,9 +18,9 @@
       <!-- 预设 -->
       <TabsContent :value="RULE_SOURCE.PRESET">
         <Select
-          v-model="editingPresetRule"
-          :default-value="editingPresetRule"
-          @update:model-value="onLoadPresetRule"
+          v-model="editingPresetRules"
+          :default-value="editingPresetRules"
+          @update:model-value="onLoadPresetRules"
         >
           <SelectTrigger>
             <SelectValue
@@ -41,7 +41,7 @@
           type="file"
           accept=".json"
           placeholder="点击上传规则文件"
-          @change="onLoadLocalRule"
+          @change="onLoadLocalRules"
         ></Input>
       </TabsContent>
       <!-- 远程 -->
@@ -50,8 +50,8 @@
           type="url"
           placeholder="规则文件的 URL"
           v-model="editingRemoteURL"
-          @blur="onLoadRemoteRule"
-          @keydown.enter="onLoadRemoteRule"
+          @blur="onLoadRemoteRules"
+          @keydown.enter="onLoadRemoteRules"
         ></Input>
       </TabsContent>
     </div>
@@ -69,12 +69,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { ToastAction } from '@/components/ui/toast';
-import { useToast } from '@/components/ui/toast/use-toast';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { ToastAction, toast } from '@/components/ui/toast';
 import { logger } from '@/components/widget';
 import {
-  DEFAULT_RULES,
+  DEFAULT_PRESET_RULES,
   LOADER_OPTIONS,
   PRESET_RULES,
   RULE_SOURCE,
@@ -89,17 +88,15 @@ defineOptions({
 const emit = defineEmits<{
   update: [RulesType];
 }>();
-const dispatchLoadRule = (validRules: RulesType) => {
+const dispatchLoadRules = (validRules: RulesType) => {
   emit('update', validRules);
 };
 
 const editingLoaderOption = ref<RULE_SOURCE>(LOADER_OPTIONS[0].value);
-const editingPresetRule = ref<string>(DEFAULT_RULES.url);
+const editingPresetRules = ref<string>(DEFAULT_PRESET_RULES.url);
 const editingRemoteURL = ref<string>('');
 
-const { toast } = useToast();
-
-const onLoadLocalRule = async (event: InputEvent) => {
+const onLoadLocalRules = async (event: InputEvent) => {
   const { files } = event.target as HTMLInputElement;
   if (!files || files.length === 0) {
     return;
@@ -111,35 +108,34 @@ const onLoadLocalRule = async (event: InputEvent) => {
   // @todo 解析
 };
 
-const onLoadRemoteRule = async (url: string) => {
+const onLoadRemoteRules = async (url: string) => {
   try {
     const data = await fetch(url);
     const rules = await data.json();
 
     // @todo 校验
-
-    dispatchLoadRule(rules);
+    const validRules = rules;
+    dispatchLoadRules(validRules);
   } catch (error) {
     logger.error('LOADER', '远程规则加载失败', error);
   }
 };
 
-const onLoadPresetRule = async (url: string) => {
+const onLoadPresetRules = async (url: string) => {
   try {
     const data = await fetch(url);
     const rules = await data.json();
-    dispatchLoadRule(rules);
+    dispatchLoadRules(rules);
   } catch (error) {
-    logger.error('LOADER', '预设规则加载失败', error);
     toast({
-      title: '赛事规则加载失败',
+      title: '预设规则加载失败',
       description: '请检查网络连接或稍后再试',
       variant: 'destructive',
       action: h(
         ToastAction,
         {
           altText: '刷新',
-          onClick: () => onLoadPresetRule(url),
+          onClick: () => onLoadPresetRules(url),
         },
         { default: () => '刷新' }
       ),

@@ -47,13 +47,10 @@
     <div class="min-h-0 flex-1">
       <div
         v-if="!recordsStore.details.length"
-        class="my-sm flex flex-row items-center justify-center"
+        class="my-sm flex flex-row items-center justify-center text-gray-500"
       >
-        <Icon
-          class="size-5 text-gray-500"
-          icon="mdi:clipboard-text-play-outline"
-        ></Icon>
-        <span class="ml-2 text-sm text-gray-500">暂无记录</span>
+        <Icon class="size-5" icon="mdi:clipboard-text-play-outline"></Icon>
+        <span class="ml-2 text-sm">暂无记录</span>
       </div>
 
       <div v-else class="relative flex h-full flex-col">

@@ -24,7 +24,8 @@
     /* alias */
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@rules/*": ["rules/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.vue"],
