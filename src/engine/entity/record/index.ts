@@ -1,2 +1,2 @@
-export * from './challenger';
 export * from './record-item';
+export * from './type';

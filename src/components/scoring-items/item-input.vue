@@ -31,8 +31,8 @@ import {
   NumberFieldContent,
   NumberFieldInput,
 } from '@/components/ui/number-field';
-import { useRecordsStore } from '@/engine';
-import type { ScoringItemInput } from '@/engine';
+import { api, useRecordsStore } from '@/engine/core';
+import type { ScoringItemInput } from '@/engine/entity';
 import { cn } from '@/helpers/tailwind-utils';
 import ScoringItemSlot from './item-slot.vue';
 
@@ -48,14 +48,13 @@ const { scoringItem } = defineProps({
 });
 
 const recordsStore = useRecordsStore();
-
 const record = computed(
   () => recordsStore.records[scoringItem.id] ?? { score: 0, input: 0 }
 );
 const inputValue = computed(() => (record.value as any).input);
 
 const onInput = (value: number) => {
-  recordsStore.triggerRecord({
+  api.addRecord({
     id: scoringItem.id,
     score: value * scoringItem.score,
     input: value,

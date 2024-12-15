@@ -19,8 +19,8 @@ import { computed } from 'vue';
 import type { PropType } from 'vue';
 
 import { Switch } from '@/components/ui/switch';
-import { useRecordsStore } from '@/engine';
-import type { ScoringItemCheck } from '@/engine';
+import { api, useRecordsStore } from '@/engine/core';
+import type { ScoringItemCheck } from '@/engine/entity';
 import { cn } from '@/helpers/tailwind-utils';
 import ScoringItemSlot from './item-slot.vue';
 
@@ -36,15 +36,13 @@ const { scoringItem } = defineProps({
 });
 
 const recordsStore = useRecordsStore();
-
 const record = computed(
   () => recordsStore.records[scoringItem.id] ?? { score: 0, check: false }
 );
-
 const isChecked = computed(() => (record.value as any).check);
 
 const onCheck = (checked: boolean) => {
-  recordsStore.triggerRecord({
+  api.addRecord({
     id: scoringItem.id,
     score: checked ? scoringItem.score : 0,
     check: checked,

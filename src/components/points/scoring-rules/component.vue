@@ -1,10 +1,10 @@
 <template>
-  <div :class="cn('rule-loader', $attrs.class ?? '')">
+  <div :class="cn('scoring-rules', $attrs.class ?? '')">
     <Collapsible :open="isExpanded" @update:open="onToggleCollapse">
       <CollapsibleTrigger class="flex w-full items-center">
         <div class="flex-1 truncate text-left">
           <span class="text-xl font-semibold">
-            {{ isEditing ? '切换赛事规则' : eventsStore.events.name }}
+            {{ isEditing ? '切换赛事规则' : originalRules.name }}
           </span>
         </div>
 
@@ -87,18 +87,18 @@
             class="duration-500 animate-in fade-in slide-in-from-bottom-4 fill-mode-forwards"
           >
             <blockquote
-              v-if="eventsStore.events.brief"
+              v-if="originalRules.brief"
               class="mb-xs border-l-2 pl-xs text-sm italic"
             >
-              {{ eventsStore.events.brief }}
+              {{ originalRules.brief }}
             </blockquote>
 
-            <div class="flex items-center justify-between gap-sm">
+            <div class="flex items-center justify-between gap-xs">
               <div>
                 <a
-                  v-if="eventsStore.events.url"
+                  v-if="originalRules.url"
                   target="_blank"
-                  :href="eventsStore.events.url"
+                  :href="originalRules.url"
                 >
                   <Badge
                     variant="outline"
@@ -125,24 +125,24 @@
                 </a>
               </div>
 
-              <HoverCard v-if="eventsStore.meta">
+              <HoverCard>
                 <HoverCardTrigger>
                   <div
                     class="text-xs hover:cursor-pointer hover:underline hover:underline-offset-4"
                   >
-                    <code>版本 v{{ eventsStore.meta.version }}</code>
+                    <code>版本 v{{ originalRules.version }}</code>
                   </div>
                 </HoverCardTrigger>
                 <HoverCardContent class="w-auto">
-                  <div v-if="eventsStore.meta.author" class="text-sm">
-                    规则作者：{{ eventsStore.meta.author }}
-                  </div>
-                  <div class="text-sm">
-                    引擎版本：<code>{{ eventsStore.meta.engineVersion }}</code>
-                  </div>
-                  <div v-if="eventsStore.meta.changelog" class="text-sm">
-                    更新日志：{{ eventsStore.meta.changelog }}
-                  </div>
+                  <span v-if="originalRules.author" class="text-sm">
+                    规则作者：{{ originalRules.author }}
+                  </span>
+                  <span class="text-sm">
+                    引擎版本：<code>{{ originalRules.engineVersion }}</code>
+                  </span>
+                  <span v-if="originalRules.changelog" class="text-sm">
+                    更新日志：{{ originalRules.changelog }}
+                  </span>
                 </HoverCardContent>
               </HoverCard>
             </div>
@@ -155,9 +155,14 @@
 
 <script lang="ts" setup>
 import { onMounted, ref, h, computed } from 'vue';
+import { storeToRefs } from 'pinia';
 import { Icon } from '@iconify/vue';
 
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { ToastAction } from '@/components/ui/toast';
+import { useToast } from '@/components/ui/toast/use-toast';
 import {
   Collapsible,
   CollapsibleContent,
@@ -168,7 +173,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { Button } from '@/components/ui/button';
 import {
   HoverCard,
   HoverCardContent,
@@ -182,22 +186,21 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Input } from '@/components/ui/input';
-import { ToastAction } from '@/components/ui/toast';
-import { useToast } from '@/components/ui/toast/use-toast';
 import { logger } from '@/components/widget';
 import { cn } from '@/helpers/tailwind-utils';
 import { LOADER_OPTIONS, PRESET_RULES, RULE_SOURCE } from '@/constants';
-import { api, useEventsStore } from '@/engine';
-import type { RulesType } from '@/engine';
+import { api, useEventsStore } from '@/engine/core';
+import type { RulesType } from '@/engine/schema';
 
 defineOptions({
-  name: 'RuleLoader',
+  name: 'ScoringRules',
 });
 
 const { toast } = useToast();
 
 const eventsStore = useEventsStore();
+
+const { originalRules } = storeToRefs(eventsStore);
 
 const editingLoaderOption = ref<RULE_SOURCE>(LOADER_OPTIONS[0].value);
 const editingPresetRule = ref<string>(PRESET_RULES[0].url);
@@ -226,7 +229,7 @@ const onToggleEdit = () => {
 };
 
 function dispatchLoadRule(validRules: RulesType) {
-  api.loadRule(validRules);
+  api.changeRules(validRules);
 }
 
 async function onLoadLocalRule(event: InputEvent) {

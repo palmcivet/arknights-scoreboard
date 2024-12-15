@@ -1,5 +1,7 @@
-export * from './api-store';
-export * from './events-store';
-export * from './records-store';
-export * from './user-store';
+export * from './store/events-store';
+export * from './store/records-store';
+export * from './store/user-store';
 export * from './score-indicator';
+
+import * as api from './api';
+export { api };

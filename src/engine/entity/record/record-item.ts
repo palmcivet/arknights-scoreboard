@@ -1,7 +1,7 @@
 import { SCORING_ITEM_TYPE } from '@/engine/entity';
 
 /**
- * @description 记录项的索引
+ * @description 记录项的索引 ID
  */
 export type RecordId = string;
 

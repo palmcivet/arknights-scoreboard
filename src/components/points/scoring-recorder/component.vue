@@ -1,5 +1,7 @@
 <template>
-  <div :class="cn('score-recorder flex min-h-0 flex-col', $attrs.class ?? '')">
+  <div
+    :class="cn('scoring-recorder flex min-h-0 flex-col', $attrs.class ?? '')"
+  >
     <div class="flex flex-row items-center justify-between">
       <div class="flex-1 text-left">
         <span class="text-xl font-semibold">得分记录</span>
@@ -7,16 +9,25 @@
 
       <Tooltip>
         <TooltipTrigger>
-          <Button size="xs" variant="ghost" @click.stop="">
-            <Icon class="size-4" icon="mdi:timer-outline"></Icon>
+          <Button size="xs" variant="ghost" @click="">
+            <Icon class="size-4" icon="mdi:calculator"></Icon>
           </Button>
         </TooltipTrigger>
-        <TooltipContent><span>启用计时</span></TooltipContent>
+        <TooltipContent><span>计算器</span></TooltipContent>
+      </Tooltip>
+
+      <Tooltip>
+        <TooltipTrigger>
+          <Button size="xs" variant="ghost" @click="">
+            <Icon class="size-4" icon="mdi:content-save-outline"></Icon>
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent><span>保存</span></TooltipContent>
       </Tooltip>
 
       <Tooltip v-if="recordsStore.details.length">
         <TooltipTrigger>
-          <Button size="xs" variant="ghost" @click.stop="onExportRecords">
+          <Button size="xs" variant="ghost" @click="onExportRecords">
             <Icon class="size-4" icon="mdi:export-variant"></Icon>
           </Button>
         </TooltipTrigger>
@@ -25,7 +36,7 @@
 
       <Tooltip>
         <TooltipTrigger>
-          <Button size="xs" variant="ghost" @click.stop="onResetRecords">
+          <Button size="xs" variant="ghost" @click="onResetRecords">
             <Icon class="size-4" icon="mdi:notification-clear-all"></Icon>
           </Button>
         </TooltipTrigger>
@@ -82,17 +93,15 @@ import {
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/helpers/tailwind-utils';
-import { useRecordsStore } from '@/engine';
+import { useRecordsStore } from '@/engine/core';
 
 defineOptions({
-  name: 'ScoreRecorder',
+  name: 'ScoringRecorder',
 });
 
 const recordsStore = useRecordsStore();
 
-const onResetRecords = () => {
-  recordsStore.resetRecords();
-};
+const onResetRecords = () => {};
 
 const onExportRecords = () => {};
 </script>

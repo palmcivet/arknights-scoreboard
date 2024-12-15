@@ -80,7 +80,7 @@ export const RulesSchema: z.ZodType<RulesType> = z.object({
   description: z.string().optional(),
   url: z.string().optional(),
   background: z.string().optional(),
-  host: z.string().optional(),
+  organizer: z.string().optional(),
   schedule: z.string().optional(),
   author: z.string().optional(),
   engine: z.enum([RULE_TYPE.TOURNMENT, RULE_TYPE.BINGO]),

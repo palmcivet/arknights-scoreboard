@@ -10,10 +10,16 @@
       <div class="flex flex-row sm:gap-sm md:gap-md">
         <RouterLink
           v-for="menu in MENU_LIST"
-          :class="cn(NAV_ITEM_STYLE, 'relative text-sm font-normal')"
+          :class="
+            cn(
+              NAV_ITEM_STYLE,
+              'relative text-sm font-normal',
+              isActive(menu.route)
+                ? 'after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-full after:bg-primary'
+                : ''
+            )
+          "
           :to="menu.route"
-          active-class="after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-primary"
-          exact
         >
           <span>{{ menu.label }}</span>
         </RouterLink>
@@ -36,8 +42,15 @@ import { cn } from '@/helpers/tailwind-utils';
 import { CONTAINER_STYLE, MENU_LIST } from '@/constants';
 import NavButtons from './nav-buttons.vue';
 import { NAV_ITEM_STYLE } from './style';
+import { useRoute } from 'vue-router';
 
 defineOptions({
   name: 'NavigationLg',
 });
+
+const route = useRoute();
+
+const isActive = (routePath: string) => {
+  return route.path.includes(routePath);
+};
 </script>

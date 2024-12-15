@@ -1,6 +1,6 @@
 import type {
   Events,
-  EventsMeta,
+  RulesMeta,
   ScoringItemCheck,
   ScoringItemCount,
   ScoringItemInput,
@@ -29,7 +29,7 @@ export type ScoringItemType =
   | ScoringItemGroupType;
 
 export type RulesType = Events &
-  EventsMeta & {
+  RulesMeta & {
     /**
      * @description 规则的计分项
      */

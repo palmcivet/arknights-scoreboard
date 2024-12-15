@@ -26,7 +26,7 @@ import {
   CardHeader,
   CardContent,
 } from '@/components/ui/card';
-import type { ScoringItemGroup } from '@/engine';
+import type { ScoringItemGroup } from '@/engine/entity';
 import { cn } from '@/helpers/tailwind-utils';
 import ScoringItem from './component.vue';
 

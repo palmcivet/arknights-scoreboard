@@ -1,8 +1,6 @@
-export const NAV_LIST = {
-  TOURNAMENT: '/tournament',
-  BINGO: '/bingo',
-  EDITOR: '/editor',
-};
+import { repository } from '../../package.json';
+
+export const GITHUB_URL = repository.url;
 
 export const MENU_LIST = [
   {
@@ -11,15 +9,19 @@ export const MENU_LIST = [
   },
   {
     label: '积分赛',
-    route: NAV_LIST.TOURNAMENT,
+    route: '/points',
   },
   {
     label: 'Bingo',
-    route: NAV_LIST.BINGO,
+    route: '/bingo',
   },
   {
     label: '编辑器',
-    route: NAV_LIST.EDITOR,
+    route: '/editor',
+  },
+  {
+    label: '下载',
+    route: '/download',
   },
   {
     label: '文档',

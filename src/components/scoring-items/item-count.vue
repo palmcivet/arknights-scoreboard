@@ -36,10 +36,10 @@ import {
   NumberFieldIncrement,
   NumberFieldInput,
 } from '@/components/ui/number-field';
-import { useRecordsStore } from '@/engine';
-import type { ScoringItemCount } from '@/engine';
-import ScoringItemSlot from './item-slot.vue';
+import { api, useRecordsStore } from '@/engine/core';
+import type { ScoringItemCount } from '@/engine/entity';
 import { cn } from '@/helpers/tailwind-utils';
+import ScoringItemSlot from './item-slot.vue';
 
 defineOptions({
   name: 'ScoringItemCount',
@@ -53,14 +53,13 @@ const { scoringItem } = defineProps({
 });
 
 const recordsStore = useRecordsStore();
-
 const record = computed(
   () => recordsStore.records[scoringItem.id] ?? { score: 0, count: 0 }
 );
 const countValue = computed(() => (record.value as any).count);
 
 const onCount = (value: number) => {
-  recordsStore.triggerRecord({
+  api.addRecord({
     id: scoringItem.id,
     score: value * scoringItem.score,
     count: value,

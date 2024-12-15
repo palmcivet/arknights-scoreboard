@@ -2,6 +2,7 @@ import type {
   DateTime,
   Version,
   Challenger,
+  Starting,
   RecordItem,
 } from '@/engine/entity';
 
@@ -18,6 +19,10 @@ export type RecordsType = {
    * @description 比赛选手
    */
   challenger: Challenger;
+  /**
+   * @description 比赛开局
+   */
+  starting: Starting;
   /**
    * @description 比赛开始时间
    */

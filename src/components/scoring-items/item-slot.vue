@@ -1,5 +1,9 @@
 <template>
-  <div :class="cn('flex flex-col justify-between', $attrs.class ?? '')">
+  <div
+    :class="
+      cn('scoring-item-slot flex flex-col justify-between', $attrs.class ?? '')
+    "
+  >
     <div class="mb-2 flex items-center justify-between">
       <div class="flex w-full flex-1 items-center truncate">
         <Label class="truncate text-sm">{{ scoringItem.label }}</Label>
@@ -40,7 +44,7 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { Label } from '@/components/ui/label';
-import type { ScoringItem } from '@/engine';
+import type { ScoringItem } from '@/engine/entity';
 import { cn } from '@/helpers/tailwind-utils';
 
 defineOptions({

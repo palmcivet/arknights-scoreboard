@@ -2,13 +2,13 @@
   "name": "仙术杯#5 探索者的银淞止境",
   "brief": "致力打造一个既精彩又有趣，还能学习打法的集成战略比赛。",
   "url": "https://www.bilibili.com/blackboard/activity-cXBrWYNabu.html",
-  "host": "龙哥哥今天又鸽了",
+  "background": "https://i0.hdslb.com/bfs/activity-plat/static/1bf089108fef03beeb184eb7afb655f8/W2tcndlVRT_w1920_h1080.png",
+  "organizer": "龙哥哥今天又鸽了",
   "schedule": "初赛 2024年3月9日-3月17日，决赛 2024年3月19日-3月21日",
   "author": "Palm_Civet",
   "engine": "tournment",
   "version": "0.0.2",
   "engineVersion": "0.0.1",
-  "background": "https://i0.hdslb.com/bfs/activity-plat/static/1bf089108fef03beeb184eb7afb655f8/W2tcndlVRT_w1920_h1080.png",
   "items": [
     {
       "type": "group",

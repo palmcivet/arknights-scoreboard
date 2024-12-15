@@ -1,5 +1,10 @@
 import { SCORING_ITEM_TYPE } from '@/engine/entity';
 
+/**
+ * @description 得分项索引 ID
+ */
+export type ScoringItemId = string;
+
 type ScoringItemBase = {
   /**
    * @description 项目标签
@@ -23,7 +28,7 @@ export type ScoringItemCheck = ScoringItemBase & {
   /**
    * @description 项目 ID
    */
-  id: string;
+  id: ScoringItemId;
   /**
    * @description 项目分数，可以为负数
    */
@@ -35,7 +40,7 @@ export type ScoringItemCount = ScoringItemBase & {
   /**
    * @description 项目 ID
    */
-  id: string;
+  id: ScoringItemId;
   /**
    * @description 项目系数，可以为负数
    */
@@ -47,7 +52,7 @@ export type ScoringItemInput = ScoringItemBase & {
   /**
    * @description 项目 ID
    */
-  id: string;
+  id: ScoringItemId;
   /**
    * @description 项目系数，可以为负数
    */
@@ -59,7 +64,7 @@ export type ScoringItemSelect = ScoringItemBase & {
   /**
    * @description 项目 ID
    */
-  id: string;
+  id: ScoringItemId;
   /**
    * @description 选项
    */

@@ -1,7 +1,13 @@
 <template>
-  <div :class="cn('flex flex-col p-1', $attrs.class ?? '')">
-    <Label class="mb-2 text-sm">{{ label }}</Label>
-    <slot></slot>
+  <div
+    :class="cn('form-item-slot flex flex-col gap-2 p-1', $attrs.class ?? '')"
+  >
+    <slot name="label">
+      <Label class="flex text-nowrap text-sm">{{ label }}</Label>
+    </slot>
+    <div class="flex-1">
+      <slot></slot>
+    </div>
   </div>
 </template>
 

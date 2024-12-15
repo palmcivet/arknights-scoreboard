@@ -1,12 +1,7 @@
 import FormItemSlot from './form-item-slot.vue';
+import StartingForm from './starting-form.vue';
+import StartingList from './starting-list.vue';
 
-export { FormItemSlot };
+export { FormItemSlot, StartingForm, StartingList };
 
-export const logger = {
-  info(scope: string, ...args: Array<any>) {
-    console.info(`[${scope}]`, ...args);
-  },
-  error(scope: string, ...args: Array<any>) {
-    console.error(`[${scope}]`, ...args);
-  },
-};
+export * from './logger';

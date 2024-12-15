@@ -32,10 +32,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { useRecordsStore } from '@/engine';
-import type { ScoringItemSelect } from '@/engine';
-import ScoringItemSlot from './item-slot.vue';
+import { api, useRecordsStore } from '@/engine/core';
+import type { ScoringItemSelect } from '@/engine/entity';
 import { cn } from '@/helpers/tailwind-utils';
+import ScoringItemSlot from './item-slot.vue';
 
 defineOptions({
   name: 'ScoringItemSelect',
@@ -49,7 +49,6 @@ const { scoringItem } = defineProps({
 });
 
 const recordsStore = useRecordsStore();
-
 const record = computed(
   () => recordsStore.records[scoringItem.id] ?? { score: 0, select: '0' }
 );
@@ -59,7 +58,7 @@ const onChange = (option: string) => {
   const value = Number.parseInt(option);
   const select = Number.isNaN(value) ? 0 : value;
   const score = scoringItem.options[select].score;
-  recordsStore.triggerRecord({
+  api.addRecord({
     id: scoringItem.id,
     select: option,
     score,

@@ -1,6 +1,8 @@
 <template>
   <Button variant="ghost" class="size-8 p-0">
-    <Icon class="size-5" icon="mdi:github"></Icon>
+    <a :href="GITHUB_URL" target="_blank">
+      <Icon class="size-5" icon="mdi:github"></Icon>
+    </a>
   </Button>
   <Button variant="ghost" class="size-8 p-0" @click="onToggleColorMode">
     <Icon
@@ -24,6 +26,7 @@ import { Icon } from '@iconify/vue';
 import { BasicColorMode, useColorMode } from '@vueuse/core';
 
 import { Button } from '@/components/ui/button';
+import { GITHUB_URL } from '@/constants';
 
 defineOptions({
   name: 'NavButtons',
