@@ -12,20 +12,20 @@
 
   <Tooltip>
     <TooltipTrigger>
-      <Button variant="ghost" class="size-8 p-0" @click="onToggleColorMode">
+      <Button variant="ghost" class="size-8 p-0" @click="onToggleDark">
         <Icon
-          v-if="colorMode === 'light'"
+          v-if="userStore.darkMode"
           class="size-5"
           icon="mdi:white-balance-sunny"
         ></Icon>
-        <Icon
-          v-else-if="colorMode === 'dark'"
-          class="size-5"
-          icon="mdi:weather-night"
-        ></Icon>
+        <Icon v-else class="size-5" icon="mdi:weather-night"></Icon>
       </Button>
     </TooltipTrigger>
-    <TooltipContent><span></span></TooltipContent>
+    <TooltipContent>
+      <span>
+        {{ userStore.darkMode ? '切换到明亮模式' : '切换到暗黑模式' }}
+      </span>
+    </TooltipContent>
   </Tooltip>
 
   <Tooltip>
@@ -40,7 +40,6 @@
 
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue';
-import { BasicColorMode, useColorMode } from '@vueuse/core';
 
 import {
   Tooltip,
@@ -57,13 +56,8 @@ defineOptions({
 
 const userStore = useUserStore();
 
-const colorMode = useColorMode<BasicColorMode>();
-const onToggleColorMode = () => {
-  if (colorMode.value === 'light') {
-    colorMode.value = 'dark';
-  } else {
-    colorMode.value = 'light';
-  }
+const onToggleDark = () => {
+  userStore.darkMode = !userStore.darkMode;
 };
 
 const onOpenSettings = () => {
