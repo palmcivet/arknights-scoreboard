@@ -3,7 +3,14 @@
     <ResizablePanelGroup :direction="isSmall ? 'vertical' : 'horizontal'">
       <ResizablePanel>
         <ScrollArea class="h-full">
-          <ScoringCards class="mt-14 pr-xs md:pr-sm lg:pr-md xl:pr-lg">
+          <ScoringCards
+            :class="[
+              'mt-14',
+              'py-sm sm:py-sm md:py-sm lg:py-md xl:py-lg',
+              'pr-sm sm:pr-sm md:pr-sm lg:pr-md xl:pr-lg',
+              TRANSITION_STYLE,
+            ]"
+          >
             <!-- 计分板 -->
           </ScoringCards>
         </ScrollArea>
@@ -51,7 +58,11 @@ import ScoringRules from '@/components/points/scoring-rules';
 import ScoringCards from '@/components/points/scoring-cards';
 import ScoringStarting from '@/components/points/scoring-starting';
 import ScoringRecorder from '@/components/points/scoring-recorder';
-import { CONTAINER_STYLE, MOBILE_BREAKPOINT } from '@/constants';
+import {
+  CONTAINER_STYLE,
+  MOBILE_BREAKPOINT,
+  TRANSITION_STYLE,
+} from '@/constants';
 import { cn } from '@/helpers/tailwind-utils';
 
 defineOptions({

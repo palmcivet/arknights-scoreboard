@@ -3,8 +3,8 @@ import type { Challenger, RecordItem, Starting } from '@/engine/entity';
 import { parseRules } from './rules-parser';
 import {
   useEventsStore,
-  INITIAL_STARTING,
-  INITIAL_CHALLENGER,
+  DEFAULT_STARTING,
+  DEFAULT_CHALLENGER,
 } from './store/events-store';
 import { useRecordsStore } from './store/records-store';
 
@@ -64,7 +64,7 @@ export function togglePauseEvents(): void {
 /**
  * @description 导出得分记录
  */
-export function saveRecords(): RecordsType {
+export function exportRecords(): RecordsType {
   const eventsStore = useEventsStore();
   const recordsStore = useRecordsStore();
 
@@ -75,8 +75,8 @@ export function saveRecords(): RecordsType {
   return {
     rules: eventsStore.rulesJSON.name,
     rulesVersion: eventsStore.rulesJSON.version,
-    challenger: eventsStore.challenger ?? INITIAL_CHALLENGER,
-    starting: eventsStore.starting ?? INITIAL_STARTING,
+    challenger: eventsStore.challenger ?? DEFAULT_CHALLENGER,
+    starting: eventsStore.starting ?? DEFAULT_STARTING,
     begin: eventsStore.begin,
     end: eventsStore.end,
     score: recordsStore.score,

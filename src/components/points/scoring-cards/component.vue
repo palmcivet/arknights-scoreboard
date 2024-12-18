@@ -10,7 +10,7 @@
     v-else
     :class="
       cn(
-        'scoring-cards py-xs md:columns-3 md:py-sm lg:py-md xl:columns-4',
+        'scoring-cards md:columns-3 md:py-sm lg:py-md xl:columns-4',
         $attrs.class ?? ''
       )
     "

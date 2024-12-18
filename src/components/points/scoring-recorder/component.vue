@@ -22,7 +22,7 @@
             <Icon class="size-4" icon="mdi:content-save-outline"></Icon>
           </Button>
         </TooltipTrigger>
-        <TooltipContent><span>保存</span></TooltipContent>
+        <TooltipContent><span>保存记录</span></TooltipContent>
       </Tooltip>
 
       <Tooltip v-if="recordsStore.details.length">
@@ -31,16 +31,16 @@
             <Icon class="size-4" icon="mdi:export-variant"></Icon>
           </Button>
         </TooltipTrigger>
-        <TooltipContent><span>导出</span></TooltipContent>
+        <TooltipContent><span>导出记录</span></TooltipContent>
       </Tooltip>
 
       <Tooltip>
         <TooltipTrigger>
-          <Button size="xs" variant="ghost" @click="onResetRecords">
+          <Button size="xs" variant="ghost" @click="onClearRecords">
             <Icon class="size-4" icon="mdi:notification-clear-all"></Icon>
           </Button>
         </TooltipTrigger>
-        <TooltipContent><span>重置分数</span></TooltipContent>
+        <TooltipContent><span>清空记录</span></TooltipContent>
       </Tooltip>
     </div>
 
@@ -102,9 +102,11 @@ defineOptions({
 
 const recordsStore = useRecordsStore();
 
-const onResetRecords = () => {
+const onClearRecords = () => {
   api.clearRecords();
 };
 
-const onExportRecords = () => {};
+const onExportRecords = () => {
+  api.exportRecords();
+};
 </script>

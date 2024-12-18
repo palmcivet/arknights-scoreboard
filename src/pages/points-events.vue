@@ -8,10 +8,10 @@
       <ScrollArea class="h-full">
         <div class="absolute top-0 -z-50 h-full w-full">
           <img
-            v-if="!true"
+            v-if="eventsStore.rulesJSON.background"
             class="h-full w-full object-cover"
-            src=""
-            alt="背景图"
+            :src="eventsStore.rulesJSON.background"
+            :alt="`${eventsStore.rulesJSON.name} 赛事背景图`"
           />
         </div>
 
@@ -51,7 +51,7 @@ import EventsBanner from '@/components/points/events-banner';
 import EventsChallenger from '@/components/points/events-challenger';
 import EventsController from '@/components/points/events-controller';
 import { CONTAINER_STYLE, MOBILE_BREAKPOINT } from '@/constants';
-import { api } from '@/engine/core';
+import { api, useEventsStore } from '@/engine/core';
 import { cn } from '@/helpers/tailwind-utils';
 
 defineOptions({
@@ -88,6 +88,8 @@ const onLoadRemoteRule = async (url: string) => {
     isLoading.value = false;
   }
 };
+
+const eventsStore = useEventsStore();
 
 const route = useRoute();
 const router = useRouter();

@@ -22,6 +22,7 @@
       </div>
 
       <span
+        v-if="userStore.showScoreDetail"
         :class="
           cn('text-xs', score > 0 ? 'text-foreground' : 'text-muted-foreground')
         "
@@ -46,6 +47,7 @@ import {
 import { Label } from '@/components/ui/label';
 import type { ScoringItem } from '@/engine/entity';
 import { cn } from '@/helpers/tailwind-utils';
+import { useUserStore } from '@/engine/core';
 
 defineOptions({
   name: 'ScoringItemSlot',
@@ -61,4 +63,6 @@ const { scoringItem } = defineProps({
     default: 0,
   },
 });
+
+const userStore = useUserStore();
 </script>

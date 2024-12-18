@@ -14,6 +14,9 @@ export default defineConfig({
       '@rules': path.resolve(__dirname, './rules'),
     },
   },
+  build: {
+    outDir: path.resolve(__dirname, './dist'),
+  },
   css: {
     postcss: {
       plugins: [tailwind(), autoprefixer()],

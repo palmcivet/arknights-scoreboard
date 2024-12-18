@@ -91,7 +91,7 @@ import {
 } from '@/components/ui/tooltip';
 import { StartingForm, StartingList } from '@/components/widget';
 import { cn } from '@/helpers/tailwind-utils';
-import { api, INITIAL_STARTING, useEventsStore } from '@/engine/core';
+import { api, DEFAULT_STARTING, useEventsStore } from '@/engine/core';
 
 defineOptions({
   name: 'ScoringStarting',
@@ -113,7 +113,7 @@ const onToggleCollapse = (event: boolean) => {
 };
 
 const eventsStore = useEventsStore();
-const startingValue = ref(INITIAL_STARTING);
+const startingValue = ref(DEFAULT_STARTING);
 const onCancelEdit = () => {
   isEditing.value = false;
 };

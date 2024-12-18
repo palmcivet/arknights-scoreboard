@@ -3,7 +3,10 @@
     <Collapsible :open="isExpanded" @update:open="onToggleCollapse">
       <CollapsibleTrigger class="flex w-full items-center">
         <div class="flex-1 truncate text-left">
-          <span class="text-xl font-semibold">
+          <span
+            class="text-xl font-semibold"
+            :title="isEditing ? '' : rulesJSON.name"
+          >
             {{ isEditing ? '切换赛事规则' : rulesJSON.name }}
           </span>
         </div>

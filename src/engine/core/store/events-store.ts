@@ -51,13 +51,13 @@ export const useEventsStore = defineStore('events', {
   }),
 });
 
-export const INITIAL_CHALLENGER: Challenger = {
+export const DEFAULT_CHALLENGER: Challenger = {
   id: 'Player',
   avatar: '',
   description: '',
 };
 
-export const INITIAL_STARTING: Starting = {
+export const DEFAULT_STARTING: Starting = {
   squad: '',
   pickup: [],
   remark: '',

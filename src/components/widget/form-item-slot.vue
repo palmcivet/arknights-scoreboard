@@ -5,9 +5,7 @@
     <slot name="label">
       <Label class="flex text-nowrap text-sm">{{ label }}</Label>
     </slot>
-    <div class="flex-1">
-      <slot></slot>
-    </div>
+    <slot></slot>
   </div>
 </template>
 
