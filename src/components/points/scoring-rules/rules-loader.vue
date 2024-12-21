@@ -16,7 +16,7 @@
 
     <div>
       <!-- 预设 -->
-      <TabsContent :value="RULE_SOURCE.PRESET">
+      <TabsContent :value="LOADER_SOURCE.PRESET">
         <Select
           v-model="editingPresetRules"
           :default-value="editingPresetRules"
@@ -36,7 +36,7 @@
         </Select>
       </TabsContent>
       <!-- 本地 -->
-      <TabsContent :value="RULE_SOURCE.LOCAL">
+      <TabsContent :value="LOADER_SOURCE.LOCAL">
         <Input
           type="file"
           accept=".json"
@@ -45,7 +45,7 @@
         ></Input>
       </TabsContent>
       <!-- 远程 -->
-      <TabsContent :value="RULE_SOURCE.REMOTE">
+      <TabsContent :value="LOADER_SOURCE.REMOTE">
         <Input
           type="url"
           placeholder="规则文件的 URL"
@@ -76,7 +76,7 @@ import {
   DEFAULT_PRESET_RULES,
   LOADER_OPTIONS,
   PRESET_RULES,
-  RULE_SOURCE,
+  LOADER_SOURCE,
 } from '@/constants';
 import type { RulesType } from '@/engine/schema';
 import { cn } from '@/helpers/tailwind-utils';
@@ -92,7 +92,7 @@ const dispatchLoadRules = (validRules: RulesType) => {
   emit('update', validRules);
 };
 
-const editingLoaderOption = ref<RULE_SOURCE>(LOADER_OPTIONS[0].value);
+const editingLoaderOption = ref<LOADER_SOURCE>(LOADER_OPTIONS[0].value);
 const editingPresetRules = ref<string>(DEFAULT_PRESET_RULES.url);
 const editingRemoteURL = ref<string>('');
 

@@ -1,25 +1,21 @@
 {
-  "name": "仙术杯#5 探索者的银淞止境 DLC",
+  "name": "仙术杯#4 探索者的银淞止境",
   "brief": "致力打造一个既精彩又有趣，还能学习打法的集成战略比赛！",
-  "url": "https://www.bilibili.com/blackboard/activity-cXBrWYNabu.html",
-  "background": "https://i0.hdslb.com/bfs/activity-plat/static/1bf089108fef03beeb184eb7afb655f8/W2tcndlVRT_w1920_h1080.png",
+  "description": "1. 使用探索者的银凇止境集成战略主题作为比赛场景。\n2. 比赛分为初赛与决赛两个阶段，均使用积分排名方式进行排名。\n3. 必须使用 15 级难度开局，除了生活队，其他所有分队均可以凹开局热水壶，且最多只能出现热水壶这件藏品，出现其他藏品视为犯规，选择职业队开局时允许凹直升，选择生活队时只允许现场现开局，不可提前凹，所有分队如有想使用随心所欲选项开局时，都只允许现场现开局。\n4. 所有路线，以及事件抉择均由选手自由裁定，不做强制决定。\n5. 商店取钱全局仅允许取总存款量 60 点，选手需要在出发前展示剩余存款量，裁判记下以后方可开局，比赛结束时，再查看一次存款剩余量，如取钱超出 60 点源石锭，每 1 点源石锭扣除分数 50 分。",
+  "url": "https://www.bilibili.com/blackboard/activity-pJUroSNBCC.html",
+  "background": "https://i0.hdslb.com/bfs/activity-plat/static/75e9bef890e36c054d19b62c1487c315/2qgSbwZ16T_w1920_h1080.png",
   "organizer": "龙哥哥今天又鸽了",
-  "schedule": "初赛 2024 年 3.9 - 3.17，决赛 2024 年 3.19 - 3.21",
+  "schedule": "初赛 2023 年 9.10 - 9.17，决赛 2024 年 9.19 - 9.21",
   "author": "Palm_Civet",
   "engine": "tournment",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "engineVersion": "0.0.1",
   "items": [
     {
       "type": "group",
       "label": "第三层隐藏 Boss",
-      "description": "对应规则 05 隐藏 Boss。",
+      "description": "对应规则 03 隐藏 Boss。",
       "children": [
-        {
-          "type": "check",
-          "label": "大地醒转",
-          "score": 50
-        },
         {
           "type": "check",
           "label": "呼吸",
@@ -28,118 +24,133 @@
         {
           "type": "check",
           "label": "夺树者",
-          "score": 50
+          "score": 60
         }
       ]
     },
     {
       "type": "group",
       "label": "第三层紧急关卡",
-      "description": "对应规则 05 紧急。",
+      "description": "对应规则 03 紧急作战。",
       "children": [
         {
           "type": "count",
           "label": "冰海疑影",
-          "score": 20
+          "score": 40
         },
         {
           "type": "count",
           "label": "冰海疑影（路网无漏）",
-          "score": 30
+          "score": 60
         }
       ]
     },
     {
       "type": "group",
       "label": "第四层紧急关卡",
-      "description": "对应规则 05 紧急。",
+      "description": "对应规则 03 紧急作战。",
       "children": [
         {
           "type": "count",
           "label": "公司纠葛",
-          "score": 20
+          "score": 40
         },
         {
           "type": "count",
           "label": "公司纠葛（路网无漏）",
-          "score": 30
+          "score": 60
         },
         {
           "type": "count",
           "label": "坍缩体的午后",
-          "score": 20
+          "score": 40
         }
       ]
     },
     {
       "type": "group",
       "label": "第五层紧急关卡",
-      "description": "对应规则 05 紧急。",
+      "description": "对应规则 03 紧急作战。",
       "children": [
         {
           "type": "count",
-          "label": "人造物狂欢节",
-          "score": 90
-        },
-        {
-          "type": "count",
-          "label": "人造物狂欢节（路网无漏）",
-          "score": 110
-        },
-        {
-          "type": "count",
           "label": "本能污染",
-          "score": 50
+          "score": 120
         },
         {
           "type": "count",
           "label": "亡者行军",
-          "score": 50
+          "score": 120
         },
         {
           "type": "count",
           "label": "亡者行军（路网无漏）",
-          "score": 70
+          "score": 140
         },
         {
           "type": "count",
           "label": "乐理之灾",
-          "score": 35
+          "score": 100
         },
         {
           "type": "count",
           "label": "乐理之灾（路网无漏）",
-          "score": 55
+          "score": 120
+        },
+        {
+          "type": "count",
+          "label": "混乱的表象",
+          "score": 80
+        },
+        {
+          "type": "count",
+          "label": "求敌得敌",
+          "score": 70
+        },
+        {
+          "type": "count",
+          "label": "何处无山海",
+          "score": 70
+        },
+        {
+          "type": "count",
+          "label": "生人勿近",
+          "score": 50
         }
       ]
     },
     {
       "type": "group",
       "label": "第六层紧急关卡",
-      "description": "对应规则 05 紧急。",
+      "description": "对应规则 03 紧急作战。",
       "children": [
         {
           "type": "count",
+          "label": "霜与沙",
+          "score": 70
+        },
+        {
+          "type": "count",
           "label": "生灵的终点",
-          "score": 90
+          "score": 150
         }
       ]
     },
     {
       "type": "group",
       "label": "隐藏关卡",
-      "description": "对应规则 05 隐藏关卡。",
+      "description": "对应规则 03 特殊作战。",
       "children": [
         {
           "type": "count",
           "label": "豪华车队击杀熊",
-          "description": "<豪华车队> 击杀熊时 +40 分。",
+          "description": "<豪华车队> 击杀熊时 +50 分。",
           "score": 40
         },
         {
           "type": "select",
           "label": "正义使者",
-          "description": "<正义使者> 进通关时 +70 分，狗/熊/鸭每击杀一只单独 +30 分，全关卡无漏 +200 分且不累计计算。",
+          "description": "<正义使者> 仅通关时 +70 分，狗/熊/鸭每击杀一只单独 +30 分，全关卡无漏 +200 分且不累计计算。",
           "options": [
             {
               "label": "仅通关",
@@ -203,79 +214,43 @@
     {
       "type": "group",
       "label": "结局",
-      "description": "对应规则 03。",
+      "description": "对应规则 02。",
       "children": [
-        {
-          "type": "select",
-          "label": "第五层关底",
-          "options": [
-            {
-              "label": "深寒造像",
-              "score": 150
-            },
-            {
-              "label": "萨米之熵",
-              "score": 30
-            },
-            {
-              "label": "虚无之偶",
-              "score": 120
-            }
-          ]
-        },
-        {
-          "type": "select",
-          "label": "园丁/哨兵",
-          "options": [
-            {
-              "label": "园丁",
-              "score": 50
-            },
-            {
-              "label": "哨兵",
-              "score": 300
-            }
-          ]
-        },
-        {
-          "type": "select",
-          "label": "时光之沙/迈入永恒",
-          "options": [
-            {
-              "label": "时光之沙",
-              "score": 100
-            },
-            {
-              "label": "迈入永恒",
-              "score": 150
-            }
-          ]
-        },
         {
           "type": "select",
           "label": "结局连打",
           "description": "对应规则 02 和 04。仅在最终完成结局“终始” + “最深处的一瞥”，并且全程未进入过一次树篱之途时获得：150 分；\n在“终始”结局基础上，完成“直至冬夜降临”结局时，额外获得 100 分；\n在“终始”结局基础上，完成“越过群山”结局，且关卡为<深寒造像>时，额外获得 100 分。",
           "options": [
             {
-              "label": "34 连打且未进过树洞",
-              "score": 150
-            },
-            {
-              "label": "24 连打",
+              "label": "巍峨银凇",
               "score": 100
             },
             {
-              "label": "34 连打",
+              "label": "巍峨银凇 + 园丁",
               "score": 150
+            },
+            {
+              "label": "萨米之熵",
+              "score": 150
+            },
+            {
+              "label": "萨米之熵 + 园丁",
+              "score": 500
             }
           ]
+        },
+        {
+          "type": "check",
+          "label": "树篱之途补偿",
+          "description": "仅在最终通关萨米之熵，并且全程未进入过一次树篱之途时获得",
+          "score": 300
         }
       ]
     },
     {
       "type": "group",
       "label": "鸭/狗/熊",
-      "description": "对应规则 07。每击杀一只 +20 分，仅在<豪华车队>与<正义使者>两张图击杀的狗/熊/鸭不再独立计算分数。",
+      "description": "对应规则 04。每击杀一只 +20 分，仅在<豪华车队>与<正义使者>两张图击杀不再独立计算分数。",
       "children": [
         {
           "type": "count",
@@ -297,7 +272,7 @@
     {
       "type": "group",
       "label": "结算",
-      "description": "对应规则 08。结算时每个藏品 +20 分，每个宣言版 +5 分。",
+      "description": "对应规则 05。结算时每个藏品 +10 分，每个宣言版 +5 分。",
       "children": [
         {
           "type": "input",
@@ -311,7 +286,7 @@
         },
         {
           "type": "count",
-          "label": "密文板",
+          "label": "宣言板",
           "score": 5
         }
       ]
@@ -319,7 +294,7 @@
     {
       "type": "group",
       "label": "临时招募",
-      "description": "对应规则 01。使用“愤怒”宣言版获得的临时招募干员不再计算得分。",
+      "description": "对应规则 01。临时招募选下后，六星 +50 分，五星 +20 分，四星 +10 分。",
       "children": [
         {
           "type": "count",

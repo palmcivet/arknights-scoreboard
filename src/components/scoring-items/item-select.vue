@@ -4,7 +4,11 @@
     :scoring-item="scoringItem"
     :score="record.score"
   >
-    <Select v-model="selected" @update:model-value="onChange">
+    <Select
+      :default-value="selected"
+      :model-value="selected"
+      @update:model-value="onChange"
+    >
       <SelectTrigger class="flex-1 truncate">
         <SelectValue :placeholder="scoringItem.label"></SelectValue>
       </SelectTrigger>

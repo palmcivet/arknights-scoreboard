@@ -2,7 +2,7 @@
   <div class="h-full">
     <div
       v-if="!recordsStore.details.length"
-      class="my-sm flex flex-row items-center justify-center text-gray-500"
+      class="flex min-h-[70vh] flex-row items-center justify-center text-gray-500"
     >
       <Icon class="size-5" icon="mdi:clipboard-text-play-outline"></Icon>
       <span class="ml-2 text-sm">暂无记录</span>

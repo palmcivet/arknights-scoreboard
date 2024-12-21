@@ -25,6 +25,7 @@ export const ScoringItemSchema: z.ZodType<ScoringItemType> = z.lazy(() =>
   z.union([
     ScoringItemCheckSchema,
     ScoringItemCountSchema,
+    ScoringItemInputSchema,
     ScoringItemSelectSchema,
     ScoringItemGroupSchema,
   ])

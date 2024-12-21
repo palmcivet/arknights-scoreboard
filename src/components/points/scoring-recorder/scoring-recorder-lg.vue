@@ -13,7 +13,7 @@
       <TooltipContent><span>计算器</span></TooltipContent>
     </Tooltip>
 
-    <Tooltip>
+    <Tooltip v-if="recordsStore.details.length">
       <TooltipTrigger>
         <Button size="xs" variant="ghost" @click="">
           <Icon class="size-4" icon="mdi:content-save-outline"></Icon>

@@ -1,0 +1,270 @@
+{
+  "name": "仙术杯#3 水月与深蓝之树 DLC",
+  "brief": "致力打造一个既精彩又有趣，还能学习打法的集成战略比赛！",
+  "description": "1. 使用水月与深蓝之树集成战略主题作为比赛场景。\n2. 比赛分为（积分赛）初赛与（晋级淘汰赛）决赛两个阶段，两个阶段的规则略微有些不同，以下规则如有决赛规则变更将在括号内补充。\n3. 必须 15 级难度开局，对于一些分队的规则补充，用职业队开局时，可以提前凹好精 2 开局（现场使用重开局机会时不可重新凹），积分赛时禁止使用心胜于物分队，积分赛时使用以人为本分队，最终分数扣除 80 分。决赛时整个系列赛中，以人为本分队和心胜于物分队均只能使用一次（使用重开机会时可继续使用），禁止使用随心所欲开局。\n4. 遇到隐藏结局事件必须接受：\n\t1. 骑士线结局可以使用骰子选项，仅在无希望无骰子时可以选 2 希望，不选结局。\n\t2. 遇到开端事件节点时强制选择深蓝回忆。\n5. 比赛使用通关结算分数进行排名，分数细则详情查看加分规则。\n6. 商店任意取钱，紧急作战不强制打，特定图会做为加分项，但使用时光之未进行跳关时不加分。\n7. 误入奇境不强制打。\n8. 遇到隐藏作战事件不强制打，一些难度大的关卡通关有加分。\n9. 积分赛时选手进入 3 层后且未行动之前，有一次重新开局的机会，行动后不可再重开。（决赛则改成 3 层进入 BOSS 关卡前可重新开局一次）\n10. 禁止使用外挂和 BUG，以上规则违反时成绩无效化处理。（卡门发呆视为机制，可以使用。卡掉水月震撼技能判定为 BUG，不可使用）",
+  "url": "https://www.bilibili.com/blackboard/activity-ryhVSBIM5I.html",
+  "background": "https://i0.hdslb.com/bfs/activity-plat/static/40370b1512d054e187721bf3fb452961/BV3Z7pS7PU_w1920_h1080.jpg",
+  "organizer": "龙哥哥今天又鸽了",
+  "schedule": "淘汰赛 2023 年 5.10 - 5.16，八强赛 2023 年 5.18 - 5.19，四强赛 2023 年 5.20，决赛 2023 年 5.21",
+  "author": "Palm_Civet",
+  "engine": "tournment",
+  "version": "0.0.1",
+  "engineVersion": "0.0.1",
+  "items": [
+    {
+      "type": "group",
+      "label": "第三层紧急关卡",
+      "description": "对应规则 03。",
+      "children": [
+        {
+          "type": "count",
+          "label": "巢穴",
+          "score": 40
+        },
+        {
+          "type": "count",
+          "label": "瞻前顾后",
+          "score": 40
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": "第四层紧急关卡",
+      "description": "对应规则 03。",
+      "children": [
+        {
+          "type": "count",
+          "label": "领地意识",
+          "score": 100
+        },
+        {
+          "type": "count",
+          "label": "狩猎场",
+          "score": 60
+        },
+        {
+          "type": "count",
+          "label": "铳与秩序",
+          "score": 40
+        },
+        {
+          "type": "count",
+          "label": "溟痕乐园（无漏）",
+          "score": 50
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": "第五层紧急关卡",
+      "description": "对应规则 03。",
+      "children": [
+        {
+          "type": "count",
+          "label": "失控",
+          "score": 120
+        },
+        {
+          "type": "count",
+          "label": "育生池",
+          "score": 90
+        },
+        {
+          "type": "count",
+          "label": "好梦在何方",
+          "score": 90
+        },
+        {
+          "type": "count",
+          "label": "余烬方阵",
+          "score": 90
+        },
+        {
+          "type": "count",
+          "label": "机械之灾",
+          "score": 50
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": "第六层紧急关卡",
+      "description": "对应规则 03。",
+      "children": [
+        {
+          "type": "count",
+          "label": "水火相容",
+          "score": 150
+        },
+        {
+          "type": "count",
+          "label": "深度认知",
+          "score": 80
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": "隐藏关卡",
+      "description": "对应规则 03。漏护盾血也算漏。",
+      "children": [
+        {
+          "type": "check",
+          "label": "「监工现场」击杀鸭子",
+          "score": 30
+        },
+        {
+          "type": "select",
+          "label": "「真相」",
+          "options": [
+            {
+              "label": "仅通关",
+              "score": 50
+            },
+            {
+              "label": "无漏",
+              "score": 100
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "label": "跳舞",
+          "options": [
+            {
+              "label": "仅通关",
+              "score": 50
+            },
+            {
+              "label": "无漏且箱子全收",
+              "score": 100
+            }
+          ]
+        },
+        {
+          "type": "check",
+          "label": "「鸭本运作」",
+          "score": 80
+        },
+        {
+          "type": "check",
+          "label": "「狂信如火」无漏",
+          "score": 50
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": "误入奇境",
+      "description": "对应规则 02。",
+      "children": [
+        {
+          "type": "count",
+          "label": "锈锤",
+          "score": 120
+        },
+        {
+          "type": "count",
+          "label": "寒灾",
+          "score": 150
+        },
+        {
+          "type": "count",
+          "label": "墓碑",
+          "score": 230
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": "结局",
+      "description": "对应规则 02。",
+      "children": [
+        {
+          "type": "check",
+          "label": "骑士结局",
+          "score": 450
+        },
+        {
+          "type": "check",
+          "label": "水月结局",
+          "score": 300
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": "鸭/狗/熊",
+      "description": "对应规则 04。",
+      "children": [
+        {
+          "type": "count",
+          "label": "鸭",
+          "score": 20
+        },
+        {
+          "type": "count",
+          "label": "狗",
+          "score": 20
+        },
+        {
+          "type": "count",
+          "label": "熊",
+          "score": 20
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": "结算",
+      "description": "对应规则 04。",
+      "children": [
+        {
+          "type": "input",
+          "label": "基础得分",
+          "score": 1
+        },
+        {
+          "type": "input",
+          "description": "仅决赛时，上一场比赛计分的 10% 会算进当前场次比赛的积分，封顶 300 分。",
+          "label": "继承分数",
+          "score": 1
+        },
+        {
+          "type": "count",
+          "description": "战术道具也视为藏品",
+          "label": "藏品",
+          "score": 10
+        },
+        {
+          "type": "count",
+          "label": "启示",
+          "score": 50
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": "临时招募",
+      "description": "对应规则 01。",
+      "children": [
+        {
+          "type": "count",
+          "label": "六星干员",
+          "score": 50
+        },
+        {
+          "type": "count",
+          "label": "五星干员",
+          "score": 20
+        },
+        {
+          "type": "count",
+          "label": "四星干员",
+          "score": 10
+        }
+      ]
+    }
+  ]
+}

@@ -11,6 +11,7 @@
       </div>
       <NumberField
         class="max-w-[160px] flex-1"
+        :step="0.01"
         :model-value="inputValue"
         @update:model-value="onInput"
       >
