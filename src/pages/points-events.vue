@@ -15,7 +15,17 @@
           />
         </div>
 
-        <div :class="cn(CONTAINER_STYLE, 'mt-14 h-full')">
+        <div
+          :class="
+            cn(
+              'mt-14 h-full',
+              SIZE_LIMIT_STYLE,
+              CENTRALIZE_STYLE,
+              TRANSITION_STYLE,
+              CONTAINER_PADDING_STYLE
+            )
+          "
+        >
           <EventsBanner>
             <!-- 赛事信息 -->
           </EventsBanner>
@@ -50,7 +60,13 @@ import ScoringCards from '@/components/points/scoring-cards';
 import EventsBanner from '@/components/points/events-banner';
 import EventsChallenger from '@/components/points/events-challenger';
 import EventsController from '@/components/points/events-controller';
-import { CONTAINER_STYLE, MOBILE_BREAKPOINT } from '@/constants';
+import {
+  SIZE_LIMIT_STYLE,
+  CENTRALIZE_STYLE,
+  TRANSITION_STYLE,
+  MOBILE_BREAKPOINT,
+  CONTAINER_PADDING_STYLE,
+} from '@/constants';
 import { api, useEventsStore } from '@/engine/core';
 import { cn } from '@/helpers/tailwind-utils';
 

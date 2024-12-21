@@ -1,13 +1,69 @@
 <template>
-  <div :class="cn('aks-points size-full', CONTAINER_STYLE)">
-    <ResizablePanelGroup :direction="isSmall ? 'vertical' : 'horizontal'">
-      <ResizablePanel>
+  <div :class="cn('aks-points size-full', $attrs.class ?? '')">
+    <Tabs v-if="isSmall" default-value="rules" class="flex size-full flex-col">
+      <div
+        :class="[
+          'w-full pt-xs',
+          SIZE_LIMIT_STYLE,
+          CENTRALIZE_STYLE,
+          CONTAINER_PADDING_STYLE,
+        ]"
+      >
+        <TabsList class="mt-14 w-full">
+          <TabsTrigger class="w-1/3" value="rules">
+            <span>赛事规则</span>
+          </TabsTrigger>
+          <TabsTrigger class="w-1/3" value="scoring">
+            <span>计分板</span>
+          </TabsTrigger>
+          <TabsTrigger class="w-1/3" value="records">
+            <div class="flex items-center">
+              <span>得分</span>
+              <Badge
+                v-if="recordsStore.score"
+                variant="default"
+                class="-my-1 scale-75"
+              >
+                <!-- 避免影响布局 -->
+                {{ recordsStore.score }}
+              </Badge>
+            </div>
+          </TabsTrigger>
+        </TabsList>
+      </div>
+      <div :class="[SIZE_LIMIT_STYLE, 'min-h-0 flex-1']">
         <ScrollArea class="h-full">
+          <TabsContent value="rules"></TabsContent>
+          <TabsContent value="scoring">
+            <ScoringCards :class="['px-sm pb-xs']">
+              <!-- 计分板 -->
+            </ScoringCards>
+          </TabsContent>
+          <TabsContent value="records">
+            <ScoringRecorder>
+              <!-- 得分记录 -->
+            </ScoringRecorder>
+          </TabsContent>
+        </ScrollArea>
+      </div>
+    </Tabs>
+
+    <ResizablePanelGroup
+      v-else
+      direction="horizontal"
+      :class="[
+        SIZE_LIMIT_STYLE,
+        CENTRALIZE_STYLE,
+        TRANSITION_STYLE,
+        SCROLL_CONTAINER_PADDING_STYLE,
+      ]"
+    >
+      <ResizablePanel>
+        <ScrollArea class="h-full [&>:first-child]:pt-14">
           <ScoringCards
             :class="[
-              'mt-14',
-              'py-sm sm:py-sm md:py-sm lg:py-md xl:py-lg',
-              'pr-sm sm:pr-sm md:pr-sm lg:pr-md xl:pr-lg',
+              'md:py-sm lg:py-md xl:py-lg',
+              'md:pr-sm lg:pr-md xl:pr-lg',
               TRANSITION_STYLE,
             ]"
           >
@@ -16,16 +72,9 @@
         </ScrollArea>
       </ResizablePanel>
 
-      <ResizableHandle
-        v-if="!isSmall"
-        class="md:mr-sm lg:mr-md"
-      ></ResizableHandle>
+      <ResizableHandle class="md:mr-sm lg:mr-md"></ResizableHandle>
 
-      <ResizablePanel
-        v-if="!isSmall"
-        class="min-w-[256px] max-w-[378px]"
-        :default-size="24"
-      >
+      <ResizablePanel class="min-w-[256px] max-w-[378px]" :default-size="24">
         <div class="flex h-full flex-col before:mt-14 md:pt-sm lg:pt-md">
           <ScoringRules>
             <!-- 规则 -->
@@ -52,6 +101,8 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from '@/components/ui/resizable';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import ScoringRules from '@/components/points/scoring-rules';
@@ -59,10 +110,14 @@ import ScoringCards from '@/components/points/scoring-cards';
 import ScoringStarting from '@/components/points/scoring-starting';
 import ScoringRecorder from '@/components/points/scoring-recorder';
 import {
-  CONTAINER_STYLE,
   MOBILE_BREAKPOINT,
   TRANSITION_STYLE,
+  SIZE_LIMIT_STYLE,
+  CENTRALIZE_STYLE,
+  CONTAINER_PADDING_STYLE,
+  SCROLL_CONTAINER_PADDING_STYLE,
 } from '@/constants';
+import { useRecordsStore } from '@/engine/core';
 import { cn } from '@/helpers/tailwind-utils';
 
 defineOptions({
@@ -70,4 +125,6 @@ defineOptions({
 });
 
 const isSmall = useMediaQuery(MOBILE_BREAKPOINT);
+
+const recordsStore = useRecordsStore();
 </script>

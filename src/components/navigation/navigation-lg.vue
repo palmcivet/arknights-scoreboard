@@ -1,7 +1,14 @@
 <template>
   <div
     :class="
-      cn(CONTAINER_STYLE, 'flex h-14 flex-row items-center', $attrs.class ?? '')
+      cn(
+        'flex h-14 flex-row items-center',
+        CONTAINER_PADDING_STYLE,
+        SIZE_LIMIT_STYLE,
+        CENTRALIZE_STYLE,
+        TRANSITION_STYLE,
+        $attrs.class ?? ''
+      )
     "
   >
     <div class="flex flex-1 flex-row items-center justify-between">
@@ -37,12 +44,19 @@
 </template>
 
 <script lang="ts" setup>
+import { useRoute } from 'vue-router';
+
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/helpers/tailwind-utils';
-import { CONTAINER_STYLE, MENU_LIST } from '@/constants';
+import {
+  MENU_LIST,
+  CENTRALIZE_STYLE,
+  SIZE_LIMIT_STYLE,
+  TRANSITION_STYLE,
+  CONTAINER_PADDING_STYLE,
+} from '@/constants';
 import NavButtons from './nav-buttons.vue';
 import { NAV_ITEM_STYLE } from './style';
-import { useRoute } from 'vue-router';
 
 defineOptions({
   name: 'NavigationLg',

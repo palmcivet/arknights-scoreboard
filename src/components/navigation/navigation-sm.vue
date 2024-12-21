@@ -2,8 +2,11 @@
   <div
     :class="
       cn(
-        CONTAINER_STYLE,
         'flex h-14 flex-row items-center justify-between',
+        SIZE_LIMIT_STYLE,
+        CENTRALIZE_STYLE,
+        TRANSITION_STYLE,
+        CONTAINER_PADDING_STYLE,
         $attrs.class ?? ''
       )
     "
@@ -28,6 +31,8 @@
       </SheetContent>
     </Sheet>
 
+    <RouterLink to="/">LOGO</RouterLink>
+
     <div class="flex flex-row gap-1">
       <NavButtons></NavButtons>
     </div>
@@ -40,7 +45,13 @@ import { Icon } from '@iconify/vue';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/helpers/tailwind-utils';
-import { CONTAINER_STYLE, MENU_LIST } from '@/constants';
+import {
+  CENTRALIZE_STYLE,
+  MENU_LIST,
+  SIZE_LIMIT_STYLE,
+  TRANSITION_STYLE,
+  CONTAINER_PADDING_STYLE,
+} from '@/constants';
 import { NAV_ITEM_STYLE } from './style';
 import NavButtons from './nav-buttons.vue';
 

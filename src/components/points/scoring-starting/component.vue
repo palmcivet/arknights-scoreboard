@@ -38,12 +38,7 @@
       </CollapsibleTrigger>
 
       <CollapsibleContent>
-        <div
-          :class="[
-            'mt-xs flex flex-col',
-            'duration-500 animate-in fade-in slide-in-from-bottom-4 fill-mode-forwards',
-          ]"
-        >
+        <div :class="['mt-xs flex flex-col', SLIDE_IN_TRANSITION]">
           <template v-if="showTimer"></template>
 
           <StartingForm
@@ -92,6 +87,7 @@ import {
 import { StartingForm, StartingList } from '@/components/widget';
 import { cn } from '@/helpers/tailwind-utils';
 import { api, DEFAULT_STARTING, useEventsStore } from '@/engine/core';
+import { SLIDE_IN_TRANSITION } from '@/constants';
 
 defineOptions({
   name: 'ScoringStarting',

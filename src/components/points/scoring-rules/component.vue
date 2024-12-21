@@ -30,7 +30,7 @@
             <RulesLoader v-if="isEditing" @update="onUpdateRules"></RulesLoader>
             <RulesInfo
               v-else
-              class="duration-500 animate-in fade-in slide-in-from-bottom-4 fill-mode-forwards"
+              :class="SLIDE_IN_TRANSITION"
               :rules="rulesJSON"
               :events-url="eventsURL"
             ></RulesInfo>
@@ -60,7 +60,7 @@ import {
 import { toast, ToastAction } from '@/components/ui/toast';
 import { api, useEventsStore } from '@/engine/core';
 import { RulesType } from '@/engine/schema';
-import { DEFAULT_PRESET_RULES } from '@/constants';
+import { DEFAULT_PRESET_RULES, SLIDE_IN_TRANSITION } from '@/constants';
 import { cn } from '@/helpers/tailwind-utils';
 import RulesInfo from './rules-info.vue';
 import RulesLoader from './rules-loader.vue';
@@ -83,8 +83,6 @@ const editingRules = ref<RulesType | null>(null);
 const onToggleEdit = () => {
   if (isEditing.value) {
     isEditing.value = false;
-
-    console.log(editingRules.value);
 
     if (editingRules.value) {
       api.changeRules(editingRules.value);
