@@ -57,9 +57,9 @@ import { useMediaQuery } from '@vueuse/core';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { toast, ToastAction } from '@/components/ui/toast';
 import ScoringCards from '@/components/points/scoring-cards';
-import EventsBanner from '@/components/points/events-banner';
-import EventsChallenger from '@/components/points/events-challenger';
-import EventsController from '@/components/points/events-controller';
+// import EventsBanner from '@/components/points/events-banner';
+// import EventsChallenger from '@/components/points/events-challenger';
+// import EventsController from '@/components/points/events-controller';
 import {
   SIZE_LIMIT_STYLE,
   CENTRALIZE_STYLE,

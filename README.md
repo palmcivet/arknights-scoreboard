@@ -3,36 +3,20 @@
 - [Arknights Scoreboard](#arknights-scoreboard)
     - [简介](#简介)
     - [已收录赛事](#已收录赛事)
-        - [积分赛](#积分赛)
-        - [Bingo](#bingo)
     - [参考项目](#参考项目)
     - [协议](#协议)
 
 ## 简介
 
-明日方舟赛事通用计分板
+明日方舟赛事通用计分板。
 
 ## 已收录赛事
 
-### 积分赛
-
-- 仙术杯#2 水月
-- 仙术杯#3 水月
-- 仙术杯#4 萨米
-- Zc 好肉鸽
-- [仙术杯#5 萨米](https://www.bilibili.com/blackboard/activity-cXBrWYNabu.html)
-- [仙术杯#6 萨卡兹](https://live.bilibili.com/blackboard/era/M8mMwutyI06WCb0R.html)
-- [通天联赛#0 附加赛](https://www.bilibili.com/opus/890759402660823080)
-- [通天国际联赛#1](https://www.bilibili.com/opus/931631629763346471)
-- [通天高校联赛#1 西部大区赛](https://www.bilibili.com/opus/979881446993821712)
-- [通天高校联赛#1 北部大区赛](https://www.bilibili.com/opus/979812323800645680)
-- [短脖兔杯](https://www.bilibili.com/opus/974653453867417601)
-- [飞羽杯](https://www.bilibili.com/opus/963928843219894295)
-
-### Bingo
-
-- [Bingo 锦标赛](https://www.bilibili.com/opus/916424778368155687)
-- [十天的 Bingo 挑战赛](https://www.bilibili.com/opus/971362598445383703)
+- 仙术杯
+    - [仙术杯#3 水月与深蓝之树 DLC](https://www.bilibili.com/blackboard/activity-ryhVSBIM5I.html)
+    - [仙术杯#4 探索者的银淞止境](https://www.bilibili.com/blackboard/activity-pJUroSNBCC.html)
+    - [仙术杯#5 探索者的银淞止境 DLC](https://www.bilibili.com/blackboard/activity-cXBrWYNabu.html)
+    - [仙术杯#6 萨卡兹的无终奇语](https://live.bilibili.com/blackboard/era/M8mMwutyI06WCb0R.html)
 
 ## 参考项目
 

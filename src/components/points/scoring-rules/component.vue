@@ -105,6 +105,11 @@ const onUpdateRules = (rules: RulesType) => {
 const eventsStore = useEventsStore();
 const { rulesJSON } = storeToRefs(eventsStore);
 const eventsURL = computed(() => {
+  // @todo
+  if (!import.meta.env.DEV) {
+    return '';
+  }
+
   if (!eventsStore.rulesURL) {
     return '';
   }

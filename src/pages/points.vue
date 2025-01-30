@@ -33,7 +33,15 @@
       </div>
       <div :class="[SIZE_LIMIT_STYLE, 'min-h-0 flex-1']">
         <ScrollArea class="h-full">
-          <TabsContent value="rules"></TabsContent>
+          <TabsContent value="rules" class="px-sm">
+            <ScoringRules>
+              <!-- 规则 -->
+            </ScoringRules>
+            <Separator class="my-xs"></Separator>
+            <ScoringStarting>
+              <!-- 初始构建 -->
+            </ScoringStarting>
+          </TabsContent>
           <TabsContent value="scoring">
             <ScoringCards :class="['px-sm pb-xs']">
               <!-- 计分板 -->

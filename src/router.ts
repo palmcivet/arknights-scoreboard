@@ -1,9 +1,9 @@
 import { createWebHistory, createRouter } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
 
-import Points from '@/pages/points.vue';
-import PointsEvents from '@/pages/points-events.vue';
-import Editor from '@/pages/editor.vue';
+const Points = () => import('@/pages/points.vue');
+const PointsEvents = () => import('@/pages/points-events.vue');
+const Editor = () => import('@/pages/editor.vue');
 
 const routes: Array<RouteRecordRaw> = [
   { path: '/points', component: Points },

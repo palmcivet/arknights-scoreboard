@@ -11,10 +11,11 @@ export const MENU_LIST = [
     label: '积分赛',
     route: '/points',
   },
-  {
-    label: 'Bingo',
-    route: '/bingo',
-  },
+  // {
+  //   // @todo
+  //   label: 'Bingo',
+  //   route: '/bingo',
+  // },
   {
     label: '编辑器',
     route: '/editor',
