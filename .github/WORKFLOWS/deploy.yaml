@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - build/github-actions
+      - 'build/github-actions'
 
 jobs:
   build:
