@@ -10,7 +10,9 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "test": "jest"
+    "test": "pnpm run test:core && pnpm run test:vue",
+    "test:core": "jest",
+    "test:vue": "vue-tsc --noEmit"
   },
   "dependencies": {
     "@iconify/vue": "^4.1.2",

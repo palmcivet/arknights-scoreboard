@@ -10,7 +10,7 @@
     <div class="events-schedule">{{ eventsInfo.schedule }}</div>
 
     <!-- 比赛主办方 -->
-    <div class="events-host">{{ eventsInfo.host }}</div>
+    <div class="events-host">{{ eventsInfo.organizer }}</div>
 
     <!-- 选手栏 -->
     <Challenger></Challenger>
@@ -20,8 +20,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 
-import type { Events } from '@/engine';
-import Challenger from '@/components/starting-build';
+import type { Events } from '@/engine/entity';
 
 defineOptions({
   name: 'EventsBanner',
@@ -31,7 +30,7 @@ const eventsInfo = ref<Events>({
   name: '游戏名称',
   description: '游戏附加说明',
   url: 'https://xxx.com',
-  host: '主办方',
+  organizer: '主办方',
   schedule: '赛程',
 });
 </script>

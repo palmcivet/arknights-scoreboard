@@ -30,3 +30,6 @@ package-lock.json
 # Vite
 auto-imports.d.ts
 components.d.ts
+
+# env variables
+.env
