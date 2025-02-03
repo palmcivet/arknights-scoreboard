@@ -1,5 +1,7 @@
 # Arknights Scoreboard
 
+[![Deploy](https://github.com/palmcivet/arknights-scoreboard/actions/workflows/deploy.yaml/badge.svg)](https://github.com/palmcivet/arknights-scoreboard/actions/workflows/deploy.yaml) [![Test](https://github.com/palmcivet/arknights-scoreboard/actions/workflows/test.yaml/badge.svg)](https://github.com/palmcivet/arknights-scoreboard/actions/workflows/test.yaml)
+
 - [Arknights Scoreboard](#arknights-scoreboard)
     - [简介](#简介)
     - [已收录赛事](#已收录赛事)

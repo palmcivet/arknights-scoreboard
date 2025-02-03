@@ -5,8 +5,6 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - name: Checkout branch
         uses: actions/checkout@v4
@@ -24,19 +22,6 @@ jobs:
 
       - name: Build
         run: pnpm run build
-        env:
-          DEPLOY_AS_SUB_FOLDER: ${{ env.DEPLOY_AS_SUB_FOLDER }}
-          VITE_DEFAULT_RULES_SLUG: ${{ env.VITE_DEFAULT_RULES_SLUG }}
 
       - name: Test
         run: pnpm run test
-        env:
-          DEPLOY_AS_SUB_FOLDER: ${{ env.DEPLOY_AS_SUB_FOLDER }}
-          VITE_DEFAULT_RULES_SLUG: ${{ env.VITE_DEFAULT_RULES_SLUG }}
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: ./dist
