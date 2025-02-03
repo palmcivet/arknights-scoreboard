@@ -1,9 +1,6 @@
-name: Deploy
+name: Test
 
-on:
-  push:
-    branches:
-      - main
+on: [push, pull_request]
 
 jobs:
   build:
@@ -27,6 +24,15 @@ jobs:
 
       - name: Build
         run: pnpm run build
+        env:
+          DEPLOY_AS_SUB_FOLDER: ${{ env.DEPLOY_AS_SUB_FOLDER }}
+          VITE_DEFAULT_RULES_SLUG: ${{ env.VITE_DEFAULT_RULES_SLUG }}
+
+      - name: Test
+        run: pnpm run test
+        env:
+          DEPLOY_AS_SUB_FOLDER: ${{ env.DEPLOY_AS_SUB_FOLDER }}
+          VITE_DEFAULT_RULES_SLUG: ${{ env.VITE_DEFAULT_RULES_SLUG }}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
