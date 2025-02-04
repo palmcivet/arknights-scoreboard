@@ -1,6 +1,6 @@
 # Arknights Scoreboard
 
-[![Deploy](https://github.com/palmcivet/arknights-scoreboard/actions/workflows/deploy.yaml/badge.svg)](https://github.com/palmcivet/arknights-scoreboard/actions/workflows/deploy.yaml) [![Test](https://github.com/palmcivet/arknights-scoreboard/actions/workflows/test.yaml/badge.svg)](https://github.com/palmcivet/arknights-scoreboard/actions/workflows/test.yaml)
+[![Deploy Status](https://github.com/palmcivet/arknights-scoreboard/actions/workflows/deploy.yaml/badge.svg)](https://github.com/palmcivet/arknights-scoreboard/actions/workflows/deploy.yaml) [![Test Status](https://github.com/palmcivet/arknights-scoreboard/actions/workflows/test.yaml/badge.svg)](https://github.com/palmcivet/arknights-scoreboard/actions/workflows/test.yaml) [![Netlify Status](https://api.netlify.com/api/v1/badges/1810080d-e7ae-4fec-b566-60bfb5c7c420/deploy-status?branch=main)](https://app.netlify.com/sites/arknights-scoreboard/deploys)
 
 - [Arknights Scoreboard](#arknights-scoreboard)
     - [简介](#简介)
