@@ -4,7 +4,7 @@ export const CENTRALIZE_STYLE = 'mx-auto';
 
 export const SIZE_LIMIT_STYLE = 'min-w-sm max-w-screen-2xl';
 
-export const TRANSITION_STYLE = 'transition-[padding] duration-300';
+export const PADDING_TRANSITION = 'transition-[padding] duration-300';
 
 export const CONTAINER_PADDING_STYLE =
   'px-sm sm:px-sm md:px-md lg:px-lg xl:px-xl';

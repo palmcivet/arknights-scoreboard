@@ -4,41 +4,34 @@
       <span class="text-xl font-semibold">得分记录</span>
     </div>
 
-    <Tooltip>
-      <TooltipTrigger>
-        <Button size="xs" variant="ghost" @click="">
-          <Icon class="size-4" icon="mdi:calculator"></Icon>
-        </Button>
-      </TooltipTrigger>
-      <TooltipContent><span>计算器</span></TooltipContent>
-    </Tooltip>
+    <template v-if="recordsStore.details.length">
+      <Tooltip>
+        <TooltipTrigger>
+          <Button size="xs" variant="ghost" @click="">
+            <Icon class="size-4" icon="mdi:content-save-outline"></Icon>
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent><span>保存记录</span></TooltipContent>
+      </Tooltip>
 
-    <Tooltip v-if="recordsStore.details.length">
-      <TooltipTrigger>
-        <Button size="xs" variant="ghost" @click="">
-          <Icon class="size-4" icon="mdi:content-save-outline"></Icon>
-        </Button>
-      </TooltipTrigger>
-      <TooltipContent><span>保存记录</span></TooltipContent>
-    </Tooltip>
+      <Tooltip>
+        <TooltipTrigger>
+          <Button size="xs" variant="ghost" @click="onExportRecords">
+            <Icon class="size-4" icon="mdi:export-variant"></Icon>
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent><span>导出记录</span></TooltipContent>
+      </Tooltip>
 
-    <Tooltip v-if="recordsStore.details.length">
-      <TooltipTrigger>
-        <Button size="xs" variant="ghost" @click="onExportRecords">
-          <Icon class="size-4" icon="mdi:export-variant"></Icon>
-        </Button>
-      </TooltipTrigger>
-      <TooltipContent><span>导出记录</span></TooltipContent>
-    </Tooltip>
-
-    <Tooltip>
-      <TooltipTrigger>
-        <Button size="xs" variant="ghost" @click="onClearRecords">
-          <Icon class="size-4" icon="mdi:notification-clear-all"></Icon>
-        </Button>
-      </TooltipTrigger>
-      <TooltipContent><span>清空记录</span></TooltipContent>
-    </Tooltip>
+      <Tooltip>
+        <TooltipTrigger>
+          <Button size="xs" variant="ghost" @click="onClearRecords">
+            <Icon class="size-4" icon="mdi:notification-clear-all"></Icon>
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent><span>清空记录</span></TooltipContent>
+      </Tooltip>
+    </template>
   </div>
 
   <div class="min-h-0 flex-1">
@@ -69,7 +62,7 @@
       <div
         :class="[
           'absolute bottom-0 left-0 right-0',
-          'flex h-12 flex-row items-center justify-between pr-sm',
+          'flex h-11 flex-row items-center justify-between pr-sm',
           'border-t bg-background/60 backdrop-blur-lg',
         ]"
       >

@@ -33,22 +33,21 @@
       </div>
       <div :class="[SIZE_LIMIT_STYLE, 'min-h-0 flex-1']">
         <ScrollArea class="h-full">
-          <TabsContent value="rules" class="px-sm">
-            <ScoringRules>
+          <TabsContent value="rules">
+            <ScoringRules :class="['px-sm pt-xs', SLIDE_IN_TRANSITION]">
               <!-- 规则 -->
             </ScoringRules>
-            <Separator class="my-xs"></Separator>
-            <ScoringStarting>
+            <ScoringStarting :class="['px-sm py-xs', SLIDE_IN_TRANSITION]">
               <!-- 初始构建 -->
             </ScoringStarting>
           </TabsContent>
           <TabsContent value="scoring">
-            <ScoringCards :class="['px-sm pb-xs']">
+            <ScoringCards class="px-sm py-xs">
               <!-- 计分板 -->
             </ScoringCards>
           </TabsContent>
           <TabsContent value="records">
-            <ScoringRecorder>
+            <ScoringRecorder :class="SLIDE_IN_TRANSITION">
               <!-- 得分记录 -->
             </ScoringRecorder>
           </TabsContent>
@@ -62,7 +61,7 @@
       :class="[
         SIZE_LIMIT_STYLE,
         CENTRALIZE_STYLE,
-        TRANSITION_STYLE,
+        PADDING_TRANSITION,
         SCROLL_CONTAINER_PADDING_STYLE,
       ]"
     >
@@ -72,7 +71,7 @@
             :class="[
               'md:py-sm lg:py-md xl:py-lg',
               'md:pr-sm lg:pr-md xl:pr-lg',
-              TRANSITION_STYLE,
+              PADDING_TRANSITION,
             ]"
           >
             <!-- 计分板 -->
@@ -119,11 +118,12 @@ import ScoringStarting from '@/components/points/scoring-starting';
 import ScoringRecorder from '@/components/points/scoring-recorder';
 import {
   MOBILE_BREAKPOINT,
-  TRANSITION_STYLE,
+  PADDING_TRANSITION,
   SIZE_LIMIT_STYLE,
   CENTRALIZE_STYLE,
   CONTAINER_PADDING_STYLE,
   SCROLL_CONTAINER_PADDING_STYLE,
+  SLIDE_IN_TRANSITION,
 } from '@/constants';
 import { useRecordsStore } from '@/engine/core';
 import { cn } from '@/helpers/tailwind-utils';

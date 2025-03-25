@@ -21,7 +21,7 @@
               'mt-14 h-full',
               SIZE_LIMIT_STYLE,
               CENTRALIZE_STYLE,
-              TRANSITION_STYLE,
+              PADDING_TRANSITION,
               CONTAINER_PADDING_STYLE
             )
           "
@@ -63,7 +63,7 @@ import ScoringCards from '@/components/points/scoring-cards';
 import {
   SIZE_LIMIT_STYLE,
   CENTRALIZE_STYLE,
-  TRANSITION_STYLE,
+  PADDING_TRANSITION,
   MOBILE_BREAKPOINT,
   CONTAINER_PADDING_STYLE,
 } from '@/constants';

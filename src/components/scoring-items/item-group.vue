@@ -1,13 +1,15 @@
 <template>
   <Card :class="cn('scoring-item-group', $attrs.class ?? '')">
-    <CardHeader class="p-3 md:p-4">
+    <CardHeader class="p-xs md:p-sm">
       <CardTitle class="text-xl">{{ scoringItem.label }}</CardTitle>
       <CardDescription v-if="scoringItem.description">
         {{ scoringItem.description }}
       </CardDescription>
     </CardHeader>
 
-    <CardContent class="flex columns-2 flex-col gap-sm p-3 pt-0 md:p-4 md:pt-0">
+    <CardContent
+      class="flex columns-2 flex-col gap-sm p-xs pt-0 md:p-sm md:pt-0"
+    >
       <ScoringItem
         v-for="item in scoringItem.children"
         :scoring-item="item"

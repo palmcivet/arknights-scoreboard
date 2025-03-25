@@ -6,7 +6,7 @@
         CONTAINER_PADDING_STYLE,
         SIZE_LIMIT_STYLE,
         CENTRALIZE_STYLE,
-        TRANSITION_STYLE,
+        PADDING_TRANSITION,
         $attrs.class ?? ''
       )
     "
@@ -52,7 +52,7 @@ import {
   MENU_LIST,
   CENTRALIZE_STYLE,
   SIZE_LIMIT_STYLE,
-  TRANSITION_STYLE,
+  PADDING_TRANSITION,
   CONTAINER_PADDING_STYLE,
 } from '@/constants';
 import NavButtons from './nav-buttons.vue';

@@ -5,7 +5,7 @@
         'flex h-14 flex-row items-center justify-between',
         SIZE_LIMIT_STYLE,
         CENTRALIZE_STYLE,
-        TRANSITION_STYLE,
+        PADDING_TRANSITION,
         CONTAINER_PADDING_STYLE,
         $attrs.class ?? ''
       )
@@ -49,7 +49,7 @@ import {
   CENTRALIZE_STYLE,
   MENU_LIST,
   SIZE_LIMIT_STYLE,
-  TRANSITION_STYLE,
+  PADDING_TRANSITION,
   CONTAINER_PADDING_STYLE,
 } from '@/constants';
 import { NAV_ITEM_STYLE } from './style';

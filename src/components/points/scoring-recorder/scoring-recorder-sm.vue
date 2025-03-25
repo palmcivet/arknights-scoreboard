@@ -10,7 +10,7 @@
 
     <div v-else class="relative flex h-full flex-col">
       <ScrollArea>
-        <div class="flex-1 px-sm pb-1">
+        <div class="flex-1 px-sm py-2">
           <div
             v-for="record in recordsStore.details"
             :class="[
