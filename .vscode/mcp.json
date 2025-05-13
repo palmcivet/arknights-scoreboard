@@ -1,0 +1,12 @@
+{
+  "servers": {
+    "shadcn-vue Docs": {
+      "type": "sse",
+      "url": "https://gitmcp.io/unovue/shadcn-vue"
+    },
+    "tailwindcss Docs": {
+      "type": "sse",
+      "url": "https://gitmcp.io/tailwindlabs/tailwindcss"
+    }
+  }
+}
