@@ -1,5 +1,5 @@
 <template>
-  <div :class="cn($attrs.class ?? '')">
+  <div :class="cn('rules-info', $attrs.class ?? '')">
     <FormItemSlot class="flex-row" v-if="rules.organizer" label="主办方">
       <span :class="LABEL_STYLE">{{ rules.organizer }}</span>
     </FormItemSlot>
@@ -10,7 +10,7 @@
       <span :class="LABEL_STYLE">{{ rules.schedule }}</span>
     </FormItemSlot>
     <FormItemSlot class="flex-row" v-if="rules.description" label="简介">
-      <!-- TODO Markdown -->
+      <!-- @todo Markdown -->
       <span :class="[LABEL_STYLE, 'whitespace-pre-line']">
         {{ rules.description }}
       </span>

@@ -21,7 +21,7 @@
       :style="`animation-delay: ${index * 50}ms`"
       :class="[
         'break-inside-avoid-column',
-        'opacity-0 transition-all motion-safe:animate-[fade-in-up_300ms_ease-out_forwards] sm:[&+&]:mt-xs md:[&+&]:mt-sm',
+        'motion-safe:animate-fade-in-up opacity-0 transition-all sm:[&+&]:mt-xs md:[&+&]:mt-sm',
       ]"
       :scoring-item="scoring"
     ></ScoringItem>

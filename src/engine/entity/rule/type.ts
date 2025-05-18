@@ -7,6 +7,10 @@ export type Events = {
    */
   name: string;
   /**
+   * @description 赛事主题
+   */
+  theme: string;
+  /**
    * @description 赛事简介
    */
   brief?: string;

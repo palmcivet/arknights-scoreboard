@@ -26,7 +26,7 @@
       <Tooltip>
         <TooltipTrigger>
           <Button size="xs" variant="ghost" @click="onClearRecords">
-            <Icon class="size-4" icon="mdi:notification-clear-all"></Icon>
+            <Icon class="size-4" icon="mdi:clear-outline"></Icon>
           </Button>
         </TooltipTrigger>
         <TooltipContent><span>清空记录</span></TooltipContent>

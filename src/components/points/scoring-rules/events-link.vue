@@ -1,7 +1,7 @@
 <template>
   <RouterLink
     v-if="href"
-    :class="cn($attrs.class ?? '')"
+    :class="cn('events-link', $attrs.class ?? '')"
     :to="href"
     target="_blank"
   >

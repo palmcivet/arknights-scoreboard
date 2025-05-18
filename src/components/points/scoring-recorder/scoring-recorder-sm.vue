@@ -46,7 +46,7 @@
             class="ml-2 bg-secondary/60"
             @click="onClearRecords"
           >
-            <Icon class="size-4" icon="mdi:notification-clear-all"></Icon>
+            <Icon class="size-4" icon="mdi:clear-outline"></Icon>
           </Button>
         </div>
 

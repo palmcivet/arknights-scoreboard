@@ -62,10 +62,20 @@ export default {
             transform: 'translateY(0)',
           },
         },
+        blink: {
+          '0%, 100%': {
+            opacity: '1',
+          },
+          '50%': {
+            opacity: '0',
+          },
+        },
       },
       animation: {
         'collapsible-down': 'collapsible-down 0.2s ease-in-out',
         'collapsible-up': 'collapsible-up 0.2s ease-in-out',
+        'fade-in-up': 'fade-in-up 300ms ease-out forwards',
+        blink: 'blink 1s infinite',
       },
       screens: {
         sm: '360px',
